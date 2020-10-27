@@ -51,14 +51,14 @@ delay(200);
 
 void Ultraclass::observe(){   //this is a crucial function if the buggy is being left to move freely without human interaction. it uses the ultarsound
                               // sensor to detect obstruction, it will halt the buggy and rotate left untill it has found a clearance of over 70cm. 
-if (distance <= 70 ){
+if (distance <= 30 ){
 
   Motor.halt();
   Motor.left90();
   
 }
 
-if (distance > 70){      //if ther is no obstruction within 70cm the buggy will move forwards at full speed 
+if (distance > 30){      //if ther is no obstruction within 70cm the buggy will move forwards at full speed 
 Motor.forwards3();}
 
   

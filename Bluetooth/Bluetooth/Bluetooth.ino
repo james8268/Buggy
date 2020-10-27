@@ -14,7 +14,7 @@ char incomingChar;
 void setup() {
   Serial.begin(9600);
   SerialBT.begin("ESP32test"); //Bluetooth device name 
-
+pinMode(18,OUTPUT);
 
 }
 
@@ -22,6 +22,7 @@ void loop() {
   
   if (SerialBT.available()){
 Serial.write(SerialBT.read());
+digitalWrite(18,HIGH);
     /*
     char incomingChar = SerialBT.read();
     if (incomingChar != '\n'){
@@ -29,6 +30,7 @@ Serial.write(SerialBT.read());
       */  
   }
     else{message = "";
+    digitalWrite(18,LOW);
     }}
     
 
