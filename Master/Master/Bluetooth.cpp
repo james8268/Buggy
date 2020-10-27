@@ -15,8 +15,6 @@ void Bluetoothclass::SETUP() { //setup function
 
 }
 
-
-
 void Bluetoothclass::read_message() { //read the serial function
 
 if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
