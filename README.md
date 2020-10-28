@@ -2,7 +2,7 @@
 
 This file contains the necessary information on how the buggy works in a remote bluetooth non-autonomous mode.
 
-The bluetooth device is an esp32 and talkes to the mega board trhough the RX serial pin. Using an android device bluetooth low energy (BLE) can be use to control the motion of the buggy.
+The bluetooth device is an ESP32 and talkes to the mega board through the RX serial pin. Using an android device with bluetooth low energy (BLE) can be use to control the motion of the buggy.
 
 GETTING STARTED
 
