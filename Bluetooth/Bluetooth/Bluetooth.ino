@@ -21,13 +21,10 @@ pinMode(18,OUTPUT);
 void loop() {  
   
   if (SerialBT.available()){
+    digitalWrite(18,HIGH);
 Serial.write(SerialBT.read());
-digitalWrite(18,HIGH);
-    /*
-    char incomingChar = SerialBT.read();
-    if (incomingChar != '\n'){
-      message += String(incomingChar);
-      */  
+
+  
   }
     else{message = "";
     digitalWrite(18,LOW);

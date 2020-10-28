@@ -14,9 +14,9 @@ Ultra.SETUP();
 Bluetooth.SETUP();
 
 
-pinMode(2,INPUT_PULLUP);
+//pinMode(2,INPUT_PULLUP);
 
-attachInterrupt(digitalPinToInterrupt(2), Bluetooth_ISR, CHANGE);
+//attachInterrupt(digitalPinToInterrupt(2), Bluetooth_ISR, CHANGE);
 }
 
 void loop() {
@@ -25,7 +25,8 @@ void loop() {
 //delay(5000);
 //Motor.forwards2();
 //delay(5000);
-Motor.forwards3();
+
+//Motor.forwards3();
 
 
 
@@ -33,15 +34,14 @@ Motor.forwards3();
 //Ultra.dist();
 //Ultra.lcd_show();
 
-//Bluetooth.read_message();
+Bluetooth.read_message();
 
 }
 
-void Bluetooth_ISR(){
-  Motor.halt();
-  delay(2000);
-  Bluetooth.read_message();
+//void Bluetooth_ISR(){
+ // Motor.halt();
+  //Bluetooth.read_message();
   
-  }
+ // }
 
  // use an interrupt for overide control
