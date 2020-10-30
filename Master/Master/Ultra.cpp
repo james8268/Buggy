@@ -47,6 +47,11 @@ lcd.print("Distance: ");
 lcd.print(distance);
 lcd.print("CM");
 delay(200);
+Serial.begin(9600);
+if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
+   Serial.print("Distance: ");
+   Serial.print(distance);
+   Serial.println("CM");}
 }
 
 void Ultraclass::observe(){   //this is a crucial function if the buggy is being left to move freely without human interaction. it uses the ultarsound

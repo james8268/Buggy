@@ -23,9 +23,12 @@ void loop() {
   if (SerialBT.available()){
     digitalWrite(18,HIGH);
 Serial.write(SerialBT.read());
+ }
 
-  
+   if (Serial.available()) {
+    SerialBT.write(Serial.read());
   }
+  
     else{message = "";
     digitalWrite(18,LOW);
     }}

@@ -31,8 +31,8 @@ void loop() {
 
 
 //Ultra.observe();
-//Ultra.dist();
-//Ultra.lcd_show();
+Ultra.dist();
+Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal. 
 
 Bluetooth.read_message();
 
