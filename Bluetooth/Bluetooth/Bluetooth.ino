@@ -8,8 +8,8 @@
 
 BluetoothSerial SerialBT;
 
-String message = "";
-char incomingChar;
+//String message = "";
+//char incomingChar;
 
 void setup() {
   Serial.begin(9600);
@@ -19,17 +19,19 @@ pinMode(18,OUTPUT);
 }
 
 void loop() {  
-  
+   
   if (SerialBT.available()){
-    digitalWrite(18,HIGH);
-Serial.write(SerialBT.read());
+      digitalWrite(18,HIGH);
+      delay(200);
+      Serial.write(SerialBT.read());
  }
 
    if (Serial.available()) {
     SerialBT.write(Serial.read());
   }
   
-    else{message = "";
+    else{
+      //message = "";
     digitalWrite(18,LOW);
     }}
     

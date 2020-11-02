@@ -6,6 +6,7 @@
 #include "Bluetooth.h"
 #include "Wire.h"
 
+volatile bool Move=false;
 
 void setup() {
 
@@ -14,34 +15,26 @@ Ultra.SETUP();
 Bluetooth.SETUP();
 
 
-//pinMode(2,INPUT_PULLUP);
-
-//attachInterrupt(digitalPinToInterrupt(2), Bluetooth_ISR, CHANGE);
+pinMode(2,INPUT);
+attachInterrupt(digitalPinToInterrupt(2), Bluetooth_ISR, RISING);
 }
 
 void loop() {
-
-//Motor.forwards1();
-//delay(5000);
-//Motor.forwards2();
-//delay(5000);
-
+  
 //Motor.forwards3();
-
-
-
-//Ultra.observe();
+Ultra.observe(); //could also be an interrupt function as is not always needed. 
 Ultra.dist();
 Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal. 
 
+if (Move=true){
+Move= false; 
 Bluetooth.read_message();
+}
 
 }
 
-//void Bluetooth_ISR(){
- // Motor.halt();
-  //Bluetooth.read_message();
-  
- // }
+void Bluetooth_ISR(){
+Move=true; 
+ }
 
  // use an interrupt for overide control

@@ -20,7 +20,6 @@ void Bluetoothclass::read_message() { //read the serial function
 if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
    char incomingChar = Serial.read();
   // if (incomingChar != '\n'){
-    //  message += incomingChar;}
 
 switch(incomingChar){     // switch function acts as a simplified if fucntion, it will output the functions from our motor class depending on the character given
   

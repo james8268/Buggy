@@ -16,7 +16,6 @@ void Ultraclass::SETUP() { //setup function
 
     pinMode(trigpin, OUTPUT);   // creates our pin modes aswell as initializing out I2C LCD below.  
     pinMode(echopin, INPUT);
-    Serial.begin(4800);         // set up a free baud rate 
     lcd.init();
 lcd.backlight();
 
@@ -34,9 +33,6 @@ int Ultraclass::dist() {  //function to find distance from ultrasound sensor to 
 duration = pulseIn(echopin, HIGH); // Reads the echopin, returns the sound wave travel time in microseconds
 distance = (duration*0.034)/2 ; // Calculating the distance
 
-Serial.print("Distance: ");   //the distance is then printed in our serial port. 
-Serial.print(distance);
-Serial.println("CM");
 
 }
 
