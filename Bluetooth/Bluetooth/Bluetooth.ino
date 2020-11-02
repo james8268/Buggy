@@ -8,8 +8,6 @@
 
 BluetoothSerial SerialBT;
 
-//String message = "";
-//char incomingChar;
 
 void setup() {
   Serial.begin(9600);
@@ -31,7 +29,6 @@ void loop() {
   }
   
     else{
-      //message = "";
     digitalWrite(18,LOW);
     }}
     
