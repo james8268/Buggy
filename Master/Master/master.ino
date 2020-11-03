@@ -1,4 +1,4 @@
-// This is our main code.          // taken baud rates:9600(bluetooth), 4800 (Ultrasound)
+// This is the main code.          // taken baud rates:9600(bluetooth), 4800 (Ultrasound)
 
 #include "Arduino.h"
 #include"Motor.h"
