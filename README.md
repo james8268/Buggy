@@ -26,5 +26,8 @@ This test is similar to the last with a few miner changes. This time around the 
 
 Acting on the previous test a feature of being able to see the reading of the ultrasound sensor has now been added and can be viewed in the bluetooth terminal aswell as the turns being less harsh.
 
-Test 2, using the combined autonomous and bluetooth mode, 04/11/2020: 
+Test 2, using the combined autonomous and bluetooth mode, 04/11/2020: self roaming was effective, the buggy avoided obsticals well, although had trouble once it was under a certain distance from complex obsticals. commands were easy to pick up and the buggy was easy to manouver, although lag time could be reduced, or possibly a cut off after x number of comands. possibly introduce a short cut to speed one and/or options for varing stop times, so that when flustered a driver can take time to re-think.
+
+
+
 
