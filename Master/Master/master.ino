@@ -5,8 +5,9 @@
 #include "Ultra.h"
 #include "Bluetooth.h"
 #include "Wire.h"
+#include "operation.h"
 
-volatile bool Move=false;
+volatile bool roam = false; 
 
 void setup() {
 
@@ -20,21 +21,23 @@ attachInterrupt(digitalPinToInterrupt(2), Bluetooth_ISR, RISING);
 }
 
 void loop() {
-  
-//Motor.forwards3();
-Ultra.observe(); //could also be an interrupt function as is not always needed. 
-Ultra.dist();
-Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal. 
 
-if (Move=true){
-Move= false; 
-Bluetooth.read_message();
+
+Serial.println("ROAMING");
+//Ultra.observe(); //could also be an interrupt function as is not always needed. 
+//Ultra.dist();
+//Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal. 
+//Bluetooth.read_message(); 
+
+
+if (roam=false){
+Serial.println("Remote mode entered");
+Bluetooth.read_message();  
 }
 
 }
 
 void Bluetooth_ISR(){
-Move=true; 
- }
+  roam=false;}
 
  // use an interrupt for overide control

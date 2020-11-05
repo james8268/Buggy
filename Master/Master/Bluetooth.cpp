@@ -2,9 +2,12 @@
 #include "arduino.h"
 #include "Motor.h"
 #include "Bluetooth.h"
+#include "Ultra.h"
 
-String message = "";  // set our message as an empty string
+
 char incomingChar;   // set the incoming serial as characters. 
+//volatile bool roam=false;
+
 
 
 
@@ -20,6 +23,8 @@ void Bluetoothclass::read_message() { //read the serial function
 if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
    char incomingChar = Serial.read();
   // if (incomingChar != '\n'){
+
+  
 
 switch(incomingChar){     // switch function acts as a simplified if fucntion, it will output the functions from our motor class depending on the character given
   
@@ -44,9 +49,12 @@ switch(incomingChar){     // switch function acts as a simplified if fucntion, i
   case 'r':
   Motor.right90();    // "r" read from the serial port will rotate the buggy right by approx 90 degrees dependant on environment
   break;
-   
-  
+
+
+
   }
+
+  
   incomingChar="";    // set the incomingchar to a null value, this will allow the next command to be read from the serial port.
 }
 

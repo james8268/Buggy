@@ -69,14 +69,12 @@ void Motorclass::backwards() {  // function to move buggy backwards at PWM 200/2
     digitalWrite(dirB, HIGH);
     digitalWrite(brB, LOW);
     analogWrite(pwmB, 200);
-    delay(1000);
 }
 
 void Motorclass::halt() {  // function to stop buggy from moving by applying both breaks
     digitalWrite(brA, HIGH);
 
     digitalWrite(brB, HIGH);
-    delay(500);
 
 }
 
