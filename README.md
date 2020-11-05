@@ -28,6 +28,6 @@ Acting on the previous test a feature of being able to see the reading of the ul
 
 Test 2, using the combined autonomous and bluetooth mode, 04/11/2020: self roaming was effective, the buggy avoided obsticals well, although had trouble once it was under a certain distance from complex obsticals. commands were easy to pick up and the buggy was easy to manouver, although lag time could be reduced, or possibly a cut off after x number of comands. possibly introduce a short cut to speed one and/or options for varing stop times, so that when flustered a driver can take time to re-think.
 
-
+Test 3, test is the same as previous (code remains the same as the last test), 05/11/2020: the buggy avoided the obsticals well however due to lag it made it difficult to manouver,also would be much easier and efficent for the driver if there was a cut off command so that the user can re asses the situation and move from there.  
 
 
