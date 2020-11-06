@@ -75,7 +75,6 @@ void Motorclass::halt() {  // function to stop buggy from moving by applying bot
     digitalWrite(brA, HIGH);
 
     digitalWrite(brB, HIGH);
-
 }
 
 void Motorclass::left90() {  // function to rotate buggy to left by setting both motors clockwise at PWM 200/255

@@ -3,10 +3,9 @@
 #include "Motor.h"
 #include "Bluetooth.h"
 #include "Ultra.h"
-
+#include "operation.h"
 
 char incomingChar;   // set the incoming serial as characters. 
-//volatile bool roam=false;
 
 
 
@@ -22,37 +21,44 @@ void Bluetoothclass::read_message() { //read the serial function
 
 if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
    char incomingChar = Serial.read();
-  // if (incomingChar != '\n'){
 
-  
 
 switch(incomingChar){     // switch function acts as a simplified if fucntion, it will output the functions from our motor class depending on the character given
   
   case '1':
+  Serial.println("REMOTE: forwards1");
   Motor.forwards1();     // "1" read from the serial port will move the buggy forward at speed 1 (Lowest speed)
   break;
   case '2':
+  Serial.println("REMOTE: forwards2");
   Motor.forwards2();    // "2" read from the serial port will move the buggy forward at speed 2 (middle speed) 
   break;
   case '3':
+  Serial.println("REMOTE: forwards3");
   Motor.forwards3();     // "3" read from the serial port will move the buggy forward at speed 3 (fastest speed)
   break;
   case 'b':
+  Serial.println("REMOTE: reversing");
   Motor.backwards();     //"b" read from the serial port will move the buggy backwards
   break;
   case 'l':
+  Serial.println("REMOTE: left turn");
   Motor.left90();       //"l" read from the serial port will rotate the buggy left approx 90 degrees dependant on environment
   break;
-  case 'h':          
+  case 'h':
+  Serial.println("REMOTE: stopped");          
   Motor.halt();       //"h" read from the serial port will halt the buggy until told what to do otherwise.
   break;
   case 'r':
+  Serial.println("REMOTE: right turn");
   Motor.right90();    // "r" read from the serial port will rotate the buggy right by approx 90 degrees dependant on environment
   break;
+  case 'E':
+  Serial.println("ROAMING");
+  operation.roam();
+  break;
 
-
-
-  }
+ }
 
   
   incomingChar="";    // set the incomingchar to a null value, this will allow the next command to be read from the serial port.

@@ -5,39 +5,18 @@
 #include "Ultra.h"
 #include "operation.h"
 
-char message;
 
 operationclass::operationclass() {} // set up operation class
 
 void operationclass::roam(){
-
+while(1){
 Ultra.observe(); //could also be an interrupt function as is not always needed. 
 Ultra.dist();
 Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal. 
-
+if (digitalRead(2)==HIGH){break;}  
 }
+};
 
-void operationclass::remote(){
-  Serial.begin(9600);
-  if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
-   char message = Serial.read();}
-  
-  switch(message){
 
-case'E':
-
-Serial.println("Remote mode entered");
-Bluetooth.read_message();  
-break;
- 
-   case 'X':
-   Serial.println("ROAMING");
-   roam();
-   break;
-   
-   }
-  
-message="";
-  };
 
 operationclass operation = operationclass();
