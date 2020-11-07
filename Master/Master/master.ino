@@ -7,26 +7,21 @@
 #include "Wire.h"
 #include "operation.h"
 
-
 void setup() {
+pinMode(2,INPUT);
 
 Motor.SETUP();
 Ultra.SETUP();
 Bluetooth.SETUP();
 
 
-//pinMode(2,INPUT);
-//attachInterrupt(digitalPinToInterrupt(2), BISR, RISING);
 }
 
 void loop() {
 
-
 Bluetooth.read_message();  
 
-
 }
-
 
 
  // use an interrupt for overide control

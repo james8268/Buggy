@@ -14,7 +14,6 @@ Bluetoothclass::Bluetoothclass() {} // setup Bluetooth class
 
 void Bluetoothclass::SETUP() { //setup function
   Serial.begin(9600);        // serial port baud rate 9600
-
 }
 
 void Bluetoothclass::read_message() { //read the serial function

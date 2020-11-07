@@ -8,6 +8,7 @@ class operationclass   //setup our ultrasound class
 
 public:
     operationclass();
+
     void roam();
 
 
