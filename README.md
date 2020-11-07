@@ -31,3 +31,11 @@ Test 2, using the combined autonomous and bluetooth mode, 04/11/2020: self roami
 Test 3, test is the same as previous (code remains the same as the last test), 05/11/2020: the buggy avoided the obsticals well however due to lag it made it difficult to manouver,also would be much easier and efficent for the driver if there was a cut off command so that the user can re asses the situation and move from there.  
 
 
+
+#section 3
+
+The buggy now has the ability to roam around autonomously while avoiding obstacles and this can then be stopped and a remote mode can be used. its easy to switch between the two, using the bluetooth terminal the "roam" hotkey enters the buggy into an autonomous mode(which can be seen when the android device is tilded on a landscape view and the screen will show more potential hotkeys). when any button/command is used in the bluetooth terminal is then exits the autonomous mode and reverts to a remote mode. 
+
+
+Test 4, testing combined autonomous and remote modes, 07/11/2020: 
+
