@@ -37,5 +37,5 @@ Test 3, test is the same as previous (code remains the same as the last test), 0
 The buggy now has the ability to roam around autonomously while avoiding obstacles and this can then be stopped and a remote mode can be used. its easy to switch between the two, using the bluetooth terminal the "roam" hotkey enters the buggy into an autonomous mode(which can be seen when the android device is tilded on a landscape view and the screen will show more potential hotkeys). when any button/command is used in the bluetooth terminal is then exits the autonomous mode and reverts to a remote mode. 
 
 
-Test 4, testing combined autonomous and remote modes, 07/11/2020: 
+Test 4, testing combined autonomous and remote modes, 07/11/2020: I enjoyed the new features on the handset. The fact that the buggy now had a roam feature was very interesting. The fact it could now make decisions on what was infront of it and change the course on which it was travelling due to an object being in its way was fasinating. A a cool feature would be if it could decide which way it wanted to turn. For instance left or right depending on the amount of space it has to eaither side, this depends on the amount ultrasound sensors it has available. All the other buttons worked really well and did what I wanted when I asked it to. 
 
