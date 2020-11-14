@@ -22,12 +22,12 @@ void Motorclass::SETUP() { //setup function
 
 void Motorclass::forwards1() {  //function to move buggy forward 
 
-    digitalWrite(dirA, HIGH);
+    digitalWrite(dirA, LOW);
     analogWrite(pwmA, 100);         //both motors will move in the same direction, due to them being in a opposing setup on will be set to HIGH and the other LOW
                                     // this will move both motors in a forwards direction in our global coordinates 
     digitalWrite(brA, LOW);
 
-    digitalWrite(dirB, LOW);
+    digitalWrite(dirB, HIGH);
     analogWrite(pwmB, 100);        //the power output sits at 100/255.
     digitalWrite(brB, LOW);
 }
@@ -36,22 +36,22 @@ void Motorclass::forwards1() {  //function to move buggy forward
 void Motorclass::forwards2() {  //function to move buggy forward 
 
 
-     digitalWrite(dirA, HIGH);
+     digitalWrite(dirA, LOW);
     analogWrite(pwmA, 175);
     digitalWrite(brA, LOW);
 
-    digitalWrite(dirB, LOW);
+    digitalWrite(dirB, HIGH);
     analogWrite(pwmB, 175);        //the power output sits at 175/255
     digitalWrite(brB, LOW);
 }
 
 void Motorclass::forwards3() {  //function to move buggy forward 
 
-     digitalWrite(dirA, HIGH);
+     digitalWrite(dirA, LOW);
     analogWrite(pwmA, 255);
     digitalWrite(brA, LOW);
 
-    digitalWrite(dirB, LOW);
+    digitalWrite(dirB, HIGH);
     analogWrite(pwmB, 255);    //the power sits at its maximum PWM 255/255.
     digitalWrite(brB, LOW);  
       
@@ -62,11 +62,11 @@ void Motorclass::forwards3() {  //function to move buggy forward
 
 void Motorclass::backwards() {  // function to move buggy backwards at PWM 200/255
 
-    digitalWrite(dirA, LOW);
+    digitalWrite(dirA, HIGH);
     digitalWrite(brA, LOW);     
     analogWrite(pwmA, 200);
 
-    digitalWrite(dirB, HIGH);
+    digitalWrite(dirB, LOW);
     digitalWrite(brB, LOW);
     analogWrite(pwmB, 200);
 }
@@ -79,12 +79,12 @@ void Motorclass::halt() {  // function to stop buggy from moving by applying bot
 
 void Motorclass::left90() {  // function to rotate buggy to left by setting both motors clockwise at PWM 200/255
 
-    digitalWrite(dirA, LOW); 
+    digitalWrite(dirA, HIGH); 
     analogWrite(pwmA, 200);
     digitalWrite(brA, LOW);
    
 
-    digitalWrite(dirB, LOW);
+    digitalWrite(dirB, HIGH);
     digitalWrite(brB, LOW);
     analogWrite(pwmB, 200);
 
@@ -96,12 +96,12 @@ void Motorclass::left90() {  // function to rotate buggy to left by setting both
 
 void Motorclass::right90() {  //function to rotate buggy to the right by setting both motors anticlockwise at PWM 200/255
 
-    digitalWrite(dirA, HIGH);
+    digitalWrite(dirA, LOW);
      analogWrite(pwmA, 200);
     digitalWrite(brA, LOW);
     
 
-    digitalWrite(dirB, HIGH);
+    digitalWrite(dirB, LOW);
     digitalWrite(brB, LOW);
     analogWrite(pwmB, 200);
 

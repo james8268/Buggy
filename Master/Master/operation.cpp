@@ -5,6 +5,11 @@
 #include "Ultra.h"
 #include "operation.h"
 
+#include "Servo.h"
+
+Servo myservo;
+
+
 
 operationclass::operationclass() {} // set up operation class
 
@@ -23,9 +28,30 @@ if(digitalRead(2)==HIGH){
   resetFunc();
   }  
 }
+}
 
-};
+void operationclass::SETUP(){
+  myservo.attach(10);
+  pinMode(2,INPUT);
+  }
 
+void operationclass::servl(){
+
+    myservo.write(180);              
+   
+ }
+
+void operationclass::servr(){
+ 
+    myservo.write(1);           
+   
+  }
+ 
+void operationclass::servc(){
+
+    myservo.write(90);             
+
+    }
 
 
 operationclass operation = operationclass();

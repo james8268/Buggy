@@ -2,6 +2,7 @@
 #include "Ultra.h"
 #include "LiquidCrystal_I2C.h"    //aswell as our header file we have included a few other libraries which will be used.
 #include "Motor.h"
+#include "operation.h"
 
 LiquidCrystal_I2C lcd(0x27,16,2);  //sets up and calls on our I2C LCD 
 
@@ -33,6 +34,7 @@ int Ultraclass::dist() {  //function to find distance from ultrasound sensor to 
 duration = pulseIn(echopin, HIGH); // Reads the echopin, returns the sound wave travel time in microseconds
 distance = (duration*0.034)/2 ; // Calculating the distance
 
+return distance;
 
 }
 
@@ -55,8 +57,26 @@ void Ultraclass::observe(){   //this is a crucial function if the buggy is being
 if (distance <= 30 ){
 
   Motor.halt();
-  Motor.left90();
-  
+operation.servc();
+
+operation.servl();
+delay(1000);
+int ldist=dist();
+delay(1000);
+
+operation.servc();
+
+delay(1000);
+
+operation.servr();
+delay(1000);
+int rdist=dist();
+delay(1000);
+operation.servc();
+
+if (ldist>rdist){Motor.left90();}
+else {Motor.right90();}
+
 }
 
 if (distance > 30){      //if ther is no obstruction within 70cm the buggy will move forwards at full speed 

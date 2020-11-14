@@ -8,18 +8,21 @@
 #include "operation.h"
 
 void setup() {
-pinMode(2,INPUT);
+
 
 Motor.SETUP();
 Ultra.SETUP();
 Bluetooth.SETUP();
-
+operation.SETUP();
+Serial.begin(9600);
 
 }
 
 void loop() {
 
 Bluetooth.read_message();  
+
+
 
 }
 

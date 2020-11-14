@@ -10,7 +10,11 @@ public:
     operationclass();
 
     void roam();
+    void servl();
+    void servr();
+    void servc();
 
+    void SETUP();
 
 
 };
