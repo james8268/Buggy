@@ -14,14 +14,13 @@ Motor.SETUP();
 Ultra.SETUP();
 Bluetooth.SETUP();
 operation.SETUP();
-Serial.begin(9600);
 
 }
 
 void loop() {
 
 Bluetooth.read_message();  
-
+    operation.level(); /////////////////////this needs to move///////////////aswell as the one in the roam function
 
 
 }

@@ -1,5 +1,6 @@
 #include "arduino.h"
 #include "Motor.h"          //include our header file
+#include "operation.h"
 
 const uint8_t dirA = 12;    //set up the pins which correspond to direction, break and PWM of our two DC motors.
 const uint8_t dirB = 13;
@@ -30,6 +31,7 @@ void Motorclass::forwards1() {  //function to move buggy forward
     digitalWrite(dirB, HIGH);
     analogWrite(pwmB, 100);        //the power output sits at 100/255.
     digitalWrite(brB, LOW);
+
 }
 
 
@@ -43,6 +45,7 @@ void Motorclass::forwards2() {  //function to move buggy forward
     digitalWrite(dirB, HIGH);
     analogWrite(pwmB, 175);        //the power output sits at 175/255
     digitalWrite(brB, LOW);
+
 }
 
 void Motorclass::forwards3() {  //function to move buggy forward 
@@ -54,7 +57,7 @@ void Motorclass::forwards3() {  //function to move buggy forward
     digitalWrite(dirB, HIGH);
     analogWrite(pwmB, 255);    //the power sits at its maximum PWM 255/255.
     digitalWrite(brB, LOW);  
-      
+
 }
  
 
@@ -77,7 +80,7 @@ void Motorclass::halt() {  // function to stop buggy from moving by applying bot
     digitalWrite(brB, HIGH);
 }
 
-void Motorclass::left90() {  // function to rotate buggy to left by setting both motors clockwise at PWM 200/255
+void Motorclass::right90() {  // function to rotate buggy to left by setting both motors clockwise at PWM 200/255
 
     digitalWrite(dirA, HIGH); 
     analogWrite(pwmA, 200);
@@ -94,7 +97,7 @@ void Motorclass::left90() {  // function to rotate buggy to left by setting both
 }
 
 
-void Motorclass::right90() {  //function to rotate buggy to the right by setting both motors anticlockwise at PWM 200/255
+void Motorclass::left90() {  //function to rotate buggy to the right by setting both motors anticlockwise at PWM 200/255
 
     digitalWrite(dirA, LOW);
      analogWrite(pwmA, 200);

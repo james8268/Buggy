@@ -13,7 +13,7 @@ public:
     void servl();
     void servr();
     void servc();
-
+    void level();
     void SETUP();
 
 
