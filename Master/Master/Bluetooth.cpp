@@ -14,6 +14,20 @@ Bluetoothclass::Bluetoothclass() {} // setup Bluetooth class
 
 void Bluetoothclass::SETUP() { //setup function
   Serial.begin(9600);        // serial port baud rate 9600
+  Serial.println("||   / |  / /                                                        /|    //| |             ");
+Serial.println("||  /  | / /  ___     //  ___      ___      _   __      ___         //|   // | |     __     ");
+Serial.println("|| / /||/ / //___) ) // //   ) ) //   ) ) // ) )  ) ) //___) )     // |  //  | |   //  ) )  ");
+Serial.println("||/ / |  / //       // //       //   / / // / /  / / //           //  | //   | |  //        ");
+Serial.println("|  /  | / ((____   // ((____   ((___/ / // / /  / / ((____       //   |//    | | //         ");
+Serial.println("");
+Serial.println("");
+Serial.println("    //   ) )                                                         ");
+Serial.println("   //___/ /   ___              ___       __     / __     ( ) // //   ");
+Serial.println("  / ___ (   //   ) ) ||  / / //___) ) //   ) ) //   ) ) / / // //    ");
+Serial.println(" //   | |  //   / /  || / / //       //   / / //   / / / / // //     ");
+Serial.println("//    | | ((___( (   ||/ / ((____   //   / / //   / / / / // //      ");
+
+
 }
 
 void Bluetoothclass::read_message() { //read the serial function

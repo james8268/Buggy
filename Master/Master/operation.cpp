@@ -10,7 +10,7 @@
 Servo myservo;
 
 #define buzzer 30
-#define tilt 31
+#define tilt 23
 
 
 operationclass::operationclass() {} // set up operation class
@@ -44,10 +44,11 @@ void operationclass::servc(){
     }
 
 void operationclass::level(){
-if (digitalRead(tilt)==HIGH){digitalWrite(buzzer, LOW);}
-else{digitalWrite(buzzer, HIGH);
+if (digitalRead(tilt)==LOW){digitalWrite(buzzer, HIGH);
 Motor.halt();
 Serial.println("WARNING: BUGGY UNSTABLE");}
+else{digitalWrite(buzzer, LOW);
+}
 
 }
 
@@ -58,14 +59,22 @@ for(;;){
 Ultra.observe(); //could also be an interrupt function as is not always needed. 
 Ultra.dist();
 Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal.
-level();
-if(digitalRead(2)==HIGH){
+if(digitalRead(2)==HIGH || digitalRead(tilt)==LOW){
   Serial.println("BREAKING");
   Motor.halt();
+  delay(500);
   resetFunc();
   }  
 }
 }
+
+void operationclass::noComs(){
+  if (Serial.available()==0){
+    Motor.halt();
+    digitalWrite(buzzer,HIGH);    
+    }
+      
+  }
 
 
 operationclass operation = operationclass();
