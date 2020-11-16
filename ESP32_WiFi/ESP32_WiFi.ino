@@ -4,14 +4,22 @@
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp32.h>
 
+
+
+#define transmit 18
+#define lost 19
+
 String content = "";
 char character;
 
 char auth[]= "jVAGDLSq2_VTo2K_l74wrM509taT5Bty";
 
 char ssid[]="VM9234142";
-
 char pass[]= "hgyb9tqPdhfw";
+
+//char ssid[]="Ravenhill";
+//char pass[]= "r8v3n4i1l";
+
 
 WidgetTerminal terminal(V1);
 
@@ -24,12 +32,10 @@ BLYNK_WRITE(V1) {
     Serial.println(i.asString());
    
   }
-   digitalWrite(2, HIGH);
-      digitalWrite(18, HIGH);
+      digitalWrite(transmit, HIGH);
 
    delay(500);
-  digitalWrite(2, LOW);
-  digitalWrite(18, LOW);
+  digitalWrite(transmit, LOW);
 
 }
 
@@ -52,8 +58,9 @@ void setup() {
 Blynk.begin(auth, ssid, pass);
 terminal.clear();
 Blynk.virtualWrite(V1, "Welcome MR Ravenhill, I'm ready to recieve commands");
-pinMode(2,OUTPUT);
-pinMode(18,OUTPUT);
+pinMode(transmit,OUTPUT);
+pinMode(lost, OUTPUT);
+
 }
 
 
@@ -62,5 +69,11 @@ void loop() {
   // put your main code here, to run repeatedly:
  Blynk.run();
 SerialInput();
+
+if(Blynk.connect()==false){
+  digitalWrite(lost, HIGH);
+ Serial.println("Connection lost MEE");
+  delay(5000);
+  digitalWrite(lost, LOW);}
 
 }
