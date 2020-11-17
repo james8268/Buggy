@@ -8,7 +8,7 @@ class Ultraclass   //setup our ultrasound class
 
 public:
     Ultraclass();
-    void SETUP();    // our functions listed below will set up our ultrasound sensor aswell as other usefull functions. See more detail in the cpp file. 
+    void SETUP();    // our functions listed below will set up our ultrasound sensor aswell as other usefull functions to find the distance using the ultrasound sensor and the observe function. 
     int dist();
     void lcd_show();
     long duration;
