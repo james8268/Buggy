@@ -46,14 +46,14 @@ lcd.print(distance);
 lcd.print("CM");
 delay(200);
 Serial.begin(9600);
-if (Serial.available()){                    // if there is a serial avalible then read it and call them the incomingchar
+if (Serial.available()){                    // if there is a serial avalible then print the distance to it
    Serial.print("Distance: ");
    Serial.print(distance);
    Serial.println("CM");}
 }
 
 void Ultraclass::observe(){   //this is a crucial function if the buggy is being left to move freely without human interaction. it uses the ultarsound
-                              // sensor to detect obstruction, it will halt the buggy and rotate left untill it has found a clearance of over 70cm. 
+                              // sensor to detect obstruction, it will halt the buggy and rotate left the servo left and right finding the greatest clearance. 
 if (distance <= 30 ){
 
   Motor.halt();
@@ -74,12 +74,12 @@ int rdist=dist();
 delay(1000);
 operation.servc();
 
-if (ldist>rdist){Motor.left90();}
+if (ldist>rdist){Motor.left90();}    // this if loop makes the decision to turn left or right. 
 else {Motor.right90();}
 
 }
 
-if (distance > 30){      //if ther is no obstruction within 70cm the buggy will move forwards at full speed 
+if (distance > 30){      //if ther is no obstruction within 30cm the buggy will move forwards at full speed 
 Motor.forwards3();}
 
   
