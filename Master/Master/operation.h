@@ -9,7 +9,7 @@ class operationclass   //setup our ultrasound class
 public:
     operationclass();
 
-    void roam();
+    void roam();          // the functions below are explained in the operation.cpp file. 
     void servl();
     void servr();
     void servc();
