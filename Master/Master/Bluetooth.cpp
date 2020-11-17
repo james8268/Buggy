@@ -67,7 +67,7 @@ switch(incomingChar){     // switch function acts as a simplified if fucntion, i
   Motor.right90();    // "r" read from the serial port will rotate the buggy right by approx 90 degrees dependant on environment
   break;
   case 'E':
-  Serial.println("ROAMING");
+  Serial.println("ROAMING");  // "E" will be read from the serial port and will allow the buggy to roam freely.
   operation.roam();
   break;
 
