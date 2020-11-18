@@ -72,7 +72,7 @@ SerialInput();
 
 if(Blynk.connected()==false){  // if connection is lost then this if loop is entered.  Blynk.connect() can be used to send a ping to the router. 
   digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
- Serial.println("Connection lost MEE");    // this is printed in the serial, if wifi connection is lost there will be no way to communicate to the mobile device so there is no need for this communication method. 
+ Serial.println("Connection lost");    // this is printed in the serial, if wifi connection is lost there will be no way to communicate to the mobile device so there is no need for this communication method. 
   delay(5000);
   digitalWrite(lost, LOW);}
 

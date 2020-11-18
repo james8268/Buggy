@@ -8,6 +8,7 @@
 
 BluetoothSerial SerialBT;
 
+#define lost 19 
 
 void setup() {
   Serial.begin(9600);
@@ -30,8 +31,16 @@ void loop() {
   
     else{
     digitalWrite(18,LOW);
-    }}
+    }
     
+//    if (SerialBT.available()==false){
+  //    digitalWrite(lost,HIGH);
+   //   delay(5000);
+   //   digitalWrite(lost,LOW);
+     // }
+    }
+
+    // need to include BLE connection loss 
 
 
   

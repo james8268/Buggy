@@ -15,8 +15,11 @@ public:
     void servc();
     void level();
     void SETUP();
-    void noComs();
-
+    void noINT();
+    void IRread();
+    void translateIR();
+    
+    
 };
 
 extern operationclass operation;
