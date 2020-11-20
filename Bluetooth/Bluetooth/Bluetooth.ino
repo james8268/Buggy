@@ -1,4 +1,5 @@
 
+
 #include "BluetoothSerial.h"
 #include <Wire.h> 
 
@@ -8,12 +9,13 @@
 
 BluetoothSerial SerialBT;
 
-#define lost 19 
+#define lost 19
 
 void setup() {
   Serial.begin(9600);
   SerialBT.begin("ESP32test"); //Bluetooth device name 
-pinMode(18,OUTPUT);
+  pinMode(18,OUTPUT);
+  pinMode(lost, OUTPUT);
 
 }
 
@@ -23,22 +25,28 @@ void loop() {
       digitalWrite(18,HIGH);
       delay(200);
       Serial.write(SerialBT.read());
- }
-
-   if (Serial.available()) {
+     }
+ 
+ if (Serial.available()) {
     SerialBT.write(Serial.read());
-  }
+  } 
   
-    else{
+  else{ 
     digitalWrite(18,LOW);
+
     }
+
+if (SerialBT.connected()==false) {                                   //this needs fixing 
+    Serial.println("Disconnected!!");
+ digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
+  delay(5000);
+  digitalWrite(lost, LOW);}
+
     
-//    if (SerialBT.available()==false){
-  //    digitalWrite(lost,HIGH);
-   //   delay(5000);
-   //   digitalWrite(lost,LOW);
-     // }
-    }
+  }
+
+
+
 
     // need to include BLE connection loss 
 

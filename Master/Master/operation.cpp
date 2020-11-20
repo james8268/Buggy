@@ -71,13 +71,13 @@ else{digitalWrite(buzzer, LOW);    //this turns the buzzer off if the buggy is l
 
 void operationclass::roam(){      // this is another important function. It allows the buggy to roam freely and observes its surroundings in order to avoid obstacles. 
 for(;;){  
-
+  
 Ultra.observe(); 
 Ultra.dist();
 Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal.
 if(digitalRead(espcom)==HIGH || digitalRead(tilt)==LOW || digitalRead(esplost)==HIGH){   // if communication via the mobile device happens or the tilt sensor is triggered or the esp has lost wifi or bluetooth connection 
                                                                                           // the buggy will stop and be reset to the main loop of the main code. 
-  Serial.println("BREAKING");
+  Serial.println("STOPPING, please wait ...... ");
   Motor.halt();
   delay(500);
   resetFunc();

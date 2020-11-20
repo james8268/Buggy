@@ -53,7 +53,7 @@ if (Serial.available()){                    // if there is a serial avalible the
 }
 
 void Ultraclass::observe(){   //this is a crucial function if the buggy is being left to move freely without human interaction. it uses the ultarsound
-                              // sensor to detect obstruction, it will halt the buggy and rotate left the servo left and right finding the greatest clearance. 
+              // sensor to detect obstruction, it will halt the buggy and rotate left the servo left and right finding the greatest clearance. 
 if (distance <= 30 ){
 
   Motor.halt();
