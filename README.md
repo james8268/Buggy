@@ -45,4 +45,12 @@ Test 4, testing combined autonomous and remote modes, 07/11/2020: I enjoyed the 
 
 A tilt sensor and servo motor have now been added, the use of WiFi connection is also up and running. Security measures have been added so if wifi or bluetooth connection is lost it will stop the buggy and turn on the front red LED. The servo motor allows the buggy to look left and right and then make a decision on which direction to move. The tilt sensor will monitor the buggy and if it capsises or is flipped over it will stop the buggy and turn on a buzzer as well as notifying the user if in remote mode. 
 
-test 5, 
+tests to be completed:  *turning system for servo ultra sensor, just to check its working right. 
+                        *tilt sensor while in roam and moving. 
+                        *temp and humidity sensor and water sensor while moving and stationary.
+                        *disconnect functions via bluetooth, by trying to connect another device (already known that two devices cant connect).
+                        *disconnect vie WiFi, turn of router (also try to connect two devices). 
+                        *test overall usability.
+               
+               
+  
