@@ -58,10 +58,15 @@ if (distance <= 30 ){
 
   Motor.halt();
 operation.servc();
-
+int cdist=dist(); 
+Serial.print("C dist: ");
+Serial.println(cdist);
+delay(1000);
 operation.servl();
 delay(1000);
 int ldist=dist();
+Serial.print("L dist: ");
+Serial.println(ldist);
 delay(1000);
 
 operation.servc();
@@ -71,11 +76,15 @@ delay(1000);
 operation.servr();
 delay(1000);
 int rdist=dist();
+Serial.print("R dist: ");
+Serial.println(rdist);
 delay(1000);
 operation.servc();
 
-if (ldist>rdist){Motor.left90();}    // this if loop makes the decision to turn left or right. 
-else {Motor.right90();}
+if (ldist>rdist && ldist>=cdist){Serial.println("ROAM: Left turn"); Motor.left90();}    // this if loop makes the decision to turn left or right. 
+else if(cdist>ldist && cdist>=rdist){Serial.println("ROAM: Forwards"); Motor.forwards3();}
+else if(rdist>ldist && rdist>=cdist){Serial.println("ROAM: Right turn"); Motor.right90();}
+else{Serial.println("ROAM:U-turn"); Motor.right90(); Motor.right90();}
 
 }
 

@@ -3,11 +3,13 @@
 #include "BluetoothSerial.h"
 #include <Wire.h> 
 
+
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
 BluetoothSerial SerialBT;
+
 
 #define lost 19
 
@@ -36,16 +38,15 @@ void loop() {
 
     }
 
-if (SerialBT.connected()==false) {                                   //this needs fixing 
+if (SerialBT.connected()==false) {                                   //this needs testing 
     Serial.println("Disconnected!!");
  digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
   delay(5000);
   digitalWrite(lost, LOW);}
 
+
     
   }
-
-
 
 
     // need to include BLE connection loss 

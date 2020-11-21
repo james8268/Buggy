@@ -18,8 +18,8 @@ public:
     void noINT();
     void IRread();
     void translateIR();
-    
-    
+    void temp();
+    void h2o();
 };
 
 extern operationclass operation;

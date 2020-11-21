@@ -72,7 +72,12 @@ switch(incomingChar){     // switch function acts as a simplified if fucntion, i
   Serial.println("ROAMING");  // "E" will be read from the serial port and will allow the buggy to roam freely.
   operation.roam();
   break;
-
+case 'T':
+operation.temp();
+break;
+case 'W':
+operation.h2o();
+break;
  }
 
   

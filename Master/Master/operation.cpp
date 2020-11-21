@@ -6,22 +6,31 @@
 #include "operation.h"
 #include "Servo.h"
 #include "IRremote.h"
-
+#include "dht.h"
+#include "LiquidCrystal_I2C.h" 
 
 Servo myservo;  //delares the servo movor as myservo. 
+Servo waterservo;
 
-#define buzzer 30    // define the pins being used. 
+#define buzzer 30     
 #define tilt 23
 #define espcom 2
 #define esplost 35
-#define espEN 34
+//#define espEN 34
 #define LED 47
 #define myserv 10
-
+#define waterserv 26
+int val=0; // this is our water value 
+int pin= A8; // this is our signal pin from water sensor
 
 #define recieverpin 46
 IRrecv irrecv(recieverpin);
 decode_results results;
+
+
+dht DHT;
+#define DHT11_PIN 34
+LiquidCrystal_I2C screen(0x27,16,2);
 
 
 operationclass::operationclass() {} // set up operation class
@@ -30,14 +39,19 @@ void(* resetFunc) (void) = 0; //declare reset function @ address 0
 
 
 void operationclass::SETUP(){
+  
+screen.init();
+screen.backlight();
   myservo.attach(myserv);
+  waterservo.attach(waterserv);
   pinMode(espcom,INPUT);
   pinMode(tilt, INPUT);
   pinMode(buzzer, OUTPUT);
   pinMode(esplost, INPUT);
-  pinMode(espEN, OUTPUT);
+//  pinMode(espEN, OUTPUT);
   pinMode(LED,OUTPUT);
   irrecv.enableIRIn();
+  
   }
 
 void operationclass::servl(){ //this makes the servo rotate so it is facing left 
@@ -57,6 +71,35 @@ void operationclass::servc(){ //this rotates the servo the the centre (facing fo
     myservo.write(90);             // 90 degrees 
 
     }
+
+
+void operationclass::h2o(){
+
+Motor.halt();
+
+waterservo.write(90);
+delay(500);
+
+waterservo.write(1);
+screen.clear();
+screen.setCursor(0,0);
+screen.print("Water level: ");
+screen.setCursor(0,1);
+
+val=analogRead(pin);
+
+if(val<=500){screen.println("EMPTY           "); Serial.println("Water Level: EMPTY");}
+else if (val>500 && val<=600){screen.println("LOW             "); Serial.println("Water Level: LOW");}
+else if (val>600 && val<= 650){screen.println("MEDIUM          "); Serial.println("Water Level: MEDIUM");}
+else if (val>650){screen.println("HIGH            "); Serial.println("Water Level: HIGH");}
+
+
+delay(3000);
+
+waterservo.write(90);
+delay(500);
+  
+}
 
 void operationclass::level(){    // This function monitors the tilt sensor. If the tilt sensor pin reads as low it will sound the buzzer and alert the user. 
 if (digitalRead(tilt)==LOW){digitalWrite(buzzer, HIGH);
@@ -102,9 +145,9 @@ void operationclass::translateIR(){
   
 switch(results.value){
 
-case 0xFFA25D: Motor.forwards1(); break; //1
+case 0xFFA25D:   Motor.forwards1(); break; //1
 case 0xFF629D: Motor.forwards2(); break; //2
-case 0xFFE21D: Motor.forwards3(); break; //3
+case 0xFFE21D:  Motor.forwards3(); break; //3
 case 0xFF22DD: Serial.println("4"); break; //4
 case 0xFF02FD: Serial.println("5"); break; //5
 case 0xFFC23D: Serial.println("6"); break; //6
@@ -114,11 +157,11 @@ case 0xFF906F: Serial.println("9"); break; //9
 case 0xFF9867: Serial.println("0"); break; //0
 //case 0xFF6897: Motor.halt(); delay(500); resetFunc(); break; //*
 //case 0xFFB04F: roam(); break; //#
-case 0xFF18E7: Motor.forwards3(); break; //up
-case 0xFF4AB5: Motor.backwards(); break; //down
-case 0xFF10EF: Motor.left90(); break; //left
-case 0xFF5AA5: Motor.right90(); break; //right
-case 0xFF38C7: Motor.halt(); break; //ok
+case 0xFF18E7:  Motor.forwards3(); break; //up
+case 0xFF4AB5:  Motor.backwards(); break; //down
+case 0xFF10EF:  Motor.left90(); break; //left
+case 0xFF5AA5:  Motor.right90(); break; //right
+case 0xFF38C7:  Motor.halt(); break; //ok
 default: break;
 }
 /*
@@ -136,19 +179,50 @@ default: break;
 0xFF18E7
 0xFF5AA5
  0xFF38C7
+
+ 
 */
 }
 
 
 void operationclass::IRread(){
-//constrain(results.value, 0xFF02FD, 0xFFE21D);           add to roam if loop conditions 
+//constrain(results.value, 0xFF02FD, 0xFFE21D);           
 if (irrecv.decode(&results)){
 
-//Serial.println(results.value, HEX);
+Serial.println(results.value, HEX);
 translateIR();
 irrecv.resume();
 
 }}
+
+
+
+void operationclass::temp(){
+int chk = DHT.read11(DHT11_PIN);
+screen.clear();
+ screen.setCursor(0,0); 
+  screen.print("Temp: ");
+  Serial.print("TEMP: ");
+  
+  screen.print(DHT.temperature);
+    Serial.print(DHT.temperature);
+
+ screen.print((char)223);
+
+  screen.print("C");
+    Serial.println("C");
+
+  screen.setCursor(0,1);
+  screen.print("Humidity: ");
+    Serial.print("Humidity: ");
+
+  screen.print(DHT.humidity);
+    Serial.print(DHT.humidity);
+
+  screen.print("%");
+    Serial.println("%");
+  
+}
 
   
 
