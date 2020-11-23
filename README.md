@@ -52,5 +52,5 @@ tests to be completed:  *turning system for servo ultra sensor, just to check it
                         *disconnect vie WiFi, turn of router (also try to connect two devices). 
                         *test overall usability.
                
-               
+Test 5, 23/11/2020, testing the new obsticle avoidance system, tilt sensor and the temp, humidity and water sensor (all in bluetooth mode): 
   
