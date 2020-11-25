@@ -85,16 +85,17 @@ screen.clear();
 screen.setCursor(0,0);
 screen.print("Water level: ");
 screen.setCursor(0,1);
+delay(2000);
 
 val=analogRead(pin);
 
-if(val<=500){screen.println("EMPTY           "); Serial.println("Water Level: EMPTY");}
-else if (val>500 && val<=600){screen.println("LOW             "); Serial.println("Water Level: LOW");}
-else if (val>600 && val<= 650){screen.println("MEDIUM          "); Serial.println("Water Level: MEDIUM");}
+if(val<=300){screen.println("EMPTY           "); Serial.println("Water Level: EMPTY");}
+else if (val>300 && val<=500){screen.println("LOW             "); Serial.println("Water Level: LOW");}
+else if (val>500 && val<= 650){screen.println("MEDIUM          "); Serial.println("Water Level: MEDIUM");}
 else if (val>650){screen.println("HIGH            "); Serial.println("Water Level: HIGH");}
 
 
-delay(3000);
+delay(2000);
 
 waterservo.write(90);
 delay(500);
@@ -132,6 +133,7 @@ void operationclass::noINT(){          // if the ESP32 loses connection to the w
   if (digitalRead(esplost)==HIGH){
     //digitalWrite(espEN,HIGH);
     Motor.halt();     // a signal will be sent to the ESP32 to reset to regain connection to wifi or bluetooth 
+    screen.clear();
     digitalWrite(LED,HIGH);  
     delay(2000);
     digitalWrite(LED,LOW);
@@ -155,8 +157,8 @@ case 0xFFE01F: Serial.println("7"); break; //7
 case 0xFFA857: Serial.println("8"); break; //8
 case 0xFF906F: Serial.println("9"); break; //9
 case 0xFF9867: Serial.println("0"); break; //0
-//case 0xFF6897: Motor.halt(); delay(500); resetFunc(); break; //*
-//case 0xFFB04F: roam(); break; //#
+case 0xFF6897: temp(); break; //*
+case 0xFFB04F: h2o(); break; //#
 case 0xFF18E7:  Motor.forwards3(); break; //up
 case 0xFF4AB5:  Motor.backwards(); break; //down
 case 0xFF10EF:  Motor.left90(); break; //left
@@ -189,7 +191,7 @@ void operationclass::IRread(){
 //constrain(results.value, 0xFF02FD, 0xFFE21D);           
 if (irrecv.decode(&results)){
 
-Serial.println(results.value, HEX);
+//Serial.println(results.value, HEX);
 translateIR();
 irrecv.resume();
 

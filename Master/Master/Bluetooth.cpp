@@ -8,13 +8,10 @@
 char incomingChar;   // set the incoming serial as characters. 
 
 
-
-
 Bluetoothclass::Bluetoothclass() {} // setup Bluetooth class  
 
 void Bluetoothclass::SETUP() { //setup function
   Serial.begin(9600);        // serial port baud rate 9600
-
   /*
   Serial.println("||   / |  / /                                                        /|    //| |             ");
 Serial.println("||  /  | / /  ___     //  ___      ___      _   __      ___         //|   // | |     __     ");
@@ -37,6 +34,8 @@ void Bluetoothclass::read_message() { //read the serial function
 
 if (Serial.available()){      // if there is a serial avalible then read it and call them the incomingchar
    char incomingChar = Serial.read();
+
+   
 
 switch(incomingChar){     // switch function acts as a simplified if fucntion, it will output the functions from our motor class depending on the character given
   
@@ -78,13 +77,13 @@ break;
 case 'W':
 operation.h2o();
 break;
+
  }
 
   
   incomingChar="";    // set the incomingchar to a null value, this will allow the next command to be read from the serial port.
 }
 
-     
 
 };
 

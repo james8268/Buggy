@@ -18,11 +18,10 @@ void setup() {
   SerialBT.begin("ESP32test"); //Bluetooth device name 
   pinMode(18,OUTPUT);
   pinMode(lost, OUTPUT);
-
 }
 
 void loop() {  
-   
+
   if (SerialBT.available()){
       digitalWrite(18,HIGH);
       delay(200);
