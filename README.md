@@ -52,5 +52,8 @@ tests to be completed:  *turning system for servo ultra sensor, just to check it
                         *disconnect vie WiFi, turn of router (also try to connect two devices). 
                         *test overall usability.
                
-Test 5, 23/11/2020, testing the new obsticle avoidance system, tilt sensor and the temp, humidity and water sensor (all in bluetooth mode): 
+Test 5, 23/11/2020, testing the new obsticle avoidance system, tilt sensor and the temp, humidity and water sensor (all in bluetooth mode): i found the new obsticle avoidance system was very good the bugggy made very accurate adjustments when it came to an obstruction. the fact it was able to stop look around and decide for itself which way to go was very impressive. the tilt sensor that has been intergrated into the buggy was a very impressive feature. especially since you had the use of this both in roam mode and just when controlling the buggy yourself. also having the added bonus of a water, temp and humidity sensor on it was very good. being able to see those readings was a nice feature to have the use of. i also found the use of the IR remote to be far more simplistic and easier to use than the bluetooth device i much preffered it. there was a few point i feel could do with some improovement. for instance when you are on the move and then ask the buggy to perform a water reading it stops does this command but then waits for another new instructions. i would like it to instantly carry on with the previous command once the reading has been carried out with no need to give it further instruction form either the bluetooth device or remote. other than that the buggy was very good.
+
+
+Test 6, first time using wifi set up and looking at disconnection issues. to then compare the WIFI and bluetooth usability:  
   
