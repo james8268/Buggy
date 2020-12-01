@@ -76,8 +76,9 @@ operation.temp();
 break;
 case 'W':
 operation.h2o();
-Motor.forwards3();
 break;
+
+
 
  }
 
