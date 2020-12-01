@@ -1,17 +1,17 @@
 #include <WiFi.h>
-#include <WiFiClient.h>                                            ///////////////////////This works ok but AP cant connect to internet. 
+#include <WiFiClient.h>                                            
 #include <WiFiAP.h>
- 
 
-// Set these to your desired credentials.
+
+
 const char *ssid = "yourAP";
 const char *password = "RavenMan98";
 
-char ssid1[]="VM9234142";    //internet SSID and passwork. 
+char ssid1[]="VM9234142";    // SSID and passwork. 
 char pass[]= "hgyb9tqPdhfw";
  
 WiFiServer server(80);
- 
+
  
 void setup() {
  
@@ -88,35 +88,35 @@ void loop() {
 
         if (currentLine.endsWith("GET /h")) {
          
-          server.println("h");
+          Serial.println("h");
         }
         if (currentLine.endsWith("GET /l")) {
          
-           server.println("l");              
+           Serial.println("l");              
         }
         if (currentLine.endsWith("GET /r")) {
           
-           server.println("r");              
+           Serial.println("r");              
         }
         if (currentLine.endsWith("GET /1")) {
           
-          server.println("1");               
+          Serial.println("1");               
         }
         if (currentLine.endsWith("GET /2")) {
          
-          server.println("2");             
+          Serial.println("2");             
         }
         if (currentLine.endsWith("GET /3")) {
         
-         server.println("3");               
+         Serial.println("3");               
         }
         if (currentLine.endsWith("GET /E")) {
           
-         server.println("E");             
+         Serial.println("E");             
         }
        if (currentLine.endsWith("GET /b")) {
       
-          server.println("b");               
+          Serial.println("b");               
         }
       }
     }
