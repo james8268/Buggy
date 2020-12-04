@@ -88,7 +88,7 @@ else{Serial.println("ROAM:U-turn"); Motor.right90(); Motor.right90();}
 
 }
 
-if (distance > 30){      //if ther is no obstruction within 30cm the buggy will move forwards at full speed 
+if (distance > 30){      //if there is no obstruction within 30cm the buggy will move forwards at full speed 
 Motor.forwards3();}
 
   

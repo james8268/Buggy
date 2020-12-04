@@ -16,7 +16,6 @@ Servo waterservo;
 #define tilt 23
 #define espcom 2
 #define esplost 35
-//#define espEN 34
 #define LED 47
 #define myserv 10
 #define waterserv 26
@@ -129,16 +128,34 @@ if(digitalRead(espcom)==HIGH || digitalRead(tilt)==LOW || digitalRead(esplost)==
 }
 }
 
+void operationclass::measure(){
+for(;;){  
+  
+Ultra.observe(); 
+Ultra.dist();
+if(Ultra.dist()<30){
+h2o();
+temp();}
+Ultra.lcd_show(); //prints on the LCD and in the bluetooth terminal.
+if(digitalRead(espcom)==HIGH || digitalRead(tilt)==LOW || digitalRead(esplost)==HIGH){   // if communication via the mobile device happens or the tilt sensor is triggered or the esp has lost wifi or bluetooth connection 
+                                                                                          // the buggy will stop and be reset to the main loop of the main code. 
+  Serial.println("STOPPING, please wait ...... ");
+  Motor.halt();
+  delay(500);
+  resetFunc();
+  }  
+}
+
+  
+}
+
 void operationclass::noINT(){          // if the ESP32 loses connection to the wifi or bluetooth then the ESP32 sends a signal to the arduino mega to stop the buggy and wait 
   if (digitalRead(esplost)==HIGH){
-    //digitalWrite(espEN,HIGH);
-    Motor.halt();     // a signal will be sent to the ESP32 to reset to regain connection to wifi or bluetooth 
+    Motor.halt();     
     screen.clear();
     digitalWrite(LED,HIGH);  
-    delay(2000);
-    digitalWrite(LED,LOW);
-   //digitalWrite(espEN, LOW);
     }
+    else{digitalWrite(LED, LOW);}
    
 }
 
@@ -156,7 +173,7 @@ case 0xFFC23D: Serial.println("6"); break; //6
 case 0xFFE01F: Serial.println("7"); break; //7
 case 0xFFA857: Serial.println("8"); break; //8
 case 0xFF906F: Serial.println("9"); break; //9
-case 0xFF9867: Serial.println("0"); break; //0
+case 0xFF9867: measure(); break; //0
 case 0xFF6897: temp(); break; //*
 case 0xFFB04F: h2o(); break; //#
 case 0xFF18E7:  Motor.forwards3(); break; //up

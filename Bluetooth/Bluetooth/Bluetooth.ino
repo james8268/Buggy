@@ -10,14 +10,30 @@
 
 BluetoothSerial SerialBT;
 
-
 #define lost 19
+
+void callback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
+  if(event == ESP_SPP_SRV_OPEN_EVT){
+    Serial.println("Client Connected");
+     digitalWrite(lost, LOW);
+  }
+ 
+  if(event == ESP_SPP_CLOSE_EVT ){
+    Serial.println("Client disconnected");
+      digitalWrite(lost, HIGH);
+  }
+  
+}
+
+
 
 void setup() {
   Serial.begin(9600);
   SerialBT.begin("ESP32test"); //Bluetooth device name 
   pinMode(18,OUTPUT);
   pinMode(lost, OUTPUT);
+
+
 }
 
 void loop() {  
@@ -36,19 +52,16 @@ void loop() {
     digitalWrite(18,LOW);
 
     }
+  
+  SerialBT.register_callback(callback);
 
-if (SerialBT.connected()==false) {                                   //this needs testing 
-    Serial.println("Disconnected!!");
- digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
-  delay(5000);
-  digitalWrite(lost, LOW);}
 
 
     
   }
 
 
-    // need to include BLE connection loss 
+
 
 
   

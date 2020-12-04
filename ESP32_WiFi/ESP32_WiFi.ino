@@ -1,7 +1,7 @@
 // This sketch is to be uploaded to the ESP32 when a WiFi connection is wanted rather than a Bluetooth connection. 
 
 
-#define BLYNK_PRINT Serial
+#define BLYNK_PRINT Serial    
 
 #include <WiFi.h>
 #include <WiFiClient.h>
@@ -53,8 +53,7 @@ void SerialInput() {
 
 void setup() {
   // put your setup code here, to run once:
- Serial.begin(9600);
-
+Serial.begin(9600);
 Blynk.begin(auth, ssid, pass);     // this is where the esp32 connects to the WiFi and Blynk Cloud. 
 terminal.clear();                  // clear the mobile terminal
 Blynk.virtualWrite(V1, "Welcome MR Ravenhill, I'm ready to recieve commands");     // welcome message printed in the mobile terminal.
@@ -67,13 +66,12 @@ pinMode(lost, OUTPUT);
 
 void loop() {
   // put your main code here, to run repeatedly:
+ 
  Blynk.run();    //this runs all the Blynk functions 
 SerialInput();
 
-if(Blynk.connected()==false){  // if connection is lost then this if loop is entered.  Blynk.connect() can be used to send a ping to the router. 
-  digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
- Serial.println("Connection lost");    // this is printed in the serial, if wifi connection is lost there will be no way to communicate to the mobile device so there is no need for this communication method. 
-  delay(5000);
-  digitalWrite(lost, LOW);}
+ if(WiFi.status() != WL_CONNECTED){digitalWrite(lost, HIGH);
+ setup();}
+ else{digitalWrite(lost, LOW);}
 
 }

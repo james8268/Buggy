@@ -77,13 +77,23 @@ break;
 case 'W':
 operation.h2o();
 break;
+case 'M':
+Serial.println("Measuring Temp and H2O level at perimeter.");
+operation.measure();
+break; 
+case '*':
+Serial.println("Restarting...");
+void(* resetFunc) (void) = 0; //declare reset function @ address 0
+Motor.halt();
+delay(500);
+resetFunc();
+break;
 
 
 
- }
+}
 
-  
-  incomingChar="";    // set the incomingchar to a null value, this will allow the next command to be read from the serial port.
+incomingChar="";    // set the incomingchar to a null value, this will allow the next command to be read from the serial port.
 }
 
 

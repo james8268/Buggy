@@ -20,6 +20,7 @@ public:
     void translateIR();
     void temp();
     void h2o();
+    void measure();
 };
 
 extern operationclass operation;
