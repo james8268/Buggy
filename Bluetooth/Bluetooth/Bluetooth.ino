@@ -2,6 +2,7 @@
 
 #include "BluetoothSerial.h"
 #include <Wire.h> 
+#include "encrypt.h"
 
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -41,7 +42,8 @@ void loop() {
   if (SerialBT.available()){
       digitalWrite(18,HIGH);
       delay(200);
-      Serial.write(SerialBT.read());
+      
+     Serial.write(SerialBT.read());
      }
  
  if (Serial.available()) {

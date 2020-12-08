@@ -5,7 +5,7 @@
 #include "Arduino.h"
 #include"Motor.h"
 #include "Ultra.h"
-#include "Bluetooth.h"
+#include "Comms.h"
 #include "Wire.h"
 #include "operation.h"
 
@@ -13,14 +13,14 @@ void setup() {
 
 Motor.SETUP();     
 Ultra.SETUP();
-Bluetooth.SETUP();
+Comms.SETUP();
 operation.SETUP();
 
 }
 
 void loop() {
 operation.IRread(); 
-Bluetooth.read_message();   // this reads messages sent over WiFi or Bluetooth to the esp32 and actions them. 
+Comms.read_message();   // this reads messages sent over WiFi or Bluetooth to the esp32 and actions them. 
 
 
 operation.level();  // this function will stop the buggy if the tilt sensor is triggered, a buzzer and warning message will alert the user. 

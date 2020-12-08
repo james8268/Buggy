@@ -1,16 +1,17 @@
 
 #include "arduino.h"
 #include "Motor.h"
-#include "Bluetooth.h"
+#include "Comms.h"
 #include "Ultra.h"
 #include "operation.h"
+#include "encrypt.h"
 
 char incomingChar;   // set the incoming serial as characters. 
 
 
-Bluetoothclass::Bluetoothclass() {} // setup Bluetooth class  
+Commsclass::Commsclass() {} // setup Bluetooth class  
 
-void Bluetoothclass::SETUP() { //setup function
+void Commsclass::SETUP() { //setup function
   Serial.begin(9600);        // serial port baud rate 9600
   /*
   Serial.println("||   / |  / /                                                        /|    //| |             ");
@@ -30,7 +31,7 @@ Serial.println("Buggy Ready");
 
 }
 
-void Bluetoothclass::read_message() { //read the serial function
+void Commsclass::read_message() { //read the serial function
 
 if (Serial.available()){      // if there is a serial avalible then read it and call them the incomingchar
    char incomingChar = Serial.read();
@@ -95,4 +96,4 @@ incomingChar="";    // set the incomingchar to a null value, this will allow the
 
 
 
-Bluetoothclass Bluetooth = Bluetoothclass();
+Commsclass Comms = Commsclass();
