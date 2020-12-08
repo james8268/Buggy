@@ -27,6 +27,3 @@ operation.level();  // this function will stop the buggy if the tilt sensor is t
 operation.noINT();  // this function monitors the connection between the ESP32 and wifi/bluetooth connection. If connection is lost the front red LED will light up. 
              
 }
-
-
-//look at setting the noInt as a interrupt 

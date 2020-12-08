@@ -81,13 +81,7 @@ case 'M':
 Serial.println("Measuring Temp and H2O level at perimeter.");
 operation.measure();
 break; 
-case '*':
-Serial.println("Restarting...");
-void(* resetFunc) (void) = 0; //declare reset function @ address 0
-Motor.halt();
-delay(500);
-resetFunc();
-break;
+
 
 
 
