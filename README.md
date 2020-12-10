@@ -51,12 +51,35 @@ You can also request a temperature/humidity or water level reading in the remote
 
 ## Using WiFi to controll the buggy. 
 The ESP32 needs to be programmed in either the Blynk method which is highly customizable or by using a standard WiFi connection which controls the buggy using a WiFi terminal. (These are IOS friendly).
-### Blynk
-Blynk is a app which is extremely user friendly! It is highly customizable and relatively simple to use. 
+### BLYNK_WiFi
+Blynk is a app which is extremely user friendly! It is highly customizable as you can add joy stick, buttons, sliders and much more. 
+When the ESP32 is connecting/connected to your network and to the Blynk server it will display a message when connected to the serial port.
+
+![untitled](https://user-images.githubusercontent.com/72760747/101782557-104dde00-3af1-11eb-9f34-b276a4610234.PNG)
+
+In the Blynk App we can insert a terminal which allows us to control the buggy. Unlike the the bluetooth terminal this does not have hotkeys which means you need to know the directory for how to control the buggy. Which is as follows:
+* 3 -Will move the buggy forwards at full speed.
+* 2 -will move the buggy forwards
+* 1 -will move the buggy forwards slowly
+* h -will stop the buggy (Halt)
+* b -will reverse the buggy
+* l -will rotate the buggy left approximately 50 degrees
+* r -will rotate the buggy right approximately 50 degrees
+* E -will allow the buggy to roam freely while avoiding ibstacles
+* M -will allow the buggy to roam freely will avoiding obstacles and taking temperature, humidity and water level measurements. 
+* T -will measure and instant temperature reading
+* W -will stop the buggy moving if it is moving and will take a water sensor reading. 
+
+As you can see below it is similar to the bluetooth terminal, just without the hotkeys. 
+
+![IMG_1909](https://user-images.githubusercontent.com/72760747/101783709-7be47b00-3af2-11eb-8d51-f76a57e8f98d.PNG)
+![IMG_1910](https://user-images.githubusercontent.com/72760747/101783714-7dae3e80-3af2-11eb-99c2-4978b0398639.PNG)
+![IMG_1912](https://user-images.githubusercontent.com/72760747/101783720-7f780200-3af2-11eb-8ea8-3b93eff591be.PNG)
 
 
-### Standard 
-
+### Standard ()
+The standard method of using WiFi is very similar but requires a few more steps. 
+When the 
 
 ## Using the Serial monitor to control the buggy.
 
