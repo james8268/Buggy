@@ -32,3 +32,8 @@ Then using the below Serial Bluetooth terminal, the ESP32 can be set up as a dev
 
 As you can see in the bluetooth terminal there are hot keys provided. Like the IR remote the number "3" will move the buggy at full speed and the hotkey "stop" will stop the buggy. 
 
+![Screenshot_20201210-121931](https://user-images.githubusercontent.com/72760747/101771703-4041b500-3ae2-11eb-9962-0ce28e43cd8e.png)
+
+To allow the buggy to roam autonomously and roam autonomously while taking temperature, humidity and water level measurements, "E" and "M" can be sent to the terminal respectively. To stop the buggy roaming autonomously just press the "stop" hotkey.
+
+
