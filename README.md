@@ -20,4 +20,6 @@ The function each button has is as follows:
 * \# - Stops the buggy before taking a water level reading. 
 
 ## How to control the bugy using Bluetooth low energy (BLE).
+When the Bluetooth code has been uploaded to the ESP32 you can connect an android device only (IOS does not support BLE).
+By going into the android device settings, "ESP32test" will be able to be paired with the device. 
 
