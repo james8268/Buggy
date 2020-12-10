@@ -55,6 +55,7 @@ The ESP32 needs to be programmed in either the Blynk method which is highly cust
 Blynk is a app which is extremely user friendly! It is highly customizable as you can add joy stick, buttons, sliders and much more. 
 When the ESP32 is connecting/connected to your network and to the Blynk server it will display a message when connected to the serial port.
 
+![IMG_1920](https://user-images.githubusercontent.com/72760747/101788748-5eb2ab00-3af8-11eb-98f7-084cdad63003.jpg)
 ![untitled](https://user-images.githubusercontent.com/72760747/101782557-104dde00-3af1-11eb-9f34-b276a4610234.PNG)
 
 In the Blynk App we can insert a terminal which allows us to control the buggy. Unlike the the bluetooth terminal this does not have hotkeys which means you need to know the directory for how to control the buggy. Which is as follows:
@@ -77,12 +78,48 @@ As you can see below it is similar to the bluetooth terminal, just without the h
 ![IMG_1912](https://user-images.githubusercontent.com/72760747/101783720-7f780200-3af2-11eb-8ea8-3b93eff591be.PNG)
 
 
-### Standard ()
+### Standard (Standard_WiFi)
 The standard method of using WiFi is very similar but requires a few more steps. 
-When the 
+When the ESP32 Connects to the network and server a message will be displayed in the serial monitor.
+
+![IMG_1913](https://user-images.githubusercontent.com/72760747/101788097-ab49b680-3af7-11eb-8f51-8b0bf3874c48.jpg)
+![Untitled1](https://user-images.githubusercontent.com/72760747/101788409-f82d8d00-3af7-11eb-94ab-6365d715e3f8.png)
+
+Using the WiFi serial app, input your IP address displayed in the serial monitor along with the port number which is set to 80. 
+
+![IMG_1914](https://user-images.githubusercontent.com/72760747/101788099-abe24d00-3af7-11eb-8f63-c1130171121e.jpg)
+
+This will then connect you to the ESP32 network and allow you to control the buggy. The top window is when your input commands for the buggy and the bottom window is the feedback which is sent to you. Be warned this specific app has no auto scroll function, so as soon as the feedback window is full you need to clear it by pressing the bin at the bottom. 
+
+![IMG_1915](https://user-images.githubusercontent.com/72760747/101788102-abe24d00-3af7-11eb-898e-7ba4500835d2.jpg)
+![IMG_1916](https://user-images.githubusercontent.com/72760747/101788104-ac7ae380-3af7-11eb-9076-5da1e6dde6b9.jpg)
+![IMG_1917](https://user-images.githubusercontent.com/72760747/101788105-ac7ae380-3af7-11eb-9a13-57c5e47213c5.jpg)
+
 
 ## Using the Serial monitor to control the buggy.
+This method has limitations, for example the buggy must stay plugged into the laptop/PC so limites mobility. However an ESP32 device is not required so connection issues (if there are any) are non existent. This method is very useful for running quick tests to see how the buggy operates without having to leave your chair, you can just prop the buggy up to remove contact between the wheels and the floor. 
+
+Some functions are limited also, Roaming autonomously is not recomended as the board has to be manually reset with the reset button on the arduino board. 
+
+In order to use the serial monitor to control the buggy this protion of code below must be uncommented (Remove \// before each line) and uploaded to the arduino board. If any other method it used this must be commented out by placing \// before each line.
+
+![code](https://user-images.githubusercontent.com/72760747/101795454-d506db80-3aff-11eb-90eb-6f79e9e3250c.png)
+
+You can see below when commands are sent through the command line in the serial monitor window you will still recieve the feedback from the buggy. 
+
+![BR](https://user-images.githubusercontent.com/72760747/101795452-d46e4500-3aff-11eb-9f1e-d3437bd7e846.png)
+
+![brr](https://user-images.githubusercontent.com/72760747/101795458-d59f7200-3aff-11eb-94ec-f4dd3080c1fe.png)
+
+![brrr](https://user-images.githubusercontent.com/72760747/101795456-d59f7200-3aff-11eb-9194-fae3a5a11d4d.png)
+
+![wt](https://user-images.githubusercontent.com/72760747/101796448-d71d6a00-3b00-11eb-8345-d3d821c7b2cb.png)
+
 
 ## Security features
  
+Some security features have been added:
+* A tilt sensor- If the buggy tips over a tilt sensor will be activated. This will halt the buggy and sound a buzzer. This is activated when the buggy is in a remote or autonomous mode. A message will also be sent to the Bluetooth/WiFi terminal to notify the user.
+* Red LED- if connection between Bluetooth/WiFi drops then the Red LED located on the front of the buggy will turn on, the buggy will stop and anything written on the LCD screen is cleared. 
 
+Other security features such as a RFID tag is also being developed aswell an encryption of any data sent between the buggy and the android/IOS device. 
