@@ -23,3 +23,7 @@ The function each button has is as follows:
 When the Bluetooth code has been uploaded to the ESP32 you can connect an android device only (IOS does not support BLE).
 By going into the android device settings, "ESP32test" will be able to be paired with the device. 
 
+![Screenshot_20201210-120007](https://user-images.githubusercontent.com/72760747/101770647-a4637980-3ae0-11eb-90b3-c1a65112bd18.png)
+
+Then using the below Serial Bluetooth terminal, the ESP32 can be set up as a device and connected to the ESP32.
+
