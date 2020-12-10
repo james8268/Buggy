@@ -55,6 +55,7 @@ The ESP32 needs to be programmed in either the Blynk method which is highly cust
 Blynk is a app which is extremely user friendly! It is highly customizable as you can add joy stick, buttons, sliders and much more. 
 When the ESP32 is connecting/connected to your network and to the Blynk server it will display a message when connected to the serial port.
 
+![IMG_1920](https://user-images.githubusercontent.com/72760747/101788748-5eb2ab00-3af8-11eb-98f7-084cdad63003.jpg)
 ![untitled](https://user-images.githubusercontent.com/72760747/101782557-104dde00-3af1-11eb-9f34-b276a4610234.PNG)
 
 In the Blynk App we can insert a terminal which allows us to control the buggy. Unlike the the bluetooth terminal this does not have hotkeys which means you need to know the directory for how to control the buggy. Which is as follows:
@@ -77,9 +78,23 @@ As you can see below it is similar to the bluetooth terminal, just without the h
 ![IMG_1912](https://user-images.githubusercontent.com/72760747/101783720-7f780200-3af2-11eb-8ea8-3b93eff591be.PNG)
 
 
-### Standard ()
+### Standard (Standard_WiFi)
 The standard method of using WiFi is very similar but requires a few more steps. 
-When the 
+When the ESP32 Connects to the network and server a message will be displayed in the serial monitor.
+
+![IMG_1913](https://user-images.githubusercontent.com/72760747/101788097-ab49b680-3af7-11eb-8f51-8b0bf3874c48.jpg)
+![Untitled1](https://user-images.githubusercontent.com/72760747/101788409-f82d8d00-3af7-11eb-94ab-6365d715e3f8.png)
+
+
+When The WiFi 
+
+
+![IMG_1914](https://user-images.githubusercontent.com/72760747/101788099-abe24d00-3af7-11eb-8f63-c1130171121e.jpg)
+![IMG_1915](https://user-images.githubusercontent.com/72760747/101788102-abe24d00-3af7-11eb-898e-7ba4500835d2.jpg)
+![IMG_1916](https://user-images.githubusercontent.com/72760747/101788104-ac7ae380-3af7-11eb-9076-5da1e6dde6b9.jpg)
+![IMG_1917](https://user-images.githubusercontent.com/72760747/101788105-ac7ae380-3af7-11eb-9a13-57c5e47213c5.jpg)
+![IMG_1918](https://user-images.githubusercontent.com/72760747/101788106-ad137a00-3af7-11eb-97ba-57e9d7137056.PNG)
+
 
 ## Using the Serial monitor to control the buggy.
 
