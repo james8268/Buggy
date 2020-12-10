@@ -105,13 +105,21 @@ In order to use the serial monitor to control the buggy this protion of code bel
 
 ![code](https://user-images.githubusercontent.com/72760747/101795454-d506db80-3aff-11eb-90eb-6f79e9e3250c.png)
 
+You can see below when commands are sent through the command line in the serial monitor window you will still recieve the feedback from the buggy. 
 
 ![BR](https://user-images.githubusercontent.com/72760747/101795452-d46e4500-3aff-11eb-9f1e-d3437bd7e846.png)
 
-![brrr](https://user-images.githubusercontent.com/72760747/101795456-d59f7200-3aff-11eb-9194-fae3a5a11d4d.png)
 ![brr](https://user-images.githubusercontent.com/72760747/101795458-d59f7200-3aff-11eb-94ec-f4dd3080c1fe.png)
+
+![brrr](https://user-images.githubusercontent.com/72760747/101795456-d59f7200-3aff-11eb-9194-fae3a5a11d4d.png)
+
+![wt](https://user-images.githubusercontent.com/72760747/101796448-d71d6a00-3b00-11eb-8345-d3d821c7b2cb.png)
 
 
 ## Security features
  
+Some security features have been added:
+* A tilt sensor- If the buggy tips over a tilt sensor will be activated. This will halt the buggy and sound a buzzer. This is activated when the buggy is in a remote or autonomous mode. A message will also be sent to the Bluetooth/WiFi terminal to notify the user.
+* Red LED- if connection between Bluetooth/WiFi drops then the Red LED located on the front of the buggy will turn on, the buggy will stop and anything written on the LCD screen is cleared. 
 
+Other security features such as a RFID tag is also being developed aswell an encryption of any data sent between the buggy and the android/IOS device. 
