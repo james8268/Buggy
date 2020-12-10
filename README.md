@@ -36,4 +36,9 @@ As you can see in the bluetooth terminal there are hot keys provided. Like the I
 
 To allow the buggy to roam autonomously and roam autonomously while taking temperature, humidity and water level measurements, "E" and "M" can be sent to the terminal respectively. To stop the buggy roaming autonomously just press the "stop" hotkey.
 
+![Screenshot_20201210-122609](https://user-images.githubusercontent.com/72760747/101772454-48e6bb00-3ae3-11eb-9699-0c3f66796c41.png)
+![Screenshot_20201210-122649](https://user-images.githubusercontent.com/72760747/101772429-42f0da00-3ae3-11eb-8097-cd1bd1506f4e.png)
+
+As you can see the buggy will do an initial assessment of its surroundings and checks the distance in front of it (Cdist), to the left of it (Ldist) and to the right of it (Rdist). It will then choose which is greatest and move in that direction. It will then stream the distance it has until its next obstacle. When the distance is under 30cm it will stop and reasses it's surroundings to find the greatest clearance. 
+ 
 
