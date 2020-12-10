@@ -27,3 +27,8 @@ By going into the android device settings, "ESP32test" will be able to be paired
 
 Then using the below Serial Bluetooth terminal, the ESP32 can be set up as a device and connected to the ESP32.
 
+![Screenshot_20201210-121122](https://user-images.githubusercontent.com/72760747/101771232-82b6c200-3ae1-11eb-865b-3e0780de6e02.png)
+![Screenshot_20201210-121352](https://user-images.githubusercontent.com/72760747/101771226-80546800-3ae1-11eb-917f-7aa7951a4917.png)
+
+As you can see in the bluetooth terminal there are hot keys provided. Like the IR remote the number "3" will move the buggy at full speed and the hotkey "stop" will stop the buggy. 
+
