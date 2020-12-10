@@ -20,9 +20,10 @@ operation.SETUP();
 
 void loop() {
 
-//if(Serial.available()){   //This allows the Buggy to be controlled via the serial monitor directly. ONLY UNCOMMENT WHEN USING. 
+//if(Serial.available()){   //This allows the Buggy to be controlled via the serial monitor directly. ONLY UNCOMMENT IF STATEMENT WHEN USING. 
 //  Comms.read_message();
-//  }
+// }
+
 
 
 operation.IRread(); //read the IR sensor if a order has been set from the controller
