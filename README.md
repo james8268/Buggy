@@ -96,10 +96,21 @@ This will then connect you to the ESP32 network and allow you to control the bug
 ![IMG_1917](https://user-images.githubusercontent.com/72760747/101788105-ac7ae380-3af7-11eb-9a13-57c5e47213c5.jpg)
 
 
-
-
-
 ## Using the Serial monitor to control the buggy.
+This method has limitations, for example the buggy must stay plugged into the laptop/PC so limites mobility. However an ESP32 device is not required so connection issues (if there are any) are non existent. This method is very useful for running quick tests to see how the buggy operates without having to leave your chair, you can just prop the buggy up to remove contact between the wheels and the floor. 
+
+Some functions are limited also, Roaming autonomously is not recomended as the board has to be manually reset with the reset button on the arduino board. 
+
+In order to use the serial monitor to control the buggy this protion of code below must be uncommented (Remove \// before each line) and uploaded to the arduino board. If any other method it used this must be commented out by placing \// before each line.
+
+![code](https://user-images.githubusercontent.com/72760747/101795454-d506db80-3aff-11eb-90eb-6f79e9e3250c.png)
+
+
+![BR](https://user-images.githubusercontent.com/72760747/101795452-d46e4500-3aff-11eb-9f1e-d3437bd7e846.png)
+
+![brrr](https://user-images.githubusercontent.com/72760747/101795456-d59f7200-3aff-11eb-9194-fae3a5a11d4d.png)
+![brr](https://user-images.githubusercontent.com/72760747/101795458-d59f7200-3aff-11eb-94ec-f4dd3080c1fe.png)
+
 
 ## Security features
  
