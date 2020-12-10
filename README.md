@@ -85,15 +85,18 @@ When the ESP32 Connects to the network and server a message will be displayed in
 ![IMG_1913](https://user-images.githubusercontent.com/72760747/101788097-ab49b680-3af7-11eb-8f51-8b0bf3874c48.jpg)
 ![Untitled1](https://user-images.githubusercontent.com/72760747/101788409-f82d8d00-3af7-11eb-94ab-6365d715e3f8.png)
 
-
-When The WiFi 
-
+Using the WiFi serial app, input your IP address displayed in the serial monitor along with the port number which is set to 80. 
 
 ![IMG_1914](https://user-images.githubusercontent.com/72760747/101788099-abe24d00-3af7-11eb-8f63-c1130171121e.jpg)
+
+This will then connect you to the ESP32 network and allow you to control the buggy. The top window is when your input commands for the buggy and the bottom window is the feedback which is sent to you. Be warned this specific app has no auto scroll function, so as soon as the feedback window is full you need to clear it by pressing the bin at the bottom. 
+
 ![IMG_1915](https://user-images.githubusercontent.com/72760747/101788102-abe24d00-3af7-11eb-898e-7ba4500835d2.jpg)
 ![IMG_1916](https://user-images.githubusercontent.com/72760747/101788104-ac7ae380-3af7-11eb-9076-5da1e6dde6b9.jpg)
 ![IMG_1917](https://user-images.githubusercontent.com/72760747/101788105-ac7ae380-3af7-11eb-9a13-57c5e47213c5.jpg)
-![IMG_1918](https://user-images.githubusercontent.com/72760747/101788106-ad137a00-3af7-11eb-97ba-57e9d7137056.PNG)
+
+
+
 
 
 ## Using the Serial monitor to control the buggy.
