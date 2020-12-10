@@ -2,34 +2,34 @@
 #include "arduino.h"
 #include "Motor.h"
 #include "Comms.h"
-#include "Ultra.h"
+#include "Ultra.h"          //most if not all the header files we have created will be used as this is the main operations source code file
 #include "operation.h"
 #include "Servo.h"
 #include "IRremote.h"
 #include "dht.h"
 #include "LiquidCrystal_I2C.h" 
 
-Servo myservo;  //delares the servo movor as myservo. 
-Servo waterservo;
+Servo myservo;  //delares the servo for the ultrasound sensor.   
+Servo waterservo;  //declare the servo for the water sensor
 
-#define buzzer 30     
-#define tilt 23
-#define espcom 2
-#define esplost 35
-#define LED 47
-#define myserv 10
-#define waterserv 26
-int val=0; // this is our water value 
-int pin= A8; // this is our signal pin from water sensor
+#define buzzer 30    //buzzer pin for the tilt sensor 
+#define tilt 23   // tilt sensor pin
+#define espcom 2  //ESP32 communications pin
+#define esplost 35    //ESP32 connection lost pin
+#define LED 47    //Red LED pin
+#define myserv 10   //ultrasound sensor servo motor pin
+#define waterserv 26   //water sensor servo motor pin
+int val=0; // this is the initial water value 
+int pin= A8; // this is the signal pin from water sensor
 
-#define recieverpin 46
-IRrecv irrecv(recieverpin);
+#define recieverpin 46   //IR reciever pin
+IRrecv irrecv(recieverpin);    //declare the IR reviever and the results it recieves.
 decode_results results;
 
 
-dht DHT;
-#define DHT11_PIN 34
-LiquidCrystal_I2C screen(0x27,16,2);
+dht DHT;        //declare the temp/humidity sensor
+#define DHT11_PIN 34  //temp/humidity sensor pin
+LiquidCrystal_I2C screen(0x27,16,2);   //declare the I2C screen
 
 
 operationclass::operationclass() {} // set up operation class
@@ -39,17 +39,16 @@ void(* resetFunc) (void) = 0; //declare reset function @ address 0
 
 void operationclass::SETUP(){
   
-screen.init();
+screen.init();     //initalise the LCD 
 screen.backlight();
   myservo.attach(myserv);
-  waterservo.attach(waterserv);
+  waterservo.attach(waterserv);    //set up the pins, input or output
   pinMode(espcom,INPUT);
   pinMode(tilt, INPUT);
   pinMode(buzzer, OUTPUT);
   pinMode(esplost, INPUT);
-//  pinMode(espEN, OUTPUT);
   pinMode(LED,OUTPUT);
-  irrecv.enableIRIn();
+  irrecv.enableIRIn();   //start the IR reader. 
   
   }
 
@@ -73,20 +72,20 @@ void operationclass::servc(){ //this rotates the servo the the centre (facing fo
 
 
 void operationclass::h2o(){
-
+                                //This function will take a watersensor reading. It will halt the buggy first so it doesnt break the sensor. 
 Motor.halt();
 
-waterservo.write(90);
+waterservo.write(90);       //It makes sure the water sensor is up
 delay(500);
 
-waterservo.write(1);
+waterservo.write(1);    //this moves the water sensor down so a reading can be taken.
 screen.clear();
-screen.setCursor(0,0);
+screen.setCursor(0,0); 
 screen.print("Water level: ");
 screen.setCursor(0,1);
 delay(2000);
 
-val=analogRead(pin);
+val=analogRead(pin);   //this pin reads the analogue inout front the water sensor. 
 
 if(val<=300){screen.println("EMPTY           "); Serial.println("Water Level: EMPTY");}
 else if (val>300 && val<=500){screen.println("LOW             "); Serial.println("Water Level: LOW");}
@@ -151,31 +150,31 @@ if(digitalRead(espcom)==HIGH || digitalRead(tilt)==LOW || digitalRead(esplost)==
 
 void operationclass::noINT(){          // if the ESP32 loses connection to the wifi or bluetooth then the ESP32 sends a signal to the arduino mega to stop the buggy and wait 
   if (digitalRead(esplost)==HIGH){
-    Motor.halt();     
+    Motor.halt();                     //when connection is lost the ESP32 send a signal to the arduino board. The buggy will halt and clear the LCD screen as a safety measure. 
     screen.clear();
-    digitalWrite(LED,HIGH);  
+    digitalWrite(LED,HIGH);         //The user will be notified by a Red LED light on the front of the buggy. 
     }
     else{digitalWrite(LED, LOW);}
    
 }
 
 
-void operationclass::translateIR(){
+void operationclass::translateIR(){      //Thsi function translates the hexadecimal IR input 
   
 switch(results.value){
 
-case 0xFFA25D:   Motor.forwards1(); break; //1
-case 0xFF629D: Motor.forwards2(); break; //2
+case 0xFFA25D:  Motor.forwards1(); break; //1
+case 0xFF629D:  Motor.forwards2(); break; //2                      //Each button on the remote has a different Hex number 
 case 0xFFE21D:  Motor.forwards3(); break; //3
-case 0xFF22DD: Serial.println("4"); break; //4
-case 0xFF02FD: Serial.println("5"); break; //5
-case 0xFFC23D: Serial.println("6"); break; //6
-case 0xFFE01F: Serial.println("7"); break; //7
-case 0xFFA857: Serial.println("8"); break; //8
-case 0xFF906F: Serial.println("9"); break; //9
-case 0xFF9867: measure(); break; //0
-case 0xFF6897: temp(); break; //*
-case 0xFFB04F: h2o(); break; //#
+case 0xFF22DD:  break; //4
+case 0xFF02FD:  break; //5
+case 0xFFC23D:  break; //6
+case 0xFFE01F:  break; //7
+case 0xFFA857:  break; //8
+case 0xFF906F:  break; //9
+case 0xFF9867:  break; //0
+case 0xFF6897:  temp(); break; //*
+case 0xFFB04F:  h2o(); break; //#
 case 0xFF18E7:  Motor.forwards3(); break; //up
 case 0xFF4AB5:  Motor.backwards(); break; //down
 case 0xFF10EF:  Motor.left90(); break; //left
@@ -183,40 +182,23 @@ case 0xFF5AA5:  Motor.right90(); break; //right
 case 0xFF38C7:  Motor.halt(); break; //ok
 default: break;
 }
-/*
-0xFFA25D
- 0xFF629D
- 0xFFE21D
-0xFF22DD
-0xFF02FD
- 0xFFC23D
- 0xFFE01F
- 0xFFA857
- 0xFF906F
- 0xFF9867
- 0xFF6897
-0xFF18E7
-0xFF5AA5
- 0xFF38C7
 
- 
-*/
 }
 
 
-void operationclass::IRread(){
-//constrain(results.value, 0xFF02FD, 0xFFE21D);           
-if (irrecv.decode(&results)){
+void operationclass::IRread(){     //This function reads the incoming IR input from the remote. 
+          
+if (irrecv.decode(&results)){    //The Input is recieved from the IR remote 
 
 //Serial.println(results.value, HEX);
-translateIR();
-irrecv.resume();
+translateIR();         //It is then translated from Hex to somethign with is useful
+irrecv.resume();      // Then the input is cleared to carry on reading the input 
 
 }}
 
 
 
-void operationclass::temp(){
+void operationclass::temp(){         // This reads the temperature and humidity from the DHT11 sensor to the LCD screen and through the serial port. 
 int chk = DHT.read11(DHT11_PIN);
 screen.clear();
  screen.setCursor(0,0); 

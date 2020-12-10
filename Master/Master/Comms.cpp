@@ -33,7 +33,7 @@ Serial.println("Buggy Ready");
 
 void Commsclass::read_message() { //read the serial function
 
-if (Serial.available()){      // if there is a serial avalible then read it and call them the incomingchar
+if (Serial.available()){      // if there is a serial avalible then read it's character values and call them the incomingchar
    char incomingChar = Serial.read();
 
    
@@ -72,13 +72,13 @@ switch(incomingChar){     // switch function acts as a simplified if fucntion, i
   Serial.println("ROAMING");  // "E" will be read from the serial port and will allow the buggy to roam freely.
   operation.roam();
   break;
-case 'T':
+case 'T':         // "T" Will print the temperature and humidity
 operation.temp();
 break;
-case 'W':
+case 'W':          //  "W" will stop the buggy moving if it is moving, then take a water reading by dropping the sensor. 
 operation.h2o();
 break;
-case 'M':
+case 'M':            // "M" Is similar to roam but when the buggy stops due to an obstacle it will take a temperature, Humidity reading and a water sensor reading. 
 Serial.println("Measuring Temp and H2O level at perimeter.");
 operation.measure();
 break; 

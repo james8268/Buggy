@@ -50,6 +50,7 @@ void loop() {
     SerialBT.write(Serial.read());
   } 
   
+  
   else{ 
     digitalWrite(18,LOW);
 

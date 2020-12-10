@@ -3,7 +3,7 @@
 
 
 
-class operationclass   //setup our ultrasound class
+class operationclass   //setup the operation class
 {
 
 public:

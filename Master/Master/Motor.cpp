@@ -21,7 +21,7 @@ void Motorclass::SETUP() { //setup function
 
 }
 
-void Motorclass::forwards1() {  //function to move buggy forward 
+void Motorclass::forwards1() {  //function to move buggy forward at a low speed 
 
     digitalWrite(dirA, LOW);
     analogWrite(pwmA, 100);         //both motors will move in the same direction, due to them being in a opposing setup on will be set to HIGH and the other LOW
@@ -35,7 +35,7 @@ void Motorclass::forwards1() {  //function to move buggy forward
 }
 
 
-void Motorclass::forwards2() {  //function to move buggy forward 
+void Motorclass::forwards2() {  //function to move buggy forward at a medium speed 
 
 
      digitalWrite(dirA, LOW);
@@ -48,14 +48,14 @@ void Motorclass::forwards2() {  //function to move buggy forward
 
 }
 
-void Motorclass::forwards3() {  //function to move buggy forward 
+void Motorclass::forwards3() {  //function to move buggy forward at full speed
 
      digitalWrite(dirA, LOW);
     analogWrite(pwmA, 255);
     digitalWrite(brA, LOW);
 
     digitalWrite(dirB, HIGH);
-    analogWrite(pwmB, 255);    //the power sits at its maximum PWM 255/255.
+    analogWrite(pwmB, 255);    //the power sits at its maximum Pulse-width modulation (PWM) 255/255.
     digitalWrite(brB, LOW);  
 
 }

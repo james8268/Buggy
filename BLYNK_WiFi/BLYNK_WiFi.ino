@@ -8,7 +8,6 @@
 #include <BlynkSimpleEsp32.h>
 
 
-
 #define transmit 18   // pin 18 sends a signal to the Arduino 
 #define lost 19       // pin 19 sends a signal to the arduino if the WiFi connection is lost, this allows the buggy to stop moving. 
 
@@ -70,7 +69,7 @@ void loop() {
  Blynk.run();    //this runs all the Blynk functions 
 SerialInput();
 
- if(WiFi.status() != WL_CONNECTED){digitalWrite(lost, HIGH);
+ if(WiFi.status() != WL_CONNECTED){digitalWrite(lost, HIGH);  //This monitors the WiFi connection. 
  setup();}
  else{digitalWrite(lost, LOW);}
 

@@ -3,12 +3,12 @@
 
 
 
-class encryptclass   //setup our ultrasound class
+class encryptclass   //setup the encryption class
 {
 
 public:
     encryptclass();
-void rot(int inByte);
+void rot(int inByte);  // this is the rotation 13 encryption function. 
 void SETUP();
 
 

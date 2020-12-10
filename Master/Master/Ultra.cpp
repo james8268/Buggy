@@ -53,35 +53,36 @@ if (Serial.available()){                    // if there is a serial avalible the
 }
 
 void Ultraclass::observe(){   //this is a crucial function if the buggy is being left to move freely without human interaction. it uses the ultarsound
-              // sensor to detect obstruction, it will halt the buggy and rotate left the servo left and right finding the greatest clearance. 
-if (distance <= 30 ){
+              // sensor to detect obstruction/obstackles, it will halt the buggy and rotate the servo left and right finding the greatest clearance. 
+if (distance <= 30 ){  //if there is a distance reading under 30cm, There is an obstackle in front of the buggy
 
   Motor.halt();
-operation.servc();
-int cdist=dist(); 
+operation.servc();   //this function moves rotates the Ultrasound sensor to face the front (it should already be ther but this double checks).
+int cdist=dist();          // create an integer of the distance to the front and measure this distance
 Serial.print("C dist: ");
 Serial.println(cdist);
+delay(1000);       
+operation.servl();    //rotate the servo so the ultrasound senspr faces the left.
 delay(1000);
-operation.servl();
-delay(1000);
-int ldist=dist();
+int ldist=dist();     // again we create and integer for the distance to the left and measure this distance 
 Serial.print("L dist: ");
 Serial.println(ldist);
 delay(1000);
 
-operation.servc();
+operation.servc();    //rotate the servo so the ultrasound sensor is back at the sensor.
 
-delay(1000);
+delay(1000);       
 
-operation.servr();
+operation.servr(); //rotate the servo to move the ultrasound to the right 
 delay(1000);
-int rdist=dist();
+int rdist=dist();   //take a reading of the measurement to the right and call it an integer
 Serial.print("R dist: ");
 Serial.println(rdist);
 delay(1000);
 operation.servc();
 
-if (ldist>rdist && ldist>=cdist){Serial.println("ROAM: Left turn"); Motor.left90();}    // this if loop makes the decision to turn left or right. 
+if (ldist>rdist && ldist>=cdist){Serial.println("ROAM: Left turn"); Motor.left90();}    // these if and else if statements makes the decision to turn left, 
+                                                                                          // right or forwards.  
 else if(cdist>ldist && cdist>=rdist){Serial.println("ROAM: Forwards"); Motor.forwards3();}
 else if(rdist>ldist && rdist>=cdist){Serial.println("ROAM: Right turn"); Motor.right90();}
 else{Serial.println("ROAM:U-turn"); Motor.right90(); Motor.right90();}
