@@ -3,6 +3,12 @@
 ## Functionality of the Buggy. 
 The Buggy has 3 main forms forms of interaction; a remote mode where the buggy can be controlled by the user through Bluetooth/WiFi/IR commands, an autonomous mode where the buggy is commanded by the user to roam freely without colliding into obstacles and a measuring mode where the buggy will move around autonomously but will take temperature and water level reading when it stops due to an obstacle. 
 
+There are 4 methods of controlling the buggy:
+* IR Remote
+* Bluetooth LE
+* WiFi
+* Direclty through the PC serial monitor. 
+
 ## How to use the IR Remote. 
 The IR remote is the most simple way of interacting with the buggy.
 
@@ -19,7 +25,7 @@ The function each button has is as follows:
 * \* - take a temperature reading and display it on the LCD screen
 * \# - Stops the buggy before taking a water level reading. 
 
-## How to control the bugy using Bluetooth low energy (BLE).
+## How to control the buggy using Bluetooth low energy (BLE).
 When the Bluetooth code has been uploaded to the ESP32 you can connect an android device only (IOS does not support BLE).
 By going into the android device settings, "ESP32test" will be able to be paired with the device. 
 
@@ -40,5 +46,20 @@ To allow the buggy to roam autonomously and roam autonomously while taking tempe
 ![Screenshot_20201210-122649](https://user-images.githubusercontent.com/72760747/101772429-42f0da00-3ae3-11eb-8097-cd1bd1506f4e.png)
 
 As you can see the buggy will do an initial assessment of its surroundings and checks the distance in front of it (Cdist), to the left of it (Ldist) and to the right of it (Rdist). It will then choose which is greatest and move in that direction. It will then stream the distance it has until its next obstacle. When the distance is under 30cm it will stop and reasses it's surroundings to find the greatest clearance. 
+
+You can also request a temperature/humidity or water level reading in the remote control setup by sending "T" and "W" respectively. 
+
+## Using WiFi to controll the buggy. 
+The ESP32 needs to be programmed in either the Blynk method which is highly customizable or by using a standard WiFi connection which controls the buggy using a WiFi terminal. (These are IOS friendly).
+### Blynk
+Blynk is a app which is extremely user friendly! It is highly customizable and relatively simple to use. 
+
+
+### Standard 
+
+
+## Using the Serial monitor to control the buggy.
+
+## Security features
  
 
