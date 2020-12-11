@@ -8,6 +8,8 @@
 #include "IRremote.h"
 #include "dht.h"
 #include "LiquidCrystal_I2C.h" 
+#include <SPI.h>
+#include <MFRC522.h>
 
 Servo myservo;  //delares the servo for the ultrasound sensor.   
 Servo waterservo;  //declare the servo for the water sensor
@@ -31,6 +33,12 @@ dht DHT;        //declare the temp/humidity sensor
 #define DHT11_PIN 34  //temp/humidity sensor pin
 LiquidCrystal_I2C screen(0x27,16,2);   //declare the I2C screen
 
+#define SS_PIN 53
+#define RST_PIN 5
+bool correct=false;
+
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
 operationclass::operationclass() {} // set up operation class
 
@@ -49,8 +57,62 @@ screen.backlight();
   pinMode(esplost, INPUT);
   pinMode(LED,OUTPUT);
   irrecv.enableIRIn();   //start the IR reader. 
+  SPI.begin();      // Initiate  SPI bus
+  mfrc522.PCD_Init();   // Initiate MFRC522
+  Serial.println("Present your card to the reader...");
+  screen.clear();
+  screen.print("Present RFID Tag/Card...");
   
   }
+
+
+bool operationclass::RFID_challenge(){
+
+      if ( ! mfrc522.PICC_IsNewCardPresent()) 
+  {
+    return;
+  }
+  // Select one of the cards
+  if ( ! mfrc522.PICC_ReadCardSerial()) 
+  {
+    return;
+  }
+  //Show UID on serial monitor
+  Serial.print("UID tag :");
+  String content= "";
+  byte letter;
+  for (byte i = 0; i < mfrc522.uid.size; i++) 
+  {
+     Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+     Serial.print(mfrc522.uid.uidByte[i], HEX);
+     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
+     content.concat(String(mfrc522.uid.uidByte[i], HEX));
+  }
+  Serial.println();
+  Serial.print("Message : ");
+  content.toUpperCase();
+  if (content.substring(1) == "04 5B 68 2B" || content.substring(1) == "77 A5 B1 7B" ) //change here the UID of the card/cards that you want to give access
+  {
+    Serial.println("Authorized access");
+    screen.clear();
+    screen.print("Access Granted");
+    correct=true;
+    delay(3000);
+    screen.clear();
+  }
+ 
+ else   {
+    Serial.println("Access denied");
+    screen.clear();
+    screen.print("Access Denied");
+    delay(3000);
+    screen.clear();
+  }
+ 
+  return correct;
+  
+  }
+
 
 void operationclass::servl(){ //this makes the servo rotate so it is facing left 
 
