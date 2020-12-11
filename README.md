@@ -124,4 +124,4 @@ Some security features have been added:
 * Red LED- if connection between Bluetooth/WiFi drops then the Red LED located on the front of the buggy will turn on, the buggy will stop and anything written on the LCD screen is cleared. 
 
 
-Other security features such as encryption of any data sent between the buggy and the android/IOS device is in development. 
+Other security features such as encryption of any data sent between the buggy and the android/IOS device and a timout when the buggy is sat idle is in development. 
