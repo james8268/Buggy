@@ -24,6 +24,7 @@ void setup() {
   Serial.println("Server started");
 
     while (WiFi.status() != WL_CONNECTED) {
+      
         delay(500);
         Serial.print(".");
     }

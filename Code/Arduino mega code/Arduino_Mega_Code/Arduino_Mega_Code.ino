@@ -28,9 +28,9 @@ if(operation.RFID_challenge()==true){
   Serial.println("Buggy ready for commands");
   for(;;){
     
-if(Serial.available()){   //This allows the Buggy to be controlled via the serial monitor directly. ONLY UNCOMMENT IF STATEMENT WHEN USING. 
-  Comms.read_message();
-    }
+//if(Serial.available()){   //This allows the Buggy to be controlled via the serial monitor directly. ONLY UNCOMMENT IF STATEMENT WHEN USING. 
+ // Comms.read_message();
+ //   }
 
 
 operation.IRread(); //read the IR sensor if a order has been set from the controller
