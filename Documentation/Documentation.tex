@@ -13,7 +13,14 @@
 
 \section{Introduction} 
 
-//// summarise the project, list objectives, outlines the structure of the documentation.
+The main outcome at the beginning of the project was to create a simple and easy to used piece of software which allows the user to control the buggy without being too complex. Both the hardware and software have been an ongoing development based on feedback given through multiple tests, which a few friends generously took part in. The main objectives of the project are listed below but not limited to:
+
+\begin{itemize}
+	\item Reliability - Unreliable connection/data transfer is a disadvantage and creates more problems. This will be explained later in more detail.  
+	\item  Multiple methods of communication - By using WiFi, Bluetooth, IR remote and PC. 
+	\item Scalability - There should be no software problems while developing the increased load of sensor/capabilities of the buggy. 
+	\item
+\end{itemize}
 
 
 \section{Design}
@@ -21,6 +28,11 @@
 \includegraphics[height=5cm, width=7.5cm]{schematic}
 \centering
 \end{figure}
+
+////TCP- Reliable, Flow control(wont overwhelm reciever), congestion control. Breaks info into packets
+///UDP- unreliable,, no flow control, no congestion control
+
+///Layers- layered system to allow for easy maintenance, ease of updating/developing the system. ADD A DIAGRAM OF THE LAYERS HERE. 
 
 \section{Implementation}
 
