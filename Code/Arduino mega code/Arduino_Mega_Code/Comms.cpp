@@ -36,8 +36,6 @@ void Commsclass::read_message() { //read the serial function
 if (Serial.available()){      // if there is a serial avalible then read it's character values and call them the incomingchar
    char incomingChar = Serial.read();
 
-   
-
 switch(incomingChar){     // switch function acts as a simplified if fucntion, it will output the functions from our motor class depending on the character given
   
   case '1':

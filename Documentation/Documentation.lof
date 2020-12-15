@@ -1,2 +1,5 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Left: Schematic of Buggy.}}{1}{figure.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces Right: communication graph of the Buggy}}{1}{figure.2}
+\contentsline {figure}{\numberline {2}{\ignorespaces Right: general communication graph of the Buggy}}{1}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Tabs for Arduino mega main code.}}{2}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Left: Arduino mega main loop}}{3}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Right: Read incoming message}}{3}{figure.5}
