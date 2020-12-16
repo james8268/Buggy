@@ -35,7 +35,6 @@ BLYNK_WRITE(V1) {       // this function allows the terminal on the mobile devic
   delay(500);                    // This is then used by the arduino mega in the operation.roam() 
   digitalWrite(transmit, LOW);
 
-
 }
 
 

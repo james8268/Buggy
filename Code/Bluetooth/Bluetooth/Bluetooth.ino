@@ -42,23 +42,17 @@ void loop() {
   if (SerialBT.available()){
       digitalWrite(18,HIGH);
       delay(200);
-      
-     Serial.write(SerialBT.read());
-     }
- 
+      Serial.write(SerialBT.read());
+     } 
  if (Serial.available()) {
     SerialBT.write(Serial.read());
   } 
-  
-  
   else{ 
     digitalWrite(18,LOW);
 
     }
   
   SerialBT.register_callback(callback);
-
-
 
     
   }

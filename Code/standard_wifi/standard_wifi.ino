@@ -1,20 +1,19 @@
 #include <WiFi.h>
 #include <WiFiClient.h>                                            
-
-
-
-
+#include <WiFiAP.h>
 
 char ssid1[]="VM9234142";    // SSID and passwork. 
 char pass[]= "hgyb9tqPdhfw";
 
 #define lost 19  
+#define transmit 18
  
 WiFiServer server(80);
  
 void setup() {
  
- 
+ pinMode(lost, OUTPUT);
+ pinMode(transmit, OUTPUT);
   Serial.begin(9600);
   Serial.println();
   WiFi.begin(ssid1, pass);
@@ -51,13 +50,16 @@ void loop() {
         if(client.available()){
           char c=client.read();
           Serial.println(c);
+          digitalWrite(transmit,HIGH);
+          delay(500);
+          digitalWrite(transmit, LOW);
+          }
 
            if(Serial.available()){
-            client.flush();
-            client.println(Serial.read());
+             client.write(Serial.read());
              
            }
-        }
+        
         
       }
       }
