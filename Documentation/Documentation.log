@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2019.2.19)  16 DEC 2020 16:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2019.2.19)  17 DEC 2020 16:43
 entering extended mode
 **Documentation.tex
 (Documentation.tex
@@ -374,64 +374,88 @@ File: schematic.png Graphic file (type png)
 Package pdftex.def Info: schematic.png used on input line 47.
 (pdftex.def)             Requested size: 199.1669pt x 142.2543pt.
 
-<Arch.png, id=64, 715.17188pt x 307.1475pt>
+<Arch.png, id=64, 659.46375pt x 388.45125pt>
 File: Arch.png Graphic file (type png)
  <use Arch.png>
 Package pdftex.def Info: Arch.png used on input line 48.
-(pdftex.def)             Requested size: 199.1664pt x 142.26439pt.
+(pdftex.def)             Requested size: 199.1689pt x 142.26659pt.
  [1
 
 {C:/Users/james user/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./bugg
-y_front.jpg> <./Buggy_rear.jpg>] <tabs.png, id=76, 723.45282pt x 30.1125pt>
+y_front.jpg> <./Buggy_rear.jpg>] <tabs.png, id=76, 827.34094pt x 27.10126pt>
 File: tabs.png Graphic file (type png)
  <use tabs.png>
 Package pdftex.def Info: tabs.png used on input line 56.
-(pdftex.def)             Requested size: 483.69684pt x 20.13298pt.
+(pdftex.def)             Requested size: 483.69684pt x 15.84485pt.
 
 [2 <./schematic.png> <./Arch.png> <./tabs.png>]
 <bluetooth.png, id=87, 195.73125pt x 164.86594pt>
 File: bluetooth.png Graphic file (type png)
  <use bluetooth.png>
-Package pdftex.def Info: bluetooth.png used on input line 89.
+Package pdftex.def Info: bluetooth.png used on input line 92.
 (pdftex.def)             Requested size: 170.72682pt x 142.26744pt.
 
 <standard_wifi.png, id=88, 215.30438pt x 149.8097pt>
 File: standard_wifi.png Graphic file (type png)
  <use standard_wifi.png>
-Package pdftex.def Info: standard_wifi.png used on input line 90.
+Package pdftex.def Info: standard_wifi.png used on input line 93.
 (pdftex.def)             Requested size: 170.71936pt x 142.27495pt.
 
 <blynk1.png, id=89, 286.82156pt x 162.6075pt>
 File: blynk1.png Graphic file (type png)
  <use blynk1.png>
-Package pdftex.def Info: blynk1.png used on input line 99.
+Package pdftex.def Info: blynk1.png used on input line 103.
 (pdftex.def)             Requested size: 170.72002pt x 142.27376pt.
 
 <blynk2.png, id=90, 210.7875pt x 137.7647pt>
 File: blynk2.png Graphic file (type png)
  <use blynk2.png>
-Package pdftex.def Info: blynk2.png used on input line 100.
+Package pdftex.def Info: blynk2.png used on input line 104.
 (pdftex.def)             Requested size: 170.72086pt x 142.27759pt.
-
-<multicore.png, id=91, 428.35031pt x 71.51718pt>
+ [3 <./bluetooth.png> <./standard_wifi.png> <./blynk1.png> <./blynk2.png>]
+<multicore.png, id=104, 428.35031pt x 71.51718pt>
 File: multicore.png Graphic file (type png)
  <use multicore.png>
-Package pdftex.def Info: multicore.png used on input line 109.
+Package pdftex.def Info: multicore.png used on input line 113.
 (pdftex.def)             Requested size: 426.79366pt x 113.81215pt.
- [3 <./bluetooth.png> <./standard_wifi.png> <./blynk1.png> <./blynk2.png>]
-<main_loop.png, id=104, 137.01187pt x 109.91063pt>
+
+<main_loop.png, id=105, 137.01187pt x 109.91063pt>
 File: main_loop.png Graphic file (type png)
  <use main_loop.png>
-Package pdftex.def Info: main_loop.png used on input line 115.
+Package pdftex.def Info: main_loop.png used on input line 121.
 (pdftex.def)             Requested size: 137.01154pt x 109.91034pt.
 
-<read_message.png, id=105, 210.03468pt x 94.85437pt>
+<read_message.png, id=106, 210.03468pt x 94.85437pt>
 File: read_message.png Graphic file (type png)
  <use read_message.png>
-Package pdftex.def Info: read_message.png used on input line 116.
+Package pdftex.def Info: read_message.png used on input line 122.
 (pdftex.def)             Requested size: 252.01471pt x 113.81102pt.
 
-[4 <./multicore.png> <./main_loop.png> <./read_message.png>] (Documentation.lof
+<BLE_term.png, id=107, 722.7pt x 1284.8pt>
+File: BLE_term.png Graphic file (type png)
+ <use BLE_term.png>
+Package pdftex.def Info: BLE_term.png used on input line 148.
+(pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
+
+<blynk_term2.png, id=108, 752.8125pt x 1339.0025pt>
+File: blynk_term2.png Graphic file (type png)
+ <use blynk_term2.png>
+Package pdftex.def Info: blynk_term2.png used on input line 149.
+(pdftex.def)             Requested size: 113.8015pt x 142.26457pt.
+
+<blynk_term.png, id=109, 752.8125pt x 1339.0025pt>
+File: blynk_term.png Graphic file (type png)
+ <use blynk_term.png>
+Package pdftex.def Info: blynk_term.png used on input line 150.
+(pdftex.def)             Requested size: 113.8015pt x 142.26457pt.
+
+<BLE_term2.png, id=110, 722.7pt x 1284.8pt>
+File: BLE_term2.png Graphic file (type png)
+ <use BLE_term2.png>
+Package pdftex.def Info: BLE_term2.png used on input line 151.
+(pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
+ [4 <./multicore.png> <./main_loop.png> <./read_message.png>] (Documentation.lo
+f [5 <./BLE_term.png> <./blynk_term2.png> <./blynk_term.png> <./BLE_term2.png>]
 )
 \tf@lof=\write4
 Missing character: There is no â in font cmr10!
@@ -440,37 +464,38 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [5]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
  [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
- (Documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
+
+(Documentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 242.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 242.
 Package rerunfilecheck Info: File `Documentation.out' has not changed.
 (rerunfilecheck)             Checksum: B71ED1E20436426575F2AE9A8F3A5269;764.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 226.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 242.
  ) 
 Here is how much of TeX's memory you used:
- 6745 strings out of 493636
- 101193 string characters out of 3134829
- 194437 words of memory out of 3000000
- 10046 multiletter control sequences out of 15000+200000
+ 6767 strings out of 493636
+ 101554 string characters out of 3134829
+ 195437 words of memory out of 3000000
+ 10062 multiletter control sequences out of 15000+200000
  8062 words of font info for 29 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  29i,6n,32p,1327b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -480,9 +505,9 @@ public/amsfonts/cm/cmmi10.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/Streamed Applicati
 ons/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/Stre
 amed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Documentation.pdf (6 pages, 3878122 bytes).
+Output written on Documentation.pdf (7 pages, 4136877 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 34 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 177 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

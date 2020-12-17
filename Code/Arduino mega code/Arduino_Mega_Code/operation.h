@@ -21,7 +21,7 @@ public:
     void temp();
     void h2o();
     void measure();
-    bool RFID_challenge();
+
     
 };
 

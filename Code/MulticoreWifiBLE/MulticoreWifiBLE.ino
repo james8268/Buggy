@@ -86,15 +86,25 @@ for(;;){
  Blynk.run();    //this runs all the Blynk functions 
 SerialInput();
 
-if(Blynk.connected()==false){  // if connection is lost then this if loop is entered.  Blynk.connect() can be used to send a ping to the router. 
-  digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
- Serial.println("Connection lost");    // this is printed in the serial, if wifi connection is lost there will be no way to communicate to the mobile device so there is no need for this communication method. 
-  delay(5000);
-  digitalWrite(lost, LOW);}
+ if(WiFi.status() != WL_CONNECTED){digitalWrite(lost, HIGH);  //This monitors the WiFi connection. 
+ setup();}
+ else{digitalWrite(lost, LOW);}
     
   }
 }
 
+void callback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
+  if(event == ESP_SPP_SRV_OPEN_EVT){
+   
+     digitalWrite(lost, LOW);
+  }
+ 
+  if(event == ESP_SPP_CLOSE_EVT ){
+    
+      digitalWrite(lost, HIGH);
+  }
+  
+}
 
 void BluetoothTask( void * pvParameters ){
   for(;;){
@@ -113,11 +123,7 @@ void BluetoothTask( void * pvParameters ){
 
     }
 
-if (SerialBT.connected()==false) {                              
-    Serial.println("Disconnected!!");
- digitalWrite(lost, HIGH);    // it communicates to the arduino mega through a digital pin 
-  delay(5000);
-  digitalWrite(lost, LOW);}
+  SerialBT.register_callback(callback);
   }
 }
 

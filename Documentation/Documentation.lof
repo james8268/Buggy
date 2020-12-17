@@ -1,7 +1,7 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Left: Image of Buggy from the front left corner.}}{1}{figure.1}
 \contentsline {figure}{\numberline {2}{\ignorespaces Right: Image of Buggy from rear right corner.}}{1}{figure.2}
 \contentsline {figure}{\numberline {3}{\ignorespaces Left: Schematic of Buggy.}}{2}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Right: general communication graph of the Buggy}}{2}{figure.4}
+\contentsline {figure}{\numberline {4}{\ignorespaces Right: Communication diagram of the Buggy}}{2}{figure.4}
 \contentsline {figure}{\numberline {5}{\ignorespaces Tabs for Arduino mega main code.}}{2}{figure.5}
 \contentsline {figure}{\numberline {6}{\ignorespaces Left: ESP32 Bluetooth main loop code.}}{3}{figure.6}
 \contentsline {figure}{\numberline {7}{\ignorespaces Right: ESP32 standard Wifi main loop code.}}{3}{figure.7}
@@ -10,3 +10,4 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Setup for ESP32 dual core WiFi and Bluetooth.}}{4}{figure.10}
 \contentsline {figure}{\numberline {11}{\ignorespaces Left: Arduino mega main loop}}{4}{figure.11}
 \contentsline {figure}{\numberline {12}{\ignorespaces Right: Read incoming message}}{4}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}}{5}{figure.13}

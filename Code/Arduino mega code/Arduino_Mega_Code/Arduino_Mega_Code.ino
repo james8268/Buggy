@@ -3,12 +3,12 @@
 // taken baud rates:9600(bluetooth), 4800 (Ultrasound)
 
 #include "Arduino.h"
-#include"Motor.h"
+#include "Motor.h"
 #include "Ultra.h"
 #include "Comms.h"   // Include all headers needed for the buggy's opertion
 #include "Wire.h"
 #include "operation.h"
-
+#include "RFID.h"
 
 
 void setup() {
@@ -17,14 +17,14 @@ Motor.SETUP();
 Ultra.SETUP();       // all the header files are setup. 
 Comms.SETUP();
 operation.SETUP();
-
+RFID.RFIDsetup();
 }
 
 void loop() {
 
 
 
-if(operation.RFID_challenge()==true){ 
+if(RFID.RFID_challenge()==true){ 
   Serial.println("Buggy ready for commands");
   for(;;){
     

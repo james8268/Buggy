@@ -2,9 +2,8 @@
 #include "arduino.h"
 #include "Motor.h"
 #include "Comms.h"
-#include "Ultra.h"
 #include "operation.h"
-#include "encrypt.h"
+
 
 char incomingChar;   // set the incoming serial as characters. 
 

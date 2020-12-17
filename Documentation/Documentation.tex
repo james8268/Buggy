@@ -47,7 +47,7 @@ Below are two images of the main schematic of the buggy and a general communicat
 \includegraphics[height=5cm, width=7.0cm]{schematic}
 \includegraphics[height=5cm, width=7.0cm]{Arch}
 \caption{Left: Schematic of Buggy.}
-\caption{Right: general communication graph of the Buggy}
+\caption{Right: Communication diagram of the Buggy}
 \end{figure}
 
 The software for the Arduino has been set up into header (.h) files and source code (.cpp) files where they are then called in the main code. There are many benefits to this such as the code is organised and tidy allowing future and current developers to debug with ease, addition of any new code can be easily integrated into the system and the code can be easily maintained. 
@@ -57,10 +57,15 @@ The software for the Arduino has been set up into header (.h) files and source c
 	\caption{Tabs for Arduino mega main code.}
 \end{figure}
 
+///Comment on Figure 4 
+
+
+
+\section{Implementation}
 
 The software for the ESP32 comprised of individual sketch files which correspond to the use of WiFi or Bluetooth and for both due to the ESP32 being dual-core. Transmission control protocol (TCP) has been used when using WiFi instead of user diagram protocol (UDP) as is it more reliable, has Flow control so will not overwhelm receiver and has congestion control. A 'handshake' is used to initiate communication and then multiple packets are sent. TCP may not be as fast as UDP but due to the project objectives, reliability is preferred. This being said TCP is slower by a very small margin so is not a large hindrance on the usability of the system. 
- 
- 
+
+
 A distributed system is a system which coordinates is actions by communicating between components via passing messages. The example for this project are listed and explained below.
 
 \begin{itemize}
@@ -78,11 +83,9 @@ The interactivity between the buggy and the user (besides the obvious mobile dev
 	\item Disconnection LED- The red LED on the front of the buggy lights up when the WiFi/Bluetooth connection drops.  
 	\item Ultrasound sensor- This interacts with its surroundings to gain distance information. This information can then be actioned on accordingly, for example while in an autonomous mode distance information will be used to make decisions and avoid obstacles. 
 \end{itemize}
-These may seem like simple solutions but they are effective and prove effective during testing. They also provide a level of security to the buggy, the RFID tag can only be added to the source code. 
+These may seem like simple solutions but they are effective and prove effective during testing. They also provide a level of security to the buggy, for example if a new RFID tag is to be added it can only be done so by adding it to the source code.  
 
-\section{Implementation}
-
-///talk about figures below
+when communications have been received from the mobile device by the ESP32 the ESP32 will receive this message and send it to the Arduino via UART as mentioned above. Any messages sent from the Arduino are communicated back in the same way. 
  
 \begin{figure}[H]
 	\centering
@@ -92,7 +95,8 @@ These may seem like simple solutions but they are effective and prove effective 
 	\caption{Right: ESP32 standard Wifi main loop code.}
 \end{figure}
 
-///talk about how Blynk is different but the same in principle hence still works
+Blynk is a library that when connected to its app on any mobile device provides a very aesthetic design for the user, it is also very customizable for varying project requirements.
+The way it has been used in my case is of a similar procedure but is not as straightforward as the Bluetooth or standard WiFi set up. As you can see below, two functions are created with \verb|'BLYNK_WRITE'| being a Blynk library that reads commands from the mobile device and sends them to the Arduino and \verb|'SerialInput'| being the function which sends messages from the Arduino to the mobile device.
 
 \begin{figure}[H]
 	\centering
@@ -102,13 +106,15 @@ These may seem like simple solutions but they are effective and prove effective 
 	\caption{Right: ESP32 Blynk read meaasges from arduino and send to mobile device}
 \end{figure}
 
-///Talk about multi core 
+The ESP32 is a Dual core micro-controller and in theory can be used for a combined Bluetooth and WiFi mode. As you can see from the figure below this was attempted and does work, however there is one issue issues. Because the procedure for sending messages back to the mobile devices are virtually the same for WiFi and Bluetooth the ESP32 has no distinction between which device it has received a command from and therefore which device to send messages back to.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=4.0cm, width=15.0cm]{multicore}
 	\caption{Setup for ESP32 dual core WiFi and Bluetooth.}
 \end{figure}
+
+Looking at the figure below you can see the main loop for the Arduino mega. The commands here are reading the serial monitor when the buggy is connected to the PC as well as the IR remote control reader and the ESP32 reader (this reads messages from the mobile device). Other commands that monitor the tilt sensor and the Wifi/Bluetooth connection are at the bottom of Figure 6. 
 
 \begin{figure}[h]
 \centering
@@ -118,12 +124,12 @@ These may seem like simple solutions but they are effective and prove effective 
 \caption{Right: Read incoming message}
 \end{figure}
 
-Looking at Figure 6 you can see the main loop for the Arduino mega. The commands here are reading the serial monitor when the buggy is connected to the PC as well as the IR remote control reader and the ESP32 reader (this reads messages from the mobile device). Other commands that monitor the tilt sensor and the Wifi/Bluetooth connection are at the bottom of Figure 6. 
+When a command is recieved from the mobile device it will enter a \verb|switch| loop, here is where commands are executed. each command corresponds to a function which exist in other source code files. 
 
 
 
 3rd Party libraries:
-\verb|arduino.h|, \verb|LiquidCrystal_I2C.h|, \verb|IRremote.h|, \verb|Wire.h|, \verb|dht.h|, \verb|SPR.h|, \verb|MFRC522.h|
+\verb|arduino.h|, \verb|LiquidCrystal_I2C.h|, \verb|IRremote.h|, \verb|Wire.h|, \verb|dht.h|, \verb|SPR.h|, \verb|MFRC522.h|, Blynk libraries
 
 
 \section{Testing}
@@ -135,6 +141,16 @@ Looking at Figure 6 you can see the main loop for the Arduino mega. The commands
 //// pros and cons of WIFI and bluetooth.
 //// limitations to each distributive method.  
 
+As you can see below when a command is sent from the Bluetooth terminal any messages responding to this command come back through the WiFi terminal and visa versa. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5.0cm, width=4.0cm]{BLE_term}
+	\includegraphics[height=5.0cm, width=4.0cm]{blynk_term2}
+	\includegraphics[height=5.0cm, width=4.0cm]{blynk_term}
+	\includegraphics[height=5.0cm, width=4.0cm]{BLE_term2}
+	\caption{From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}			
+\end{figure}	
 
 \section{Code quality/remarks} ////this may get cut if needed as in more an non written task
 ////discuss multi and single core methods in a ReadMe file!!!
