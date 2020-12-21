@@ -10,4 +10,4 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Setup for ESP32 dual core WiFi and Bluetooth.}}{4}{figure.10}
 \contentsline {figure}{\numberline {11}{\ignorespaces Left: Arduino mega main loop}}{4}{figure.11}
 \contentsline {figure}{\numberline {12}{\ignorespaces Right: Read incoming message}}{4}{figure.12}
-\contentsline {figure}{\numberline {13}{\ignorespaces From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}}{5}{figure.13}
+\contentsline {figure}{\numberline {13}{\ignorespaces From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}}{6}{figure.13}

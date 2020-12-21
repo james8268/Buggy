@@ -1,6 +1,5 @@
 #include <WiFi.h>
 #include <WiFiClient.h>                                            
-#include <WiFiAP.h>
 
 char ssid1[]="VM9234142";    // SSID and passwork. 
 char pass[]= "hgyb9tqPdhfw";

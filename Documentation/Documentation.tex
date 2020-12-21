@@ -124,16 +124,40 @@ Looking at the figure below you can see the main loop for the Arduino mega. The 
 \caption{Right: Read incoming message}
 \end{figure}
 
-When a command is recieved from the mobile device it will enter a \verb|switch| loop, here is where commands are executed. each command corresponds to a function which exist in other source code files. 
-
-
-
-3rd Party libraries:
-\verb|arduino.h|, \verb|LiquidCrystal_I2C.h|, \verb|IRremote.h|, \verb|Wire.h|, \verb|dht.h|, \verb|SPR.h|, \verb|MFRC522.h|, Blynk libraries
+When a command is received from the mobile device it will enter a \verb|switch| loop, here is where commands are executed. each command corresponds to a function which exist in other source code files.
 
 
 \section{Testing}
-//insert images, using bluetooth, wifi, multicore. 
+
+The variety of testing methods used from start to finish have varied from unit and integration testing to acceptance and regression testing. The unit testing has taken place when a new operation/function has been added to the source code and is performed by myself for verification. The integration tests have then been performed by others to make sure that the new function works within the rest of the system and performs how it is expected to perform (acceptance testing). As the project has developed regression testing has been used to verify that any changes have not affected the prior system.   
+
+One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore crash. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver setup, if either one is blocked then the correct distance cannot be obtained and the buggy crashes. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. 
+
+///insert pic of unstable buggy message aswell as a chair leg infront of the ultrasound sensor with a distance reeding. 
+
+ 
+When the decision to add a IR remote which is able to control the buggy was made, initially there were issues. Noise from ambient light, other IR sources and even electrical signals within the breadboard caused overflow issues. Any command received from the IR remote would not be read and processed. 
+
+///add IR overflow screenshot 
+
+What I found was happening is that any electrical signal to or from the ultrasound sensor was being spread throughout the pins ports in the breadboard (This is due to it being a small cheap breadboard) and this interfered with the IR LED electrical signal. To over come this the signal pin for the IR LED was relocated to the main Arduino mega board, This reduced the noise considerably.  
+
+
+Of course loss of communication is a important problem. To combat this the ESP32 monitors WiFi/Bluetooth connection and if any connection is lost the ESP32 sends a signal to the Arduino Mega. This signal will stop the buggy and turn the front red LED light on. No message is sent to the mobile device as there is no connection so it would be pointless. When the connection is lost the LCD is also cleared. The ESP32 will attempt to restart the setup instructions to regain connection. 
+
+//// add photos os bluetooth disconnect with led lit up 
+
+Some basic tests on the accuracy of the ultrasound, temperature, humidity and water sensor were also conducted. When testing the accuracy of the ultrasound sensor a ruler was placed at the base of the sensor and a book was moved closer in intervals of 5cm starting from 120cm. The recorded result was then noted and compared against the actual result. 
+
+///Add photo of ultrasound setup and results. 
+
+When It came to testing the temperature, ///////
+
+The water sensor was slightly different when it came to testing. The software is setup to provide a ranged output for the sensor reading (Empty, low, medium and High). These ranges can be calibrated in the source code, but I still tested the sensor to see how the difference in water levels affected the output. The sensor was split up into intervals and water is applied in cumulative segments. The output is then recorded, the output can be recalibrated depending on how the user wants it to be set up. 
+
+/// do water sensor test. 
+
+
 
 
 \section{Evaluation}
@@ -187,6 +211,12 @@ As you can see below when a command is sent from the Bluetooth terminal any mess
 or copy and paste the URL into your web browser. https://github.com/james8268/Buggy
 
 \listoffigures
+
+\subsection{Third party libraries}
+
+\verb|arduino.h|, \verb|LiquidCrystal_I2C.h|, \verb|IRremote.h|, \verb|Wire.h|, \verb|dht.h|, \verb|SPI.h|, \verb|MFRC522.h|, \verb|WiFi.h|, \verb|WiFiClient.h|, \verb|BlynkSimpleEsp32.h|, \verb|Servo.h| and \verb|BluetoothSerial.h|
+
+
 
 \subsection{Test Comments}
 Test 1
