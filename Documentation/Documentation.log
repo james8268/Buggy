@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2019.2.19)  21 DEC 2020 16:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2019.2.19)  22 DEC 2020 16:07
 entering extended mode
 **Documentation.tex
 (Documentation.tex
@@ -432,32 +432,46 @@ File: read_message.png Graphic file (type png)
 Package pdftex.def Info: read_message.png used on input line 122.
 (pdftex.def)             Requested size: 252.01471pt x 113.81102pt.
  [4 <./blynk1.png> <./blynk2.png> <./multicore.png> <./main_loop.png> <./read_m
-essage.png>] <BLE_term.png, id=121, 722.7pt x 1284.8pt>
+essage.png>]
+<red_led_disconnect.png, id=121, 722.7pt x 1284.8pt>
+File: red_led_disconnect.png Graphic file (type png)
+
+<use red_led_disconnect.png>
+Package pdftex.def Info: red_led_disconnect.png used on input line 150.
+(pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
+ <red_led.jpg, id=122, 4047.12pt x 3035.34pt>
+File: red_led.jpg Graphic file (type jpg)
+
+<use red_led.jpg>
+Package pdftex.def Info: red_led.jpg used on input line 151.
+(pdftex.def)             Requested size: 113.75085pt x 142.2349pt.
+ [5 <./red_led_disconnect.png> <./red_led.jpg>] [6]
+<BLE_term.png, id=136, 722.7pt x 1284.8pt>
 File: BLE_term.png Graphic file (type png)
-
-<use BLE_term.png>
-Package pdftex.def Info: BLE_term.png used on input line 172.
+ <use BLE_term.png>
+Package pdftex.def Info: BLE_term.png used on input line 237.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
- <blynk_term2.png, id=122, 752.8125pt x 1339.0025pt>
+
+<blynk_term2.png, id=137, 752.8125pt x 1339.0025pt>
 File: blynk_term2.png Graphic file (type png)
-
-<use blynk_term2.png>
-Package pdftex.def Info: blynk_term2.png used on input line 173.
+ <use blynk_term2.png>
+Package pdftex.def Info: blynk_term2.png used on input line 238.
 (pdftex.def)             Requested size: 113.8015pt x 142.26457pt.
- <blynk_term.png, id=123, 752.8125pt x 1339.0025pt>
+
+<blynk_term.png, id=138, 752.8125pt x 1339.0025pt>
 File: blynk_term.png Graphic file (type png)
-
-<use blynk_term.png>
-Package pdftex.def Info: blynk_term.png used on input line 174.
+ <use blynk_term.png>
+Package pdftex.def Info: blynk_term.png used on input line 239.
 (pdftex.def)             Requested size: 113.8015pt x 142.26457pt.
- <BLE_term2.png, id=124, 722.7pt x 1284.8pt>
-File: BLE_term2.png Graphic file (type png)
 
-<use BLE_term2.png>
-Package pdftex.def Info: BLE_term2.png used on input line 175.
+<BLE_term2.png, id=139, 722.7pt x 1284.8pt>
+File: BLE_term2.png Graphic file (type png)
+ <use BLE_term2.png>
+Package pdftex.def Info: BLE_term2.png used on input line 240.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
- [5] (Documentation.lof [6 <./BLE_term.png> <./blynk_term2.png> <./blynk_term.p
-ng> <./BLE_term2.png>])
+
+(Documentation.lof [7 <./BLE_term.png> <./blynk_term2.png> <./blynk_term.png> <
+./BLE_term2.png>])
 \tf@lof=\write4
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
@@ -465,40 +479,40 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
- [7]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 272.
  [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 272.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
  (Documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 272.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 272.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
 Package rerunfilecheck Info: File `Documentation.out' has not changed.
 (rerunfilecheck)             Checksum: A124C89A490880C2304F6AB90096AA9D;836.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 272.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
  ) 
 Here is how much of TeX's memory you used:
- 6770 strings out of 493636
- 101590 string characters out of 3134829
- 193437 words of memory out of 3000000
- 10063 multiletter control sequences out of 15000+200000
+ 6785 strings out of 493636
+ 101835 string characters out of 3134829
+ 196437 words of memory out of 3000000
+ 10071 multiletter control sequences out of 15000+200000
  8062 words of font info for 29 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 29i,6n,32p,1327b,377s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,8n,32p,1327b,377s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/Streamed Applications/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmmi10.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.
@@ -507,9 +521,9 @@ ons/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/Stre
 amed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progr
 am Files/Streamed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10
 .pfb>
-Output written on Documentation.pdf (8 pages, 4176205 bytes).
+Output written on Documentation.pdf (9 pages, 6647366 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

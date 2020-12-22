@@ -133,7 +133,7 @@ The variety of testing methods used from start to finish have varied from unit a
 
 One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore crash. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver setup, if either one is blocked then the correct distance cannot be obtained and the buggy crashes. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. 
 
-///insert pic of unstable buggy message aswell as a chair leg infront of the ultrasound sensor with a distance reeding. 
+///insert pic of unstable buggy message aswell as a chair leg infront of the ultrasound sensor with a distance reading. 
 
  
 When the decision to add a IR remote which is able to control the buggy was made, initially there were issues. Noise from ambient light, other IR sources and even electrical signals within the breadboard caused overflow issues. Any command received from the IR remote would not be read and processed. 
@@ -145,25 +145,90 @@ What I found was happening is that any electrical signal to or from the ultrasou
 
 Of course loss of communication is a important problem. To combat this the ESP32 monitors WiFi/Bluetooth connection and if any connection is lost the ESP32 sends a signal to the Arduino Mega. This signal will stop the buggy and turn the front red LED light on. No message is sent to the mobile device as there is no connection so it would be pointless. When the connection is lost the LCD is also cleared. The ESP32 will attempt to restart the setup instructions to regain connection. 
 
-//// add photos os bluetooth disconnect with led lit up 
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5.0cm, width=4.0cm]{red_led_disconnect}
+	\includegraphics[height=5.0cm, width=4.0cm, angle=90, origin=c]{red_led}
+	\caption{Left: Mobile device connecting and then disconnecting from the buggy.}
+	\caption{Red LED on, after mobile device disconnects from buggy.}
+\end{figure} 
 
-Some basic tests on the accuracy of the ultrasound, temperature, humidity and water sensor were also conducted. When testing the accuracy of the ultrasound sensor a ruler was placed at the base of the sensor and a book was moved closer in intervals of 5cm starting from 120cm. The recorded result was then noted and compared against the actual result. 
+Some basic tests on the accuracy of the ultrasound, temperature, humidity and water sensor were also conducted. When testing the accuracy of the ultrasound sensor a ruler was placed at the base of the sensor and a book was moved closer in intervals of 5cm starting from 5cm to 90cm. The recorded result was then noted and compared against the actual result. 
 
-///Add photo of ultrasound setup and results. 
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Measured distance (cm) & Recorded distance (cm) & \verb|%| Error\\
+		\hline
+		 5 & 3 & 40 \\   
+		 10 & 7 & 30\\
+		 15 & 10 & 33 \\
+		 20 & 14 & 30\\
+		 25 & 17 & 32\\
+		 30 & 21 & 30\\
+		 35 & 23 & 34\\
+		 40 & 27 & 33\\
+		 45 & 30 & 33\\
+		 50 & 34 & 32\\
+		 55 & 37 & 33\\
+		 60 & 41 & 32\\
+		 65 & 44 & 32\\
+ 		 70 & 47 & 33\\
+		 75 & 51 & 32\\
+		 80 & 54 & 33\\
+		 85 & 58 & 32\\
+		 90 & 53 & 30\\
+		\hline
+	\end{tabular}
+	\caption{Table of figures for ultrasound sensor test.}
+\end{figure}
+
+The \verb|%| error is relatively constant throughout which in our case isn't a bad thing, as it will allow me to calibrate the distance output by applying an offset of approximately 30 \verb|%|. This being said the ultrasound sensor still provides the buggy with efficient feedback of the distance from obstacles so no calibration will take place. Calibration will just remain an option if needed in the future.  
+
+
+
 
 When It came to testing the temperature, ///////
 
-The water sensor was slightly different when it came to testing. The software is setup to provide a ranged output for the sensor reading (Empty, low, medium and High). These ranges can be calibrated in the source code, but I still tested the sensor to see how the difference in water levels affected the output. The sensor was split up into intervals and water is applied in cumulative segments. The output is then recorded, the output can be recalibrated depending on how the user wants it to be set up. 
-
-/// do water sensor test. 
+The water sensor was slightly different when it came to testing. The software is setup to provide a ranged output for the sensor reading (Empty, low, medium and High). These ranges can be calibrated in the source code, but I still tested the sensor to see how the difference in water levels affected the output. The sensor was split up into intervals and water is applied in cumulative segments. The output is then recorded, the output can be recalibrated depending on how sensitive the user wants the sensor to be. 
 
 
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Depth submerged (cm) & Recorded output\\
+		\hline
+        0.0 & Empty\\
+        0.5 & Low\\
+        1.0 & Low\\
+        1.5 & Medium\\
+        2.0 & Medium\\
+        2.5 & Medium\\
+        3.0 & High\\
+        3.5 & High\\
+        4.0 & High\\
+		\hline
+	\end{tabular}
+	\caption{Table of figures for water sensor test.}
+\end{figure}
+From the water sensor figures in the table above we can see that the water sensor is well calibrated for the situation of the buggy. As mentioned before the sensitivity of the water sensor can be changed in the source code by changing the analogue ranges for each corresponding level of empty, low, medium and high. 
 
 
 \section{Evaluation}
 
-//// pros and cons of WIFI and bluetooth.
-//// limitations to each distributive method.  
+There are some limitations to each method of distribution. When comparing the WiFi and Bluetooth methods when using the mobile device the Bluetooth is more favourable. This has been fed-back from the testing as well as personal experience. The WiFi and Bluetooth methods allow you to use the buggy to its full potential, however when it comes to usability the Bluetooth shines through. The reasons for this is that Bluetooth can be used anywhere and does not depend on a network connection like WiFi. The disconnection function is also instant when it come to using Bluetooth whereas there is a 10 second lag time for the buggy to realise it has disconnected from the local network when using the WiFi. 
+
+Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment this was unsuccessful.
+
+ 
+
+	
+
+\section{Code quality/remarks} ////this may get cut if needed as in more an non written task
+////discuss multi and single core methods in a ReadMe file!!!
+
 
 As you can see below when a command is sent from the Bluetooth terminal any messages responding to this command come back through the WiFi terminal and visa versa. 
 
@@ -174,11 +239,7 @@ As you can see below when a command is sent from the Bluetooth terminal any mess
 	\includegraphics[height=5.0cm, width=4.0cm]{blynk_term}
 	\includegraphics[height=5.0cm, width=4.0cm]{BLE_term2}
 	\caption{From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}			
-\end{figure}	
-
-\section{Code quality/remarks} ////this may get cut if needed as in more an non written task
-////discuss multi and single core methods in a ReadMe file!!!
-
+\end{figure}
 
 ///Layers- layered system to allow for easy maintenance, ease of updating/developing the system. ADD A DIAGRAM OF THE LAYERS HERE. 
 

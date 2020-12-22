@@ -10,4 +10,8 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Setup for ESP32 dual core WiFi and Bluetooth.}}{4}{figure.10}
 \contentsline {figure}{\numberline {11}{\ignorespaces Left: Arduino mega main loop}}{4}{figure.11}
 \contentsline {figure}{\numberline {12}{\ignorespaces Right: Read incoming message}}{4}{figure.12}
-\contentsline {figure}{\numberline {13}{\ignorespaces From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}}{6}{figure.13}
+\contentsline {figure}{\numberline {13}{\ignorespaces Left: Mobile device connecting and then disconnecting from the buggy.}}{5}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Red LED on, after mobile device disconnects from buggy.}}{5}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Table of figures for ultrasound sensor test.}}{6}{figure.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Table of figures for water sensor test.}}{6}{figure.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}}{7}{figure.17}
