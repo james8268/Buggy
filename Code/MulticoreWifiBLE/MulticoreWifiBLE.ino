@@ -2,20 +2,20 @@
 #include <Wire.h> 
 
 
-#define BLYNK_PRINT Serial
+#define BLYNK_PRINT Serial    //defines the mobile deivce as a serial terminal
 
 #include <WiFi.h>
-#include <WiFiClient.h>
+#include <WiFiClient.h>         //include the needed header files, including the Blynk library.
 #include <BlynkSimpleEsp32.h>
 
 
 
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)         //enable Bluetooth.
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
 
-String content = "";
+String content = "";   
 char character;
 
 char auth[]= "jVAGDLSq2_VTo2K_l74wrM509taT5Bty";  // author token allows the Blynk app to to link with this project.
@@ -67,22 +67,22 @@ void setup(){
   pinMode(lost, OUTPUT);
 
 //WiFi setup
-Blynk.begin(auth, ssid, pass);     // this is where the esp32 connects to the WiFi and Blynk Cloud. 
+Blynk.begin(auth, ssid, pass);     // this is where the esp32 connects to the WiFi and Blynk servers. 
 terminal.clear();                  // clear the mobile terminal
 Blynk.virtualWrite(V1, "Welcome MR Ravenhill, I'm ready to recieve commands");     // welcome message printed in the mobile terminal.
 
 
   //core setup
-xTaskCreatePinnedToCore(WiFiTask, "WiFi", 10000, NULL, 1, NULL,  1); 
-  delay(500); 
-xTaskCreatePinnedToCore(BluetoothTask, "Bluetooth", 10000, NULL, 1, NULL,  1); 
+xTaskCreatePinnedToCore(WiFiTask, "WiFi", 10000, NULL, 1, NULL,  1);   //create a task on one CPU that uses WiFi
+  delay(500);  
+xTaskCreatePinnedToCore(BluetoothTask, "Bluetooth", 10000, NULL, 1, NULL,  1);   //create another task on the remaining CPU to handle Bluetooth communication.
     delay(500); 
 }
 
 
-void WiFiTask( void * pvParameters ){
+void WiFiTask( void * pvParameters ){      // This is the WiFi communication loop 
 for(;;){
-    // put your main code here, to run repeatedly:
+
  Blynk.run();    //this runs all the Blynk functions 
 SerialInput();
 
@@ -93,7 +93,7 @@ SerialInput();
   }
 }
 
-void callback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
+void callback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){      //This callback is monitoring bluetooth connection.
   if(event == ESP_SPP_SRV_OPEN_EVT){
    
      digitalWrite(lost, LOW);
@@ -106,7 +106,7 @@ void callback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
   
 }
 
-void BluetoothTask( void * pvParameters ){
+void BluetoothTask( void * pvParameters ){   //This loop is responsible for Bluetooth communication 
   for(;;){
  if (SerialBT.available()){
       digitalWrite(transmit,HIGH);
@@ -123,7 +123,7 @@ void BluetoothTask( void * pvParameters ){
 
     }
 
-  SerialBT.register_callback(callback);
+  SerialBT.register_callback(callback);   //This checks the Bluetooth connection using the callback function. 
   }
 }
 

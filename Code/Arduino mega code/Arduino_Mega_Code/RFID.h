@@ -9,7 +9,7 @@ class RFIDclass   //setup the operation class
 public:
     RFIDclass();
 
-    void RFIDsetup();
+    void RFIDsetup();    //here is the setup function and challenge function. 
     bool RFID_challenge();
     
 };

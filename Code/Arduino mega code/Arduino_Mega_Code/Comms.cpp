@@ -11,31 +11,17 @@ char incomingChar;   // set the incoming serial as characters.
 Commsclass::Commsclass() {} // setup Bluetooth class  
 
 void Commsclass::SETUP() { //setup function
-  Serial.begin(9600);        // serial port baud rate 9600
-  /*
-  Serial.println("||   / |  / /                                                        /|    //| |             ");
-Serial.println("||  /  | / /  ___     //  ___      ___      _   __      ___         //|   // | |     __     ");
-Serial.println("|| / /||/ / //___) ) // //   ) ) //   ) ) // ) )  ) ) //___) )     // |  //  | |   //  ) )  ");
-Serial.println("||/ / |  / //       // //       //   / / // / /  / / //           //  | //   | |  //        ");
-Serial.println("|  /  | / ((____   // ((____   ((___/ / // / /  / / ((____       //   |//    | | //         ");
-Serial.println("");
-Serial.println("");
-Serial.println("    //   ) )                                                         ");
-Serial.println("   //___/ /   ___              ___       __     / __     ( ) // //   ");
-Serial.println("  / ___ (   //   ) ) ||  / / //___) ) //   ) ) //   ) ) / / // //    ");
-Serial.println(" //   | |  //   / /  || / / //       //   / / //   / / / / // //     ");
-Serial.println("//    | | ((___( (   ||/ / ((____   //   / / //   / / / / // //      ");
-*/
-Serial.println("Buggy Ready");
+Serial.begin(9600);        // serial port baud rate 9600
+
 
 }
 
-void Commsclass::read_message() { //read the serial function
+void Commsclass::read_message() { //this fuction will read incomming messages
 
 if (Serial.available()){      // if there is a serial avalible then read it's character values and call them the incomingchar
    char incomingChar = Serial.read();
 
-switch(incomingChar){     // switch function acts as a simplified if fucntion, it will output the functions from our motor class depending on the character given
+switch(incomingChar){     // switch function will perform the output desired depending on what command has been recieved
   
   case '1':
   Serial.println("REMOTE: forwards1");
@@ -66,7 +52,7 @@ switch(incomingChar){     // switch function acts as a simplified if fucntion, i
   Motor.right90();    // "r" read from the serial port will rotate the buggy right by approx 90 degrees dependant on environment
   break;
   case 'E':
-  Serial.println("ROAMING");  // "E" will be read from the serial port and will allow the buggy to roam freely.
+  Serial.println("ROAMING");  // "E" will be read from the serial port and will allow the buggy to roam autonomously.
   operation.roam();
   break;
 case 'T':         // "T" Will print the temperature and humidity

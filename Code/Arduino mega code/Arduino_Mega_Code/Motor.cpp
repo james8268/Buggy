@@ -24,7 +24,7 @@ void Motorclass::SETUP() { //setup function
 void Motorclass::forwards1() {  //function to move buggy forward at a low speed 
 
     digitalWrite(dirA, LOW);
-    analogWrite(pwmA, 100);         //both motors will move in the same direction, due to them being in a opposing setup on will be set to HIGH and the other LOW
+    analogWrite(pwmA, 100);         //both motors will move in the same direction, due to them being in a opposing setup. One will be set to HIGH and the other LOW
                                     // this will move both motors in a forwards direction in our global coordinates 
     digitalWrite(brA, LOW);
 
