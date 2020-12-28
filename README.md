@@ -130,5 +130,3 @@ Some security features have been added:
 * A tilt sensor- If the buggy tips over a tilt sensor will be activated. This will halt the buggy and sound a buzzer. This is activated when the buggy is in a remote or autonomous mode. A message will also be sent to the Bluetooth/WiFi terminal to notify the user.
 * Red LED- if connection between Bluetooth/WiFi drops then the Red LED located on the front of the buggy will turn on, the buggy will stop and anything written on the LCD screen is cleared. 
 
-
-Other security features such as encryption of any data sent between the buggy and the android/IOS device and a timout when the buggy is sat idle is in development. 
