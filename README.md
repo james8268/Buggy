@@ -13,6 +13,11 @@ There are 4 methods of controlling the buggy:
 ## Getting started. 
 When using any method of control, when then buggy is powered up it will request the user to present the correct RFID tag/card to the scanner. If the user does not present the correct RFID tag/card then access to the buggy will be denied. In order to be able to use the buggy the RFID tag/card must be presented. 
 
+![IMG_0766](https://user-images.githubusercontent.com/72760747/103211738-e5d98e80-4900-11eb-82b6-94415f369119.JPG)
+![IMG_0767](https://user-images.githubusercontent.com/72760747/103211737-e540f800-4900-11eb-8acf-1b2dc2e1cc09.JPG)
+![IMG_0768](https://user-images.githubusercontent.com/72760747/103211741-e5d98e80-4900-11eb-806f-392114accec2.JPG)
+
+Once access is granted the user can then control the buggy by any of the control methods. 
 
 ## How to use the IR Remote. 
 The IR remote is the most simple way of interacting with the buggy.
