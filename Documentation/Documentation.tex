@@ -59,6 +59,14 @@ The software for the Arduino has been set up into header (.h) files and source c
 
 In Figure 4 you can see how the system communicates between source files. The main system that operates the buggy can not be accessed without first passing the RFID security tag challenge. Further development to encrypt data that is sent between the mobile device and ESP32 needs to be done, a attempt to create a rotation 13 encryption has been attempted but needs to be placed correctly within the architecture of the system. 
 
+The Buggy can be controlled with various methods.
+\begin{itemize}
+	\item Bluetooth- The buggy can be controlled with a mobile device via Bluetooth. With this method the buggy can be used to its full potential and all functions are available, ithis includes influencing the direction the buggy moves, taking measurements and allowing the buggy to move around autonomously while avoiding obstacles. 
+	\item WiFi- The buggy can also be controlled with a mobile device via WiFi. This method also allows the user to use the buggy to its full potential. 
+	\item IR Remote- This works well when in close proximity to the buggy or when simultaneously using a mobile device to control the buggy. The limitation to this is that you can not control the buggy for its autonomous mode when using the IR remote.
+	\item PC- The serial monitor can also be used to control the buggy, but like the IR remote the buggy can not be controlled autonomously with this method. 
+	\item WiFi and Bluetooth- The ESP32 has a dual core CPU so Bluetooth and WiFi can be used on two separate mobile devices to control the buggy simultaneously.  
+\end{itemize}	
 
 
 \section{Implementation}
@@ -140,7 +148,7 @@ When the decision to add a IR remote which is able to control the buggy was made
 
 ///add IR overflow screenshot 
 
-What I found was happening is that any electrical signal to or from the ultrasound sensor was being spread throughout the pins ports in the breadboard (This is due to it being a small cheap breadboard) and this interfered with the IR LED electrical signal. To over come this the signal pin for the IR LED was relocated to the main Arduino mega board, This reduced the noise considerably.  
+What I found was happening is that any electrical signal to or from the ultrasound sensor was being spread throughout the pin ports in the breadboard (This is due to it being a small cheap breadboard) and this interfered with the IR LED electrical signal. To over come this the signal pin for the IR LED was relocated to the main Arduino mega board, This reduced the noise considerably.  
 
 
 Of course loss of communication is a important problem. To combat this the ESP32 monitors WiFi/Bluetooth connection and if any connection is lost the ESP32 sends a signal to the Arduino Mega. This signal will stop the buggy and turn the front red LED light on. No message is sent to the mobile device as there is no connection so it would be pointless. When the connection is lost the LCD is also cleared. The ESP32 will attempt to restart the setup instructions to regain connection. 
@@ -218,10 +226,15 @@ From the water sensor figures in the table above we can see that the water senso
 
 \section{Evaluation}
 
-There are some limitations to each method of distribution. When comparing the WiFi and Bluetooth methods when using the mobile device the Bluetooth is more favourable. This has been fed-back from the testing as well as personal experience. The WiFi and Bluetooth methods allow you to use the buggy to its full potential, however when it comes to usability the Bluetooth shines through. The reasons for this is that Bluetooth can be used anywhere and does not depend on a network connection like WiFi. The disconnection function is also instant when it come to using Bluetooth whereas there is a 10 second lag time for the buggy to realise it has disconnected from the local network when using the WiFi. 
+There are some limitations to each method of distribution. When comparing the WiFi and Bluetooth methods when using the mobile device the Bluetooth is more favourable. This has been fed-back from the testing as well as personal experience. The WiFi and Bluetooth methods allow you to use the buggy to its full potential, however when it comes to usability the Bluetooth shines through. The reasons for this is that Bluetooth can be used anywhere and does not depend on a network connection like WiFi. The disconnection function is also instant when it come to using Bluetooth whereas there is a 10 second delay time for the buggy to realise it has disconnected from the local network when using the WiFi. 
 
-Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment this was unsuccessful.
+Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment the buggy stopped roaming around autonomously when no such command was given. 
 
+The difference in using the IR remote and a mobile device is great. When you are using the mobile device, you can control to buggy from a different room if you wanted to, whereas the user is unable to do this with the IR remote. The IR remote can however be used simultaneously with a mobile device, so two people can control the buggy at the same time. This is useful as if there is an issue with the IR remote then the buggy can still be controlled with the mobile device or visa versa. 
+
+When using the buggy in a Bluetooth mode, two devices can not be connected to the buggy. However when using the dual-core capability of the ESP32 (with one core setup using WiFi and the other Bluetooth) two mobile devices can be connected. This works well however, any messages sent back to the mobile devices from the buggy can get scrambled. This means that if the first mobile device sends a command to the buggy, the returning message will be delivered to the other device. There are positives and negatives for this. One positive is that it allows the other user to know what is happening with the buggy but the one that issues the command does not know if the command has been executed other than by physically watching the buggy. 
+
+ 
  
 
 	
@@ -242,22 +255,6 @@ As you can see below when a command is sent from the Bluetooth terminal any mess
 \end{figure}
 
 ///Layers- layered system to allow for easy maintenance, ease of updating/developing the system. ADD A DIAGRAM OF THE LAYERS HERE. 
-
-
-\section{Demonstration}
-////film the video and then refer to it for the following subsections
-
-
-\subsection{Distribution}
-///Define what a distributed system is 
-
-\subsection{Interactive}
-///Define what an interactive system is
-
-\subsection{Performance}
-
-
-
 
 
 
