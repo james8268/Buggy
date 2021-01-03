@@ -9,6 +9,16 @@ There are 4 methods of controlling the buggy:
 * WiFi
 * Direclty through the PC serial monitor. 
 
+
+## Getting started. 
+When using any method of control, when then buggy is powered up it will request the user to present the correct RFID tag/card to the scanner. If the user does not present the correct RFID tag/card then access to the buggy will be denied. In order to be able to use the buggy the RFID tag/card must be presented. 
+
+![IMG_0766](https://user-images.githubusercontent.com/72760747/103211738-e5d98e80-4900-11eb-82b6-94415f369119.JPG)
+![IMG_0767](https://user-images.githubusercontent.com/72760747/103211737-e540f800-4900-11eb-8acf-1b2dc2e1cc09.JPG)
+![IMG_0768](https://user-images.githubusercontent.com/72760747/103211741-e5d98e80-4900-11eb-806f-392114accec2.JPG)
+
+Once access is granted the user can then control the buggy by any of the control methods. 
+
 ## How to use the IR Remote. 
 The IR remote is the most simple way of interacting with the buggy.
 
@@ -97,13 +107,10 @@ This will then connect you to the ESP32 network and allow you to control the bug
 
 
 ## Using the Serial monitor to control the buggy.
-This method has limitations, for example the buggy must stay plugged into the laptop/PC so limites mobility. However an ESP32 device is not required so connection issues (if there are any) are non existent. This method is very useful for running quick tests to see how the buggy operates without having to leave your chair, you can just prop the buggy up to remove contact between the wheels and the floor. 
+This method has limitations, for example the buggy must stay plugged into the laptop/PC so limites mobility. However an ESP32 device is not required so there are no connection issues. This method is very useful for running quick tests to see how the buggy operates without having to leave your chair, you can just prop the buggy up to remove contact between the wheels and the floor. 
 
 Some functions are limited also, Roaming autonomously is not recomended as the board has to be manually reset with the reset button on the arduino board. 
 
-In order to use the serial monitor to control the buggy this protion of code below must be uncommented (Remove \// before each line) and uploaded to the arduino board. If any other method it used this must be commented out by placing \// before each line.
-
-![code](https://user-images.githubusercontent.com/72760747/101795454-d506db80-3aff-11eb-90eb-6f79e9e3250c.png)
 
 You can see below when commands are sent through the command line in the serial monitor window you will still recieve the feedback from the buggy. 
 
@@ -123,5 +130,3 @@ Some security features have been added:
 * A tilt sensor- If the buggy tips over a tilt sensor will be activated. This will halt the buggy and sound a buzzer. This is activated when the buggy is in a remote or autonomous mode. A message will also be sent to the Bluetooth/WiFi terminal to notify the user.
 * Red LED- if connection between Bluetooth/WiFi drops then the Red LED located on the front of the buggy will turn on, the buggy will stop and anything written on the LCD screen is cleared. 
 
-
-Other security features such as encryption of any data sent between the buggy and the android/IOS device and a timout when the buggy is sat idle is in development. 
