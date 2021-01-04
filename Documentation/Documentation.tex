@@ -124,7 +124,7 @@ The ESP32 is a Dual core micro-controller and in theory can be used for a combin
 
 Looking at the figure below you can see the main loop for the Arduino mega. The commands here are reading the serial monitor when the buggy is connected to the PC as well as the IR remote control reader and the ESP32 reader (this reads messages from the mobile device). Other commands that monitor the tilt sensor and the Wifi/Bluetooth connection are at the bottom of Figure 6. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[]{main_loop}
 \includegraphics[height=4cm]{read_message}
@@ -134,19 +134,31 @@ Looking at the figure below you can see the main loop for the Arduino mega. The 
 
 When a command is received from the mobile device it will enter a \verb|switch| loop, here is where commands are executed. each command corresponds to a function which exist in other source code files.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{layer}
+	\caption{Layer diagram of the Buggies distributed system.}
+
+\end{figure}
+
+	///Layers- layered system to allow for easy maintenance, ease of updating/developing the system. ADD A DIAGRAM OF THE LAYERS HERE. 
 
 \section{Testing}
 
 The variety of testing methods used from start to finish have varied from unit and integration testing to acceptance and regression testing. The unit testing has taken place when a new operation/function has been added to the source code and is performed by myself for verification. The integration tests have then been performed by others to make sure that the new function works within the rest of the system and performs how it is expected to perform (acceptance testing). As the project has developed regression testing has been used to verify that any changes have not affected the prior system.   
 
-One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore crash. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver setup, if either one is blocked then the correct distance cannot be obtained and the buggy crashes. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. 
+One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore crash. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver setup, if either one is blocked then the correct distance cannot be obtained and the buggy collides with the obstacle. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. Initially the USS was fixed and when an obstacle was detected the buggy was set to turn left as a default. Since placing the USS on a servo motor it has become better at sensing obstacles and making decisions on which direction is best to move in before colliding with an obstacle. 
 
-///insert pic of unstable buggy message aswell as a chair leg infront of the ultrasound sensor with a distance reading. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5.0cm, width=4.0cm]{cover}
+	\includegraphics[height=5.0cm, width=4.0cm]{unstable}
+	\caption{Left: Covering receiver/transmitter on approach to an obstacle and the USS showing a incorrect distance of 869CM.}
+	\caption{Right: Unstable message displayed when buggy is tilted.}
+\end{figure}
 
  
 When the decision to add a IR remote which is able to control the buggy was made, initially there were issues. Noise from ambient light, other IR sources and even electrical signals within the breadboard caused overflow issues. Any command received from the IR remote would not be read and processed. 
-
-///add IR overflow screenshot 
 
 What I found was happening is that any electrical signal to or from the ultrasound sensor was being spread throughout the pin ports in the breadboard (This is due to it being a small cheap breadboard) and this interfered with the IR LED electrical signal. To over come this the signal pin for the IR LED was relocated to the main Arduino mega board, This reduced the noise considerably.  
 
@@ -234,27 +246,24 @@ The difference in using the IR remote and a mobile device is great. When you are
 
 When using the buggy in a Bluetooth mode, two devices can not be connected to the buggy. However when using the dual-core capability of the ESP32 (with one core setup using WiFi and the other Bluetooth) two mobile devices can be connected. This works well however, any messages sent back to the mobile devices from the buggy can get scrambled. This means that if the first mobile device sends a command to the buggy, the returning message will be delivered to the other device. There are positives and negatives for this. One positive is that it allows the other user to know what is happening with the buggy but the one that issues the command does not know if the command has been executed other than by physically watching the buggy. 
 
- 
- 
+As you can see below when a command is sent from the Bluetooth terminal any messages responding to this command come back through the WiFi terminal and visa versa. 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=5.0cm, width=4.0cm]{BLE_term}
+		\includegraphics[height=5.0cm, width=4.0cm]{blynk_term2}
+		\includegraphics[height=5.0cm, width=4.0cm]{blynk_term}
+		\includegraphics[height=5.0cm, width=4.0cm]{BLE_term2}
+		\caption{From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}			
+	\end{figure}
+	
 
 	
 
-\section{Code quality/remarks} ////this may get cut if needed as in more an non written task
-////discuss multi and single core methods in a ReadMe file!!!
+\section{Code quality/remarks}
 
 
-As you can see below when a command is sent from the Bluetooth terminal any messages responding to this command come back through the WiFi terminal and visa versa. 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[height=5.0cm, width=4.0cm]{BLE_term}
-	\includegraphics[height=5.0cm, width=4.0cm]{blynk_term2}
-	\includegraphics[height=5.0cm, width=4.0cm]{blynk_term}
-	\includegraphics[height=5.0cm, width=4.0cm]{BLE_term2}
-	\caption{From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}			
-\end{figure}
-
-///Layers- layered system to allow for easy maintenance, ease of updating/developing the system. ADD A DIAGRAM OF THE LAYERS HERE. 
 
 
 
