@@ -11,10 +11,10 @@
 \contentsline {figure}{\numberline {11}{\ignorespaces Left: Arduino mega main loop}}{4}{figure.11}
 \contentsline {figure}{\numberline {12}{\ignorespaces Right: Read incoming message}}{4}{figure.12}
 \contentsline {figure}{\numberline {13}{\ignorespaces Layer diagram of the Buggies distributed system.}}{5}{figure.13}
-\contentsline {figure}{\numberline {14}{\ignorespaces Left: Covering receiver/transmitter on approach to an obstacle and the USS showing a incorrect distance of 869CM.}}{5}{figure.14}
-\contentsline {figure}{\numberline {15}{\ignorespaces Right: Unstable message displayed when buggy is tilted.}}{5}{figure.15}
+\contentsline {figure}{\numberline {14}{\ignorespaces Left: Covering receiver/transmitter on approach to an obstacle and the USS showing a incorrect distance of 869CM.}}{6}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Right: Unstable message displayed when buggy is tilted.}}{6}{figure.15}
 \contentsline {figure}{\numberline {16}{\ignorespaces Left: Mobile device connecting and then disconnecting from the buggy.}}{6}{figure.16}
 \contentsline {figure}{\numberline {17}{\ignorespaces Red LED on, after mobile device disconnects from buggy.}}{6}{figure.17}
-\contentsline {figure}{\numberline {18}{\ignorespaces Table of figures for ultrasound sensor test.}}{6}{figure.18}
+\contentsline {figure}{\numberline {18}{\ignorespaces Table of figures for ultrasound sensor test.}}{7}{figure.18}
 \contentsline {figure}{\numberline {19}{\ignorespaces Table of figures for water sensor test.}}{7}{figure.19}
 \contentsline {figure}{\numberline {20}{\ignorespaces From Left to Right: Bluetooth terminal giving commands. WiFi terminal receiving messages. WiFi terminal sending commands. Bluetooth terminal receiving messages.}}{8}{figure.20}

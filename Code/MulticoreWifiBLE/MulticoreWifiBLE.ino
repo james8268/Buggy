@@ -20,14 +20,14 @@ char character;
 
 char auth[]= "jVAGDLSq2_VTo2K_l74wrM509taT5Bty";  // author token allows the Blynk app to to link with this project.
 
-char ssid[]="VM9234142";    //internet SSID and passwork. 
+char ssid[]="VM9234142";    //internet SSID and password. 
 char pass[]= "hgyb9tqPdhfw";
 
 WidgetTerminal terminal(V1);   // declares the terminal is linked to the virtual pin 1.
 
 BluetoothSerial SerialBT;
 
-#define transmit 18   // pin 18 sends a signal to the Arduino 
+#define transmit 18   // pin 18 sends a signal to the Arduino when any transmition is occuring.
 #define lost 19       // pin 19 sends a signal to the arduino if the WiFi connection is lost, this allows the buggy to stop moving. 
 
 
@@ -60,7 +60,7 @@ void SerialInput() {
 
 
 void setup(){
-  //Bluetooth setuo 
+  //Bluetooth setup 
   Serial.begin(9600); 
   SerialBT.begin("ESP32test"); //Bluetooth device name 
   pinMode(transmit,OUTPUT);

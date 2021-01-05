@@ -9,7 +9,7 @@ class operationclass   //setup the operation class
 public:
     operationclass();
 
-    void roam();          // the functions below are explained in the operation.cpp file. 
+    void roam();          // the functions below are explained in the operation.cpp file. They are relatively self explanitory. 
     void servl();
     void servr();
     void servc();

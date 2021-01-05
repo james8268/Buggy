@@ -1,6 +1,6 @@
 // This is the main code, It is uploaded to the Arduino Mega. It contains the setup functions for specific libraries. 
 
-// taken baud rates:9600(bluetooth), 4800 (Ultrasound)
+// used baud rates: 9600(ESP32), 4800 (Ultrasound)
 
 #include "Arduino.h"
 #include "Motor.h"

@@ -141,7 +141,7 @@ When a command is received from the mobile device it will enter a \verb|switch| 
 
 \end{figure}
 
-	///Layers- layered system to allow for easy maintenance, ease of updating/developing the system. ADD A DIAGRAM OF THE LAYERS HERE. 
+This layered system allows for easy maintenance, ease of updating/developing of the system. The first layer of the system is the communication to and from the ESP32 and the mobile device. This will consist of commands for a desired operation/function or a message sent to the mobile device. The second layer is where the data is then communicated between the ESP32 to the Arduino mega. The ESP32 acts as a relay for communication. When the IR remote is in use the first two layers are not present ans the IR LED communicates directly to the Arduino mega. The final two layers are responsible for performing the desired operation or function depending on want command has been given, the results are then communicated back to the user on the mobile device or on the LCD screen.  
 
 \section{Testing}
 
@@ -242,7 +242,7 @@ There are some limitations to each method of distribution. When comparing the Wi
 
 Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment the buggy stopped roaming around autonomously when no such command was given. 
 
-The difference in using the IR remote and a mobile device is great. When you are using the mobile device, you can control to buggy from a different room if you wanted to, whereas the user is unable to do this with the IR remote. The IR remote can however be used simultaneously with a mobile device, so two people can control the buggy at the same time. This is useful as if there is an issue with the IR remote then the buggy can still be controlled with the mobile device or visa versa. 
+The combination of using the IR remote and a mobile device is a great feature. When you are using the mobile device, you can control to buggy from a different room if you wanted to, whereas the user is unable to do this with the IR remote. The IR remote can however be used simultaneously with a mobile device, so two people can control the buggy at the same time. This is useful as if there is an issue with the IR remote then the buggy can still be controlled with the mobile device or visa versa. 
 
 When using the buggy in a Bluetooth mode, two devices can not be connected to the buggy. However when using the dual-core capability of the ESP32 (with one core setup using WiFi and the other Bluetooth) two mobile devices can be connected. This works well however, any messages sent back to the mobile devices from the buggy can get scrambled. This means that if the first mobile device sends a command to the buggy, the returning message will be delivered to the other device. There are positives and negatives for this. One positive is that it allows the other user to know what is happening with the buggy but the one that issues the command does not know if the command has been executed other than by physically watching the buggy. 
 
@@ -260,16 +260,16 @@ As you can see below when a command is sent from the Bluetooth terminal any mess
 
 	
 
-\section{Code quality/remarks}
+\section{Code remarks}
 
-
-
-
+The ReadMe file can be found in the \href{https://github.com/james8268/Buggy}{Github repository}. 
 
 
 \section{Conclusion}
+To summarise the key aims of the project were to create a buggy with reliable software which can be controlled with multiple methods while being scalable, maintainable and have a autonomous element. I believe that all of the set aims have been met. The buggy has been developed and redesigned due to feedback from multiple tests. Some challenges were faced along the way and future development should take place in making the buggy more secure, for example finishing the encryption of data send between the ESP32 and the mobile device. Future work on making the ultrasound sensor more accurate and responsive (to reduce collisions with complex obstacles). This could be achieved simply by adding multiple ultrasound sensors which work together in a distributed system or by substituting the ultrasound sensor for a light detection and ranging module (LIDAR). 
 
 
+\newpage
 \section{Reference Library and appendices}
 \subsection{Github account}
 

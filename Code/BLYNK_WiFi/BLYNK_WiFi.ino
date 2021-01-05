@@ -50,7 +50,6 @@ void SerialInput() {
 }
 
 void setup() {
-  // put your setup code here, to run once:
 Serial.begin(9600);
 Blynk.begin(auth, ssid, pass);     // this is where the esp32 connects to the WiFi and Blynk Cloud. 
 terminal.clear();                  // clear the mobile terminal
@@ -63,12 +62,11 @@ pinMode(lost, OUTPUT);
 
 
 void loop() {
-  // put your main code here, to run repeatedly:
  
  Blynk.run();    //this runs all the Blynk functions 
 SerialInput();
 
- if(WiFi.status() != WL_CONNECTED){digitalWrite(lost, HIGH);  //This monitors the WiFi connection. 
+ if(WiFi.status() != WL_CONNECTED){digitalWrite(lost, HIGH);  //This monitors the WiFi connection and a signal will be sent to the Arduino Mega is the WiFi connection is lost. 
  setup();}
  else{digitalWrite(lost, LOW);}
 
