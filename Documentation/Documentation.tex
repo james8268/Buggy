@@ -19,10 +19,10 @@ The main outcome at the beginning of the project was to create a simple and easy
 
 \begin{itemize}
 	\item Reliability - Unreliable connection/data transfer is a disadvantage and creates more problems. This will be explained later in more detail.  
-	\item  Multiple methods of communication - By using WiFi, Bluetooth, IR remote and PC. 
+	\item  Multiple methods of communication - By using WiFi, Bluetooth, IR remote and a PC. 
 	\item Scalability - There should be no software problems while developing the increased load of sensor/capabilities of the buggy. 
-	\item Maintainability - comments/documentation is clear to allow future developers to understand the project decisions as they happen. 
-	\item Autonomous - The buggy has the ability to move in and out of an autonomous mode.  
+	\item Maintainability - comments/documentation should be clear to allow future developers to understand the project decisions as they happen. 
+	\item Autonomous - The buggy must have the ability to move in and out of an autonomous mode.  
 \end{itemize}
 
 In this document short snips of the main code will be used in explanations. The main raw code can be found in the submitted documents or on my $\href{https://github.com/james8268/Buggy}{Github}$ account.
@@ -50,18 +50,18 @@ Below are two images of the main schematic of the buggy and a general communicat
 \caption{Right: Communication diagram of the Buggy}
 \end{figure}
 
-The software for the Arduino has been set up into header (.h) files and source code (.cpp) files where they are then called in the main code. There are many benefits to this such as the code is organised and tidy allowing future and current developers to debug with ease, addition of any new code can be easily integrated into the system and the code can be easily maintained. 
+The software for the Arduino has been set up into header (.h) files and source code (.cpp) files where they are then called in the main code. There are many benefits to this such as the code is organised and tidy. This allows future and current developers to debug with ease and addition of any new code can be easily integrated into the system while the code can be easily maintained. 
 
 \begin{figure}[H]
 	\includegraphics[width=17cm]{tabs}
 	\caption{Tabs for Arduino mega main code.}
 \end{figure}
 
-In Figure 4 you can see how the system communicates between source files. The main system that operates the buggy can not be accessed without first passing the RFID security tag challenge. Further development to encrypt data that is sent between the mobile device and ESP32 needs to be done, a attempt to create a rotation 13 encryption has been attempted but needs to be placed correctly within the architecture of the system. 
+In Figure 4 you can see how the system communicates between source files. The main system that operates the buggy can not be accessed without first passing the RFID security tag challenge. Further development to encrypt data that is sent between the mobile device and ESP32 needs to be done, a attempt to create a rotation 13 encryption has been attempted but needs to be placed correctly within the architecture of the system for it to work. 
 
 The Buggy can be controlled with various methods.
 \begin{itemize}
-	\item Bluetooth- The buggy can be controlled with a mobile device via Bluetooth. With this method the buggy can be used to its full potential and all functions are available, ithis includes influencing the direction the buggy moves, taking measurements and allowing the buggy to move around autonomously while avoiding obstacles. 
+	\item Bluetooth- The buggy can be controlled with a mobile device via Bluetooth. With this method the buggy can be used to its full potential and all functions are available, this includes influencing the direction of the buggy, taking measurements and allowing the buggy to move around autonomously while avoiding obstacles. 
 	\item WiFi- The buggy can also be controlled with a mobile device via WiFi. This method also allows the user to use the buggy to its full potential. 
 	\item IR Remote- This works well when in close proximity to the buggy or when simultaneously using a mobile device to control the buggy. The limitation to this is that you can not control the buggy for its autonomous mode when using the IR remote.
 	\item PC- The serial monitor can also be used to control the buggy, but like the IR remote the buggy can not be controlled autonomously with this method. 
@@ -71,29 +71,30 @@ The Buggy can be controlled with various methods.
 
 \section{Implementation}
 
-The software for the ESP32 comprised of individual sketch files which correspond to the use of WiFi or Bluetooth and for both due to the ESP32 being dual-core. Transmission control protocol (TCP) has been used when using WiFi instead of user diagram protocol (UDP) as is it more reliable, has Flow control so will not overwhelm receiver and has congestion control. A 'handshake' is used to initiate communication and then multiple packets are sent. TCP may not be as fast as UDP but due to the project objectives, reliability is preferred. This being said TCP is slower by a very small margin so is not a large hindrance on the usability of the system. 
+The software for the ESP32 comprised of individual source code files which correspond to the use of WiFi or Bluetooth and for both due to the ESP32 being dual-core. Transmission control protocol (TCP) has been used when using WiFi instead of user diagram protocol (UDP) as is it more reliable, has Flow control so will not overwhelm receiver and has congestion control. A 'handshake' is used to initiate communication and then multiple packets are sent. TCP may not be as fast as UDP but due to the project objectives, reliability is preferred. This being said TCP is slower by a very small margin so is not a large hindrance on the usability of the system. 
 
 
 A distributed system is a system which coordinates is actions by communicating between components via passing messages. The example for this project are listed and explained below.
 
 \begin{itemize}
-	\item Mobile device-ESP32-Arduino maga: The mobile device communicated to the ESP32 through WiFi (TCP) or Bluetooth, the message that is received by the ESP32 in then passed onto the Arduino mega by universal asynchronous receiver/transmitter (UART). UART is not a communication protocol but is rather a physical circuit where serial data is transmitted and received. This emphasises the reliability factor as no data will be lost over the wired connection. When the Arduino receives a message/command the source code will then action this. If feedback is to then be sent back to the Mobile device it will do so in reverse process, the data will be sent to the ESP32 via UART and then be sent to the mobile device by WiFi/Bluetooth. 
-	\item IR signal-Arduino: The IR LED input signal was initially received in the mini-bread board but this cause problems while testing due to high volumes of noise, it was therefore moved directly onto the Arduino mega. This therefore means that the IR remote can by used at the same time as the mobile device. The LCD used the I2C bus to print messages on the screen when temperature, humidity and water sensor readings are requested. 
-	\item  PC-Arduino: The PC is connected directly to the Arduino mega and is controlled using the serial monitor. It is very useful for conducting quick simple tests, if new code is added to the software for example. 
-	\item ESP32 disconnection feature: When the ESP32 disconnects from the WiFi router or Bluetooth then a signal will be sent to the Arduino mega. When this signal is recieved the buggy will stop, the LCD screen will be cleared and a red LED will light up to alert the user. 
+	\item Mobile device-ESP32-Arduino maga: The mobile device communicated to the ESP32 through WiFi (TCP) or Bluetooth, the message that is received by the ESP32 in then passed onto the Arduino mega by universal asynchronous receiver/transmitter (UART). UART is not a communication protocol but is rather a physical circuit where serial data is transmitted and received. This emphasises the reliability factor as no data will be lost over the wired connection. When the Arduino receives a message/command the source code will then action this. If a feedback message is needed it will be sent back to the Mobile device. This will happen in a reverse process, the data will be sent to the ESP32 via UART and then be sent to the mobile device by WiFi/Bluetooth. 
+	\item IR signal-Arduino: The IR LED input signal was initially received in the mini-bread board but this caused problems while testing due to high volumes of ambient noise, it was therefore moved directly onto the Arduino mega. This therefore means that the IR remote can by used at the same time as the mobile device. The LCD uses the I2C bus to print messages on the screen when temperature, humidity and water sensor readings are requested. 
+	\item  PC-Arduino: When the PC is connected directly to the Arduino mega and is controlled using the serial monitor it is very useful for conducting quick simple tests, if new code is added to the software for example. 
+	\item ESP32 disconnection feature: When the ESP32 disconnects from the WiFi router or Bluetooth then a signal will be sent to the Arduino mega. When this signal is received the buggy will stop, the LCD screen will be cleared and a red LED will light up to alert the user. 
 \end{itemize} 
 
 The interactivity between the buggy and the user (besides the obvious mobile device (WiFi/Bluetooth), PC communication and IR remote) consist of the following lower levels of interactiveness:
 
 \begin{itemize}
 	\item RFID scanner- This provides security as the RFID tag/card must be presented before any use of the buggy can take place. 
-	\item Tilt sensor- This sends a message to the mobile device/PC aswell as sounding an alarm to communicate to the user that the buggy has tipped over due to complex/uneven terrain. 
-	\item Disconnection LED- The red LED on the front of the buggy lights up when the WiFi/Bluetooth connection drops.  
-	\item Ultrasound sensor- This interacts with its surroundings to gain distance information. This information can then be actioned on accordingly, for example while in an autonomous mode distance information will be used to make decisions and avoid obstacles. 
+	\item Tilt sensor- This sends a message to the mobile device/PC as well as sounding an alarm to communicate to the user that the buggy has tipped over due to complex/uneven terrain. 
+	\item Disconnection LED- The red LED on the front of the buggy lights up when the WiFi/Bluetooth connection drops, if the buggy is moving around and a disconnection occurs the buggy is programmed to stop automatically.   
+	\item Ultrasound sensor- This interacts with its surroundings to gain distance information. This information can then be actioned accordingly, for example while in an autonomous mode distance information will be used to make decisions on which direction to turn and to avoid obstacles. 
 \end{itemize}
-These may seem like simple solutions but they are effective and prove effective during testing. They also provide a level of security to the buggy, for example if a new RFID tag is to be added it can only be done so by adding it to the source code.  
 
-when communications have been received from the mobile device by the ESP32 the ESP32 will receive this message and send it to the Arduino via UART as mentioned above. Any messages sent from the Arduino are communicated back in the same way. 
+These may seem like simple solutions to certain problems but they are efficient and prove effective during testing. They also provide a level of security to the buggy, for example if a new RFID tag is to be added it can only be done so by adding it to the source code.  
+
+When commands have been received from the mobile device by the ESP32, the ESP32 will receive this message and send it to the Arduino via UART as mentioned above. Any messages sent from the Arduino are communicated back in the same way. 
  
 \begin{figure}[H]
 	\centering
@@ -114,7 +115,7 @@ The way it has been used in my case is of a similar procedure but is not as stra
 	\caption{Right: ESP32 Blynk read meaasges from arduino and send to mobile device}
 \end{figure}
 
-The ESP32 is a Dual core micro-controller and in theory can be used for a combined Bluetooth and WiFi mode. As you can see from the figure below this was attempted and does work, however there is one issue issues. Because the procedure for sending messages back to the mobile devices are virtually the same for WiFi and Bluetooth the ESP32 has no distinction between which device it has received a command from and therefore which device to send messages back to.
+The ESP32 is a Dual core micro-controller and in theory can be used for a combined Bluetooth and WiFi mode. As you can see from the figure below this was attempted and does work, however there is one issue. Because the procedure for sending messages back to the mobile devices are virtually the same for WiFi and Bluetooth, the ESP32 has no distinction between which device it has received a command from and therefore which device to send messages back to.
 
 \begin{figure}[H]
 	\centering
@@ -122,7 +123,7 @@ The ESP32 is a Dual core micro-controller and in theory can be used for a combin
 	\caption{Setup for ESP32 dual core WiFi and Bluetooth.}
 \end{figure}
 
-Looking at the figure below you can see the main loop for the Arduino mega. The commands here are reading the serial monitor when the buggy is connected to the PC as well as the IR remote control reader and the ESP32 reader (this reads messages from the mobile device). Other commands that monitor the tilt sensor and the Wifi/Bluetooth connection are at the bottom of Figure 6. 
+Looking at the figure below you can see the main loop for the Arduino mega. The commands here are reading the serial monitor when the buggy is connected to the PC as well as the IR remote control reader and the ESP32 reader (this reads messages from the mobile device). Other commands that monitor the tilt sensor and the Wifi/Bluetooth connection are at the bottom of Figure 11. 
 
 \begin{figure}[H]
 \centering
@@ -132,7 +133,7 @@ Looking at the figure below you can see the main loop for the Arduino mega. The 
 \caption{Right: Read incoming message}
 \end{figure}
 
-When a command is received from the mobile device it will enter a \verb|switch| loop, here is where commands are executed. each command corresponds to a function which exist in other source code files.
+When a command is actioned by the Arduino Mega it will enter a \verb|switch| loop, here is where commands are executed. Each command corresponds to a function which exist in other source code files.
 
 \begin{figure}[H]
 	\centering
@@ -141,13 +142,13 @@ When a command is received from the mobile device it will enter a \verb|switch| 
 
 \end{figure}
 
-This layered system allows for easy maintenance, ease of updating/developing of the system. The first layer of the system is the communication to and from the ESP32 and the mobile device. This will consist of commands for a desired operation/function or a message sent to the mobile device. The second layer is where the data is then communicated between the ESP32 to the Arduino mega. The ESP32 acts as a relay for communication. When the IR remote is in use the first two layers are not present ans the IR LED communicates directly to the Arduino mega. The final two layers are responsible for performing the desired operation or function depending on want command has been given, the results are then communicated back to the user on the mobile device or on the LCD screen.  
+This layered system allows for easy maintenance and the system can be easily updated/developed. The first layer of the system is the communication to and from the ESP32 and the mobile device. This will consist of commands for a desired operation/function or a message sent to the mobile device. The second layer is where the data is then communicated between the ESP32 to the Arduino mega. The ESP32 acts as a relay for communication. When the IR remote is in use the first two layers are not present and the IR LED communicates directly to the Arduino mega. The final two layers are responsible for performing the desired operation or function depending on what command has been given, the results are then communicated back to the user on the mobile device or on the LCD screen.  
 
 \section{Testing}
 
 The variety of testing methods used from start to finish have varied from unit and integration testing to acceptance and regression testing. The unit testing has taken place when a new operation/function has been added to the source code and is performed by myself for verification. The integration tests have then been performed by others to make sure that the new function works within the rest of the system and performs how it is expected to perform (acceptance testing). As the project has developed regression testing has been used to verify that any changes have not affected the prior system.   
 
-One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore crash. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver setup, if either one is blocked then the correct distance cannot be obtained and the buggy collides with the obstacle. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. Initially the USS was fixed and when an obstacle was detected the buggy was set to turn left as a default. Since placing the USS on a servo motor it has become better at sensing obstacles and making decisions on which direction is best to move in before colliding with an obstacle. 
+One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore collide with obstacles. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver architecture, if either one is blocked then the correct distance cannot be obtained and the buggy collides with the obstacle. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. Initially the USS was fixed and when an obstacle was detected the buggy was set to turn left as a default. Since placing the USS on a servo motor it has become better at sensing obstacles and making decisions on which direction is best to move in before colliding with an obstacle. 
 
 \begin{figure}[H]
 	\centering
@@ -174,6 +175,7 @@ Of course loss of communication is a important problem. To combat this the ESP32
 \end{figure} 
 
 Some basic tests on the accuracy of the ultrasound, temperature, humidity and water sensor were also conducted. When testing the accuracy of the ultrasound sensor a ruler was placed at the base of the sensor and a book was moved closer in intervals of 5cm starting from 5cm to 90cm. The recorded result was then noted and compared against the actual result. 
+
 
 \begin{figure}[H]
 	\centering
@@ -238,9 +240,9 @@ From the water sensor figures in the table above we can see that the water senso
 
 \section{Evaluation}
 
-There are some limitations to each method of distribution. When comparing the WiFi and Bluetooth methods when using the mobile device the Bluetooth is more favourable. This has been fed-back from the testing as well as personal experience. The WiFi and Bluetooth methods allow you to use the buggy to its full potential, however when it comes to usability the Bluetooth shines through. The reasons for this is that Bluetooth can be used anywhere and does not depend on a network connection like WiFi. The disconnection function is also instant when it come to using Bluetooth whereas there is a 10 second delay time for the buggy to realise it has disconnected from the local network when using the WiFi. 
+There are some limitations to each method of distribution. When comparing the WiFi and Bluetooth methods when using the mobile device the Bluetooth is more favourable. This has been fed-back from testing as well as personal experience. The WiFi and Bluetooth methods allow you to use the buggy to its full potential, however when it comes to usability the Bluetooth shines through. The reasons for this is that Bluetooth can be used anywhere and does not depend on a network connection like WiFi. The disconnection function is also instant when it come to using Bluetooth whereas there is a 10 second delay time for the buggy to realise it has disconnected from the local network when using the WiFi. 
 
-Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment the buggy stopped roaming around autonomously when no such command was given. 
+Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop the buggy moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment the buggy stops roaming around autonomously when no such command is given. 
 
 The combination of using the IR remote and a mobile device is a great feature. When you are using the mobile device, you can control to buggy from a different room if you wanted to, whereas the user is unable to do this with the IR remote. The IR remote can however be used simultaneously with a mobile device, so two people can control the buggy at the same time. This is useful as if there is an issue with the IR remote then the buggy can still be controlled with the mobile device or visa versa. 
 
@@ -266,7 +268,7 @@ The ReadMe file can be found in the \href{https://github.com/james8268/Buggy}{Gi
 
 
 \section{Conclusion}
-To summarise the key aims of the project were to create a buggy with reliable software which can be controlled with multiple methods while being scalable, maintainable and have a autonomous element. I believe that all of the set aims have been met. The buggy has been developed and redesigned due to feedback from multiple tests. Some challenges were faced along the way and future development should take place in making the buggy more secure, for example finishing the encryption of data send between the ESP32 and the mobile device. Future work on making the ultrasound sensor more accurate and responsive (to reduce collisions with complex obstacles). This could be achieved simply by adding multiple ultrasound sensors which work together in a distributed system or by substituting the ultrasound sensor for a light detection and ranging module (LIDAR). 
+To summarise the key aims of the project were to create a buggy with reliable software which can be controlled with multiple methods while being scalable, maintainable and have a autonomous element. I believe that all of the set aims have been met. The buggy has been developed and redesigned due to feedback from multiple tests. Some challenges were faced along the way and future development should take place in making the buggy more secure, for example finishing the encryption of data sent between the ESP32 and the mobile device. Future work on making the ultrasound sensor more accurate and responsive (to reduce collisions with complex obstacles). This could be achieved simply by adding multiple ultrasound sensors which work together in a distributed system or by substituting the ultrasound sensor for a light detection and ranging module (LIDAR). 
 
 
 \newpage
