@@ -20,7 +20,7 @@ When using any method of control, when then buggy is powered up it will request 
 Once access is granted the user can then control the buggy by any of the control methods. 
 
 ## How to use the IR Remote. 
-The IR remote is the most simple way of interacting with the buggy.
+The IR remote is the most simple way of interacting with the buggy. This method does not use the ESP32 so this can be disconnected via th RX and TX pins.
 
 ![IMG_1905](https://user-images.githubusercontent.com/72760747/101768046-0326f400-3add-11eb-893b-139e595ca14c.JPG)
 
@@ -36,7 +36,7 @@ The function each button has is as follows:
 * \# - Stops the buggy before taking a water level reading. 
 
 ## How to control the buggy using Bluetooth low energy (BLE).
-When the Bluetooth code has been uploaded to the ESP32 you can connect an android device only (IOS does not support BLE).
+When the Bluetooth.ino code has been uploaded to the ESP32 you can connect an android device only (IOS does not support BLE).
 By going into the android device settings, "ESP32test" will be able to be paired with the device. 
 
 ![Screenshot_20201210-120007](https://user-images.githubusercontent.com/72760747/101770647-a4637980-3ae0-11eb-90b3-c1a65112bd18.png)
@@ -60,7 +60,7 @@ As you can see the buggy will do an initial assessment of its surroundings and c
 You can also request a temperature/humidity or water level reading in the remote control setup by sending "T" and "W" respectively. 
 
 ## Using WiFi to controll the buggy. 
-The ESP32 needs to be programmed in either the Blynk method which is highly customizable or by using a standard WiFi connection which controls the buggy using a WiFi terminal. (These are IOS friendly).
+The ESP32 needs to be programmed in either the Blynk method which is highly customizable or by using a standard WiFi connection which controls the buggy using a WiFi terminal. (These are IOS friendly). You must upload either the BLYNK_WiFi.ino or standard_wifi.ino to the ESP32 to communicate with the buggy via WiFi. 
 ### BLYNK_WiFi
 Blynk is a app which is extremely user friendly! It is highly customizable as you can add joy stick, buttons, sliders and much more. 
 When the ESP32 is connecting/connected to your network and to the Blynk server it will display a message when connected to the serial port.
@@ -108,7 +108,7 @@ This will then connect you to the ESP32 network and allow you to control the bug
 
 ## Using the Serial monitor to control the buggy.
 This method has limitations, for example the buggy must stay plugged into the laptop/PC so limites mobility. However an ESP32 device is not required so there are no connection issues. This method is very useful for running quick tests to see how the buggy operates without having to leave your chair, you can just prop the buggy up to remove contact between the wheels and the floor. 
-
+This method is similar to the IR remote in a sense that the ESP32 is not needed so the RX and TX pins can be disconnected. 
 Some functions are limited also, Roaming autonomously is not recomended as the board has to be manually reset with the reset button on the arduino board. 
 
 
