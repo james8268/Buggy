@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2019.2.19)  6 JAN 2021 12:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2019.2.19)  11 JAN 2021 22:06
 entering extended mode
 **Documentation.tex
 (Documentation.tex
@@ -392,100 +392,100 @@ Package pdftex.def Info: tabs.png used on input line 56.
 <bluetooth.png, id=75, 195.73125pt x 164.86594pt>
 File: bluetooth.png Graphic file (type png)
  <use bluetooth.png>
-Package pdftex.def Info: bluetooth.png used on input line 101.
+Package pdftex.def Info: bluetooth.png used on input line 102.
 (pdftex.def)             Requested size: 170.72682pt x 142.26744pt.
 
 <standard_wifi.png, id=76, 215.30438pt x 149.8097pt>
 File: standard_wifi.png Graphic file (type png)
  <use standard_wifi.png>
-Package pdftex.def Info: standard_wifi.png used on input line 102.
+Package pdftex.def Info: standard_wifi.png used on input line 103.
 (pdftex.def)             Requested size: 170.71936pt x 142.27495pt.
 
 [3 <./bluetooth.png> <./standard_wifi.png>]
 <blynk1.png, id=85, 286.82156pt x 162.6075pt>
 File: blynk1.png Graphic file (type png)
  <use blynk1.png>
-Package pdftex.def Info: blynk1.png used on input line 112.
+Package pdftex.def Info: blynk1.png used on input line 113.
 (pdftex.def)             Requested size: 170.72002pt x 142.27376pt.
 
 <blynk2.png, id=86, 210.7875pt x 137.7647pt>
 File: blynk2.png Graphic file (type png)
  <use blynk2.png>
-Package pdftex.def Info: blynk2.png used on input line 113.
+Package pdftex.def Info: blynk2.png used on input line 114.
 (pdftex.def)             Requested size: 170.72086pt x 142.27759pt.
 
 <multicore.png, id=87, 428.35031pt x 71.51718pt>
 File: multicore.png Graphic file (type png)
  <use multicore.png>
-Package pdftex.def Info: multicore.png used on input line 122.
+Package pdftex.def Info: multicore.png used on input line 123.
 (pdftex.def)             Requested size: 426.79366pt x 113.81215pt.
 
 <main_loop.png, id=88, 137.01187pt x 109.91063pt>
 File: main_loop.png Graphic file (type png)
  <use main_loop.png>
-Package pdftex.def Info: main_loop.png used on input line 130.
+Package pdftex.def Info: main_loop.png used on input line 131.
 (pdftex.def)             Requested size: 137.01154pt x 109.91034pt.
 
 <read_message.png, id=89, 210.03468pt x 94.85437pt>
 File: read_message.png Graphic file (type png)
  <use read_message.png>
-Package pdftex.def Info: read_message.png used on input line 131.
+Package pdftex.def Info: read_message.png used on input line 132.
 (pdftex.def)             Requested size: 252.01471pt x 113.81102pt.
 
-<layer.png, id=90, 196.48407pt x 229.60782pt>
+[4 <./blynk1.png> <./blynk2.png> <./multicore.png> <./main_loop.png> <./read_me
+ssage.png>] <layer.png, id=105, 196.48407pt x 229.60782pt>
 File: layer.png Graphic file (type png)
  <use layer.png>
-Package pdftex.def Info: layer.png used on input line 140.
+Package pdftex.def Info: layer.png used on input line 141.
 (pdftex.def)             Requested size: 196.48358pt x 229.60725pt.
- [4 <./blynk1.png> <./blynk2.png> <./multicore.png> <./main_loop.png> <./read_m
-essage.png>]
+
 <cover.jpg, id=106, 963.6pt x 1284.8pt>
 File: cover.jpg Graphic file (type jpg)
  <use cover.jpg>
-Package pdftex.def Info: cover.jpg used on input line 155.
+Package pdftex.def Info: cover.jpg used on input line 156.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
 
 <unstable.jpg, id=107, 963.6pt x 1284.8pt>
 File: unstable.jpg Graphic file (type jpg)
  <use unstable.jpg>
-Package pdftex.def Info: unstable.jpg used on input line 156.
+Package pdftex.def Info: unstable.jpg used on input line 157.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
  [5 <./layer.png>] <red_led_disconnect.png, id=115, 722.7pt x 1284.8pt>
 File: red_led_disconnect.png Graphic file (type png)
 
 <use red_led_disconnect.png>
-Package pdftex.def Info: red_led_disconnect.png used on input line 171.
+Package pdftex.def Info: red_led_disconnect.png used on input line 172.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
  <red_led.jpg, id=116, 4047.12pt x 3035.34pt>
 File: red_led.jpg Graphic file (type jpg)
 
 <use red_led.jpg>
-Package pdftex.def Info: red_led.jpg used on input line 172.
+Package pdftex.def Info: red_led.jpg used on input line 173.
 (pdftex.def)             Requested size: 113.75085pt x 142.2349pt.
  [6 <./cover.jpg> <./unstable.jpg> <./red_led_disconnect.png> <./red_led.jpg>] 
 [7] <BLE_term.png, id=132, 722.7pt x 1284.8pt>
 File: BLE_term.png Graphic file (type png)
 
 <use BLE_term.png>
-Package pdftex.def Info: BLE_term.png used on input line 255.
+Package pdftex.def Info: BLE_term.png used on input line 252.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
  <blynk_term2.png, id=133, 752.8125pt x 1339.0025pt>
 File: blynk_term2.png Graphic file (type png)
 
 <use blynk_term2.png>
-Package pdftex.def Info: blynk_term2.png used on input line 256.
+Package pdftex.def Info: blynk_term2.png used on input line 253.
 (pdftex.def)             Requested size: 113.8015pt x 142.26457pt.
  <blynk_term.png, id=134, 752.8125pt x 1339.0025pt>
 File: blynk_term.png Graphic file (type png)
 
 <use blynk_term.png>
-Package pdftex.def Info: blynk_term.png used on input line 257.
+Package pdftex.def Info: blynk_term.png used on input line 254.
 (pdftex.def)             Requested size: 113.8015pt x 142.26457pt.
  <BLE_term2.png, id=135, 722.7pt x 1284.8pt>
 File: BLE_term2.png Graphic file (type png)
 
 <use BLE_term2.png>
-Package pdftex.def Info: BLE_term2.png used on input line 258.
+Package pdftex.def Info: BLE_term2.png used on input line 255.
 (pdftex.def)             Requested size: 113.80379pt x 142.24985pt.
  [8 <./BLE_term.png> <./blynk_term2.png> <./blynk_term.png> <./BLE_term2.png>] 
 (Documentation.lof)
@@ -512,35 +512,37 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 341.
  [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 341.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
  (Documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 341.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 341.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
 Package rerunfilecheck Info: File `Documentation.out' has not changed.
 (rerunfilecheck)             Checksum: 1E23CF501B9B43F7B85B46E064723D88;591.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 341.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
  ) 
 Here is how much of TeX's memory you used:
- 6796 strings out of 493636
- 101966 string characters out of 3134829
+ 6799 strings out of 493636
+ 101994 string characters out of 3134829
  196437 words of memory out of 3000000
- 10079 multiletter control sequences out of 15000+200000
- 8062 words of font info for 29 fonts, out of 3000000 for 9000
+ 10080 multiletter control sequences out of 15000+200000
+ 8370 words of font info for 30 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 29i,8n,32p,1327b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,8n,32p,1347b,385s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/Streamed Applications/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi10.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/Streamed Applicati
-ons/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/Stre
-amed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progr
-am Files/Streamed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10
-.pfb>
-Output written on Documentation.pdf (10 pages, 7212266 bytes).
+s/cm/cmbx10.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/Streamed Applicat
+ions/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/Stre
+amed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
+ram Files/Streamed Applications/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7
+.pfb><C:/Program Files/Streamed Applications/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmtt10.pfb>
+Output written on Documentation.pdf (11 pages, 7219564 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 43 named destinations out of 1000 (max. 500000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

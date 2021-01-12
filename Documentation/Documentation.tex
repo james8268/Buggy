@@ -25,7 +25,7 @@ The main outcome at the beginning of the project was to create a simple and easy
 	\item Autonomous - The buggy must have the ability to move in and out of an autonomous mode.  
 \end{itemize}
 
-In this document short snips of the main code will be used in explanations. The main raw code can be found in the submitted documents or on my $\href{https://github.com/james8268/Buggy}{Github}$ account.
+In this document short snips of the main code will be used in explanations. The main raw code can be found in the submitted documents or on my $\href{https://github.com/james8268/Buggy}{Github}$ account. The demonstration video can be found on my Github also. 
  
 
 \section{Design}
@@ -71,7 +71,7 @@ The Buggy can be controlled with various methods.
 
 \section{Implementation}
 
-The software for the ESP32 comprised of individual source code files which correspond to the use of WiFi or Bluetooth and for both due to the ESP32 being dual-core. Transmission control protocol (TCP) has been used when using WiFi instead of user diagram protocol (UDP) as is it more reliable, has Flow control so will not overwhelm receiver and has congestion control. A 'handshake' is used to initiate communication and then multiple packets are sent. TCP may not be as fast as UDP but due to the project objectives, reliability is preferred. This being said TCP is slower by a very small margin so is not a large hindrance on the usability of the system. 
+The software for the ESP32 comprised of individual source code files which correspond to the use of WiFi or Bluetooth and for both due to the ESP32 being dual-core. Transmission control protocol (TCP) has been used when using WiFi instead of user diagram protocol (UDP) as is it more reliable, has flow control so will not overwhelm the receiver and has congestion control. A 'handshake' is used to initiate communication and then multiple packets are sent. TCP may not be as fast as UDP but due to the project objectives, reliability is preferred. This being said TCP is slower by a very small margin so is not a large hindrance on the usability of the system. 
 
 
 A distributed system is a system which coordinates is actions by communicating between components via passing messages. The example for this project are listed and explained below.
@@ -90,6 +90,7 @@ The interactivity between the buggy and the user (besides the obvious mobile dev
 	\item Tilt sensor- This sends a message to the mobile device/PC as well as sounding an alarm to communicate to the user that the buggy has tipped over due to complex/uneven terrain. 
 	\item Disconnection LED- The red LED on the front of the buggy lights up when the WiFi/Bluetooth connection drops, if the buggy is moving around and a disconnection occurs the buggy is programmed to stop automatically.   
 	\item Ultrasound sensor- This interacts with its surroundings to gain distance information. This information can then be actioned accordingly, for example while in an autonomous mode distance information will be used to make decisions on which direction to turn and to avoid obstacles. 
+	\item Temperature, humidity and water level sensor- All of these sensors are controlled by the user. A safety feature also exist if the buggy is moving and a water sensor reading is requested the buggy will first stop and then take the reading, this will reduce the risk of damaging the water sensor. 
 \end{itemize}
 
 These may seem like simple solutions to certain problems but they are efficient and prove effective during testing. They also provide a level of security to the buggy, for example if a new RFID tag is to be added it can only be done so by adding it to the source code.  
@@ -146,7 +147,7 @@ This layered system allows for easy maintenance and the system can be easily upd
 
 \section{Testing}
 
-The variety of testing methods used from start to finish have varied from unit and integration testing to acceptance and regression testing. The unit testing has taken place when a new operation/function has been added to the source code and is performed by myself for verification. The integration tests have then been performed by others to make sure that the new function works within the rest of the system and performs how it is expected to perform (acceptance testing). As the project has developed regression testing has been used to verify that any changes have not affected the prior system.   
+The variety of testing methods used from start to finish have varied from unit and integration testing to acceptance and regression testing. The unit testing has taken place when a new operation/function has been added to the source code and is performed by myself for verification. The integration tests have then been performed by others to make sure that the new function works within the rest of the system and performs how it is expected to perform (acceptance testing). As the project has developed regression testing has been used to verify that any changes have not affected the prior system. Tests with comments can be found in the appendices.
 
 One of the first problems discovered was with the ultrasound sensor (USS), in complex environments the USS would not recognise the correct distance and the buggy would therefore collide with obstacles. Complex environments such as chair legs and/or approaching a wall at a 45$^{\circ}$ angle. The reason for the USS difficulty in getting the correct distances is due to its transmitter-receiver architecture, if either one is blocked then the correct distance cannot be obtained and the buggy collides with the obstacle. For this reason, to reduce any damage to the hardware a tilt sensor was added. This feature when triggered will stop any movement of the buggy and will send a warning signal to the mobile device terminal. Initially the USS was fixed and when an obstacle was detected the buggy was set to turn left as a default. Since placing the USS on a servo motor it has become better at sensing obstacles and making decisions on which direction is best to move in before colliding with an obstacle. 
 
@@ -164,7 +165,7 @@ When the decision to add a IR remote which is able to control the buggy was made
 What I found was happening is that any electrical signal to or from the ultrasound sensor was being spread throughout the pin ports in the breadboard (This is due to it being a small cheap breadboard) and this interfered with the IR LED electrical signal. To over come this the signal pin for the IR LED was relocated to the main Arduino mega board, This reduced the noise considerably.  
 
 
-Of course loss of communication is a important problem. To combat this the ESP32 monitors WiFi/Bluetooth connection and if any connection is lost the ESP32 sends a signal to the Arduino Mega. This signal will stop the buggy and turn the front red LED light on. No message is sent to the mobile device as there is no connection so it would be pointless. When the connection is lost the LCD is also cleared. The ESP32 will attempt to restart the setup instructions to regain connection. 
+Any loss of communication is a important problem that must be resolved. To combat this the ESP32 monitors WiFi/Bluetooth connection and if any connection is lost the ESP32 sends a signal to the Arduino Mega. This signal will stop the buggy and turn the front red LED light on. No message is sent to the mobile device as there is no connection so it would be pointless. When the connection is lost the LCD is also cleared. The ESP32 will attempt to restart the setup instructions to regain connection. 
 
 \begin{figure}[H]
 	\centering
@@ -174,7 +175,7 @@ Of course loss of communication is a important problem. To combat this the ESP32
 	\caption{Red LED on, after mobile device disconnects from buggy.}
 \end{figure} 
 
-Some basic tests on the accuracy of the ultrasound, temperature, humidity and water sensor were also conducted. When testing the accuracy of the ultrasound sensor a ruler was placed at the base of the sensor and a book was moved closer in intervals of 5cm starting from 5cm to 90cm. The recorded result was then noted and compared against the actual result. 
+Some basic tests on the accuracy of the ultrasound and water sensor were also conducted. When testing the accuracy of the ultrasound sensor a ruler was placed at the base of the sensor and a book was moved closer in intervals of 5cm starting from 5cm to 90cm. The recorded result was then noted and compared against the actual result. 
 
 
 \begin{figure}[H]
@@ -209,10 +210,6 @@ Some basic tests on the accuracy of the ultrasound, temperature, humidity and wa
 The \verb|%| error is relatively constant throughout which in our case isn't a bad thing, as it will allow me to calibrate the distance output by applying an offset of approximately 30 \verb|%|. This being said the ultrasound sensor still provides the buggy with efficient feedback of the distance from obstacles so no calibration will take place. Calibration will just remain an option if needed in the future.  
 
 
-
-
-When It came to testing the temperature, ///////
-
 The water sensor was slightly different when it came to testing. The software is setup to provide a ranged output for the sensor reading (Empty, low, medium and High). These ranges can be calibrated in the source code, but I still tested the sensor to see how the difference in water levels affected the output. The sensor was split up into intervals and water is applied in cumulative segments. The output is then recorded, the output can be recalibrated depending on how sensitive the user wants the sensor to be. 
 
 
@@ -244,7 +241,7 @@ There are some limitations to each method of distribution. When comparing the Wi
 
 Using the IR remote and PC are quite similar, they are both slightly limited as can not be used to stop the buggy from roaming around autonomously. This is due to the architecture of the source code. The buggy exits the autonomous mode when the ESP32 communicates to the Arduino, obviously because we are not using the ESP32 while using the IR remote or PC serial monitor then there is no way of signalling the Arduino to stop the buggy moving around autonomously. An attempt however was made so the IR remote would be able to signal the Arduino to exit its autonomous mode when a signal is received by the IR LED. Unfortunately because there is still some IR noise that exists in the external environment the buggy stops roaming around autonomously when no such command is given. 
 
-The combination of using the IR remote and a mobile device is a great feature. When you are using the mobile device, you can control to buggy from a different room if you wanted to, whereas the user is unable to do this with the IR remote. The IR remote can however be used simultaneously with a mobile device, so two people can control the buggy at the same time. This is useful as if there is an issue with the IR remote then the buggy can still be controlled with the mobile device or visa versa. 
+The combination of using the IR remote and a mobile device is a great feature. When you are using the mobile device, you can control to buggy from a different room if you wanted to, whereas the user is unable to do this with the IR remote. The IR remote can however be used simultaneously with a mobile device, so two people can control the buggy at the same time. This is useful as if there is a connection issue with the IR remote then the buggy can still be controlled with the mobile device or visa versa. 
 
 When using the buggy in a Bluetooth mode, two devices can not be connected to the buggy. However when using the dual-core capability of the ESP32 (with one core setup using WiFi and the other Bluetooth) two mobile devices can be connected. This works well however, any messages sent back to the mobile devices from the buggy can get scrambled. This means that if the first mobile device sends a command to the buggy, the returning message will be delivered to the other device. There are positives and negatives for this. One positive is that it allows the other user to know what is happening with the buggy but the one that issues the command does not know if the command has been executed other than by physically watching the buggy. 
 
@@ -264,7 +261,8 @@ As you can see below when a command is sent from the Bluetooth terminal any mess
 
 \section{Code remarks}
 
-The ReadMe file can be found in the \href{https://github.com/james8268/Buggy}{Github repository}. 
+The ReadMe file can be found in the \href{https://github.com/james8268/Buggy}{Github repository} or along with the submitted documents. 
+The demonstration video can also be found on my Github account. 
 
 
 \section{Conclusion}
@@ -288,29 +286,24 @@ or copy and paste the URL into your web browser. https://github.com/james8268/Bu
 
 
 \subsection{Test Comments}
-Test 1
+\begin{itemize}
 
-Getting to grips with the Bluetooth, 28/10/2020: The device worked exactly how it should every command button worked as it should. The controls were very easy to understand and get to grips with which means I could use the buggy how I wanted with no issues. Only thing I would like to add is that the left and right turns be a little less aggressive. So instead of a 90 degree turn maybe a 45 instead. Also I would like the distance of the sensor to be displayed on the mobile device as well as the LCD screen on the buggy so I don’t have to be stood directly over the buggy to know this information, as I think this would make it more user friendly. Other than that, it was flawless.
 
-Test 2
+\item Test 1,Getting to grips with the Bluetooth, 28/10/2020: The device worked exactly how it should every command button worked as it should. The controls were very easy to understand and get to grips with which means I could use the buggy how I wanted with no issues. Only thing I would like to add is that the left and right turns be a little less aggressive. So instead of a 90 degree turn maybe a 45 instead. Also I would like the distance of the sensor to be displayed on the mobile device as well as the LCD screen on the buggy so I don’t have to be stood directly over the buggy to know this information, as I think this would make it more user friendly. Other than that, it was flawless.
 
-This test is like the last with a few minor changes. This time around the buggy is in a combined remote Bluetooth and autonomous mode. The autonomous element will allow the buggy to roam freely while avoiding obstacles.
+\item Test 2, This test is like the last with a few minor changes. This time around the buggy is in a combined remote Bluetooth and autonomous mode. The autonomous element will allow the buggy to roam freely while avoiding obstacles.
 
 Acting on the previous test a feature of being able to see the reading of the ultrasound sensor has now been added and can be viewed in the mobile device terminal as well as the turns being less harsh.
 
-Test 2.1, using the combined autonomous and Bluetooth mode, 04/11/2020: self-roaming was effective, the buggy avoided obstacles well, although had trouble once it was under a certain distance from complex obstacles. commands were easy to pick up and the buggy was easy to manoeuvre, although lag time could be reduced, or possibly a cut off after x number of commands. possibly introduce a short cut to speed one and/or options for varying stop times, so that when flustered a driver can take time to re-think.
+\item Test 2.1, using the combined autonomous and Bluetooth mode, 04/11/2020: self-roaming was effective, the buggy avoided obstacles well, although had trouble once it was under a certain distance from complex obstacles. commands were easy to pick up and the buggy was easy to manoeuvre, although lag time could be reduced, or possibly a cut off after x number of commands. possibly introduce a short cut to speed one and/or options for varying stop times, so that when flustered a driver can take time to re-think.
 
-Test 2.2, test is the same as previous (code remains the same as the last test), 05/11/2020: the buggy avoided the obstacles well however due to lag it made it difficult to manoeuvre, also would be much easier and efficient for the driver if there was a cut off command so that the user can re-access the situation and move from there.  
+\item Test 2.2, test is the same as previous (code remains the same as the last test), 05/11/2020: the buggy avoided the obstacles well however due to lag it made it difficult to manoeuvre, also would be much easier and efficient for the driver if there was a cut off command so that the user can re-access the situation and move from there.  
 
-Test 3
-
-The buggy now can roam around autonomously while avoiding obstacles and this can then be stopped and be used remotely again. It’s easy to switch between the two, using the mobile device terminal the "roam" hotkey enters the buggy into an autonomous mode(which can be seen when the android device is tilted on a landscape view and the screen will show more potential hotkeys). when any button/command is used in the terminal the buggy will then exit the autonomous mode and reverts to a remote mode. 
+\item Test 3, The buggy now can roam around autonomously while avoiding obstacles and this can then be stopped and be used remotely again. It’s easy to switch between the two, using the mobile device terminal the "roam" hotkey enters the buggy into an autonomous mode(which can be seen when the android device is tilted on a landscape view and the screen will show more potential hotkeys). when any button/command is used in the terminal the buggy will then exit the autonomous mode and reverts to a remote mode. 
 
 Test 3, testing combined autonomous and remote modes, 07/11/2020: I enjoyed the new features on the handset. The fact that the buggy now had a roam feature was very interesting. The fact it could now make decisions on what was in front of it and change the course on which it was travelling due to an object being in its way was fascinating. A cool feature would be if it could decide which way it wanted to turn. For instance, left or right depending on the amount of space it has either side, this depends on the amount ultrasound sensors it has available. All the other buttons worked well and did what I wanted when I asked it to. 
 
-Test 4
-
-A tilt sensor and servo motor have now been added, the use of WIFI connection is also up and running. Security measures have been added so if WIFI or Bluetooth connection is lost it will stop the buggy and turn on the front red LED. The servo motor allows the buggy to look left and right and then decide on which direction to move. The tilt sensor will monitor the buggy and if it capsizes or is flipped over it will stop the buggy and turn on a buzzer as well as notifying the user if in remote mode. 
+\item Test 4, A tilt sensor and servo motor have now been added, the use of WIFI connection is also up and running. Security measures have been added so if WIFI or Bluetooth connection is lost it will stop the buggy and turn on the front red LED. The servo motor allows the buggy to look left and right and then decide on which direction to move. The tilt sensor will monitor the buggy and if it capsizes or is flipped over it will stop the buggy and turn on a buzzer as well as notifying the user if in remote mode. 
 
 tests to be completed:
 \begin{itemize}
@@ -322,12 +315,9 @@ tests to be completed:
 \item test overall usability.
 \end{itemize}
 
-Test 4, 23/11/2020, testing the new obstacle avoidance system, tilt sensor and the temp, humidity and water sensor (all in Bluetooth mode): I found the new obstacle avoidance system was very good the Buggy made very accurate adjustments when it came to an obstruction. the fact it was able to stop look around and decide for itself which way to go was very impressive. the tilt sensor that has been integrated into the buggy was a very impressive feature. especially since you had the use of this both in autonomous mode and just when controlling the buggy, yourself. also having the bonus of a water, temp and humidity sensor on it was very good. being able to see those readings was a nice feature to have the use of. I also found the use of the IR remote to be far more simplistic and easier to use than the Bluetooth device I much preferred it. there was a few points I feel could do with some improvement. for instance, when you are on the move and then ask the buggy to perform a water reading it stops does this command but then waits for another new instructions. I would like it to instantly carry on with the previous command once the reading has been carried out with no need to give it further instruction from either the Bluetooth device or IR remote. other than that, the buggy was very good.
+\item Test 4, 23/11/2020, testing the new obstacle avoidance system, tilt sensor and the temp, humidity and water sensor (all in Bluetooth mode): I found the new obstacle avoidance system was very good the Buggy made very accurate adjustments when it came to an obstruction. the fact it was able to stop look around and decide for itself which way to go was very impressive. the tilt sensor that has been integrated into the buggy was a very impressive feature. especially since you had the use of this both in autonomous mode and just when controlling the buggy, yourself. also having the bonus of a water, temp and humidity sensor on it was very good. being able to see those readings was a nice feature to have the use of. I also found the use of the IR remote to be far more simplistic and easier to use than the Bluetooth device I much preferred it. there was a few points I feel could do with some improvement. for instance, when you are on the move and then ask the buggy to perform a water reading it stops does this command but then waits for another new instructions. I would like it to instantly carry on with the previous command once the reading has been carried out with no need to give it further instruction from either the Bluetooth device or IR remote. other than that, the buggy was very good.
 
-Test 5
-
-A RFID security tag has been added for security. 
-
+\item Test 5,A RFID security tag has been added for security. 
 Test 5, first time using WIFI set up and looking at disconnection issues. To then compare the WIFI and Bluetooth usability, 11/12/20: 
 
 Using BLYNK: was detailed and easy to use. Very easy to read the screen. All commands worked straight away. Liked the safety feature as well the fact you had to use a key fob to be able to use the buggy. Also, the fact it tells you on the buggy with a red led that it is disconnected from the internet and you no longer have control of the buggy. 
@@ -336,6 +326,8 @@ Standard WIFI:  wasn’t as easy to use. Didn’t like the fact every time you p
 
 Comparison to Bluetooth: WIFI was good but the Bluetooth was far better in my opinion as I can used the buggy anywhere at any time I like with ease. Whereas with the WIFI you must have that connected to be able to use the buggy. Also, the Bluetooth has the hot keys which made the whole experience of using the buggy more user friendly and easier. 
 
+\item Test 6, re-testing Standard WiFi, 09/01/2020: the WiFi app was much easier to use this time. would be good if there were hot keys like on the Bluetooth app for ease of use. also it was much better that it now gave an accurate temp, humidity and water reading on the screen not just a bunch of random numbers like before. I also see that the led light to indicate disconnection from the network worked now as well. Not just the information being displayed on the WiFi app that it had disconnected from the network but the LED working as well.
 
+\end{itemize} 
 
 \end{document}

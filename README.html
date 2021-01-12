@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="read-me-file-for-understanding-how-to-use-the-buggy">Read Me file for understanding how to use the Buggy.</h1>
+<h2 id="functionality-of-the-buggy">Functionality of the Buggy.</h2>
+<p>The Buggy has 3 main forms of interaction; a remote mode where the buggy can be controlled by the user through Bluetooth/WiFi/IR commands, an autonomous mode where the buggy is commanded by the user to roam freely without colliding into obstacles and a measuring mode where the buggy will move around autonomously but will take temperature and water level reading when it stops due to an obstacle.</p>
+<p>There are 4 methods of controlling the buggy:</p>
+<ul>
+<li>IR Remote</li>
+<li>Bluetooth LE</li>
+<li>WiFi</li>
+<li>Direclty through the PC serial monitor.</li>
+</ul>
+<h2 id="getting-started">Getting started.</h2>
+<p>When using any method of control, when then buggy is powered up it will request the user to present the correct RFID tag/card to the scanner. If the user does not present the correct RFID tag/card then access to the buggy will be denied. In order to be able to use the buggy the RFID tag/card must be presented.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/103211738-e5d98e80-4900-11eb-82b6-94415f369119.JPG" alt="IMG_0766">
+<img src="https://user-images.githubusercontent.com/72760747/103211737-e540f800-4900-11eb-8acf-1b2dc2e1cc09.JPG" alt="IMG_0767">
+<img src="https://user-images.githubusercontent.com/72760747/103211741-e5d98e80-4900-11eb-806f-392114accec2.JPG" alt="IMG_0768"></p>
+<p>Once access is granted the user can then control the buggy by any of the control methods.</p>
+<h2 id="how-to-use-the-ir-remote">How to use the IR Remote.</h2>
+<p>The IR remote is the most simple way of interacting with the buggy. This method does not use the ESP32 so this can be disconnected via th RX and TX pins.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101768046-0326f400-3add-11eb-893b-139e595ca14c.JPG" alt="IMG_1905"></p>
+<p>The function each button has is as follows:</p>
+<ul>
+<li>1 - Move the buggy farwards slowly.</li>
+<li>2 - Move the buggy forwards</li>
+<li>3 or up arrow - Move the buggy forwards at maximum speed.</li>
+<li>down arrow - Reverse the buggy</li>
+<li>ok - Stop the buggy</li>
+<li>Left arrow - Rotates the buggy left</li>
+<li>Right arrow - rotates the buggy right</li>
+<li>* - take a temperature reading and display it on the LCD screen</li>
+<li># - Stops the buggy before taking a water level reading.</li>
+</ul>
+<h2 id="how-to-control-the-buggy-using-bluetooth-low-energy-ble">How to control the buggy using Bluetooth low energy (BLE).</h2>
+<p>When the Bluetooth.ino code has been uploaded to the ESP32 you can connect an android device only (IOS does not support BLE).
+By going into the android device settings, &quot;ESP32test&quot; will be able to be paired with the device.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101770647-a4637980-3ae0-11eb-90b3-c1a65112bd18.png" alt="Screenshot_20201210-120007"></p>
+<p>Then using the below Serial Bluetooth terminal, the ESP32 can be set up as a device and connected to the ESP32.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101771232-82b6c200-3ae1-11eb-865b-3e0780de6e02.png" alt="Screenshot_20201210-121122">
+<img src="https://user-images.githubusercontent.com/72760747/101771226-80546800-3ae1-11eb-917f-7aa7951a4917.png" alt="Screenshot_20201210-121352"></p>
+<p>As you can see in the bluetooth terminal there are hot keys provided. Like the IR remote the number &quot;3&quot; will move the buggy at full speed and the hotkey &quot;stop&quot; will stop the buggy.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101771703-4041b500-3ae2-11eb-9962-0ce28e43cd8e.png" alt="Screenshot_20201210-121931"></p>
+<p>To allow the buggy to roam autonomously and roam autonomously while taking temperature, humidity and water level measurements, &quot;E&quot; and &quot;M&quot; can be sent to the terminal respectively. To stop the buggy roaming autonomously just press the &quot;stop&quot; hotkey.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101772454-48e6bb00-3ae3-11eb-9699-0c3f66796c41.png" alt="Screenshot_20201210-122609">
+<img src="https://user-images.githubusercontent.com/72760747/101772429-42f0da00-3ae3-11eb-8097-cd1bd1506f4e.png" alt="Screenshot_20201210-122649"></p>
+<p>As you can see the buggy will do an initial assessment of its surroundings and checks the distance in front of it (Cdist), to the left of it (Ldist) and to the right of it (Rdist). It will then choose which is greatest and move in that direction. It will then stream the distance it has until its next obstacle. When the distance is under 30cm it will stop and reasses it's surroundings to find the greatest clearance.</p>
+<p>You can also request a temperature/humidity or water level reading in the remote control setup by sending &quot;T&quot; and &quot;W&quot; respectively.</p>
+<h2 id="using-wifi-to-controll-the-buggy">Using WiFi to controll the buggy.</h2>
+<p>The ESP32 needs to be programmed in either the Blynk method which is highly customizable or by using a standard WiFi connection which controls the buggy using a WiFi terminal. (These are IOS friendly). You must upload either the BLYNK_WiFi.ino or standard_wifi.ino to the ESP32 to communicate with the buggy via WiFi.</p>
+<h3 id="blynkwifi">BLYNK_WiFi</h3>
+<p>Blynk is a app which is extremely user friendly! It is highly customizable as you can add joy stick, buttons, sliders and much more.
+When the ESP32 is connecting/connected to your network and to the Blynk server it will display a message when connected to the serial port.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101788748-5eb2ab00-3af8-11eb-98f7-084cdad63003.jpg" alt="IMG_1920">
+<img src="https://user-images.githubusercontent.com/72760747/101782557-104dde00-3af1-11eb-9f34-b276a4610234.PNG" alt="untitled"></p>
+<p>In the Blynk App we can insert a terminal which allows us to control the buggy. Unlike the the bluetooth terminal this does not have hotkeys which means you need to know the directory for how to control the buggy. Which is as follows:</p>
+<ul>
+<li>3 -Will move the buggy forwards at full speed.</li>
+<li>2 -will move the buggy forwards</li>
+<li>1 -will move the buggy forwards slowly</li>
+<li>h -will stop the buggy (Halt)</li>
+<li>b -will reverse the buggy</li>
+<li>l -will rotate the buggy left approximately 50 degrees</li>
+<li>r -will rotate the buggy right approximately 50 degrees</li>
+<li>E -will allow the buggy to roam freely while avoiding ibstacles</li>
+<li>M -will allow the buggy to roam freely will avoiding obstacles and taking temperature, humidity and water level measurements.</li>
+<li>T -will measure and instant temperature reading</li>
+<li>W -will stop the buggy moving if it is moving and will take a water sensor reading.</li>
+</ul>
+<p>As you can see below it is similar to the bluetooth terminal, just without the hotkeys.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101783709-7be47b00-3af2-11eb-8d51-f76a57e8f98d.PNG" alt="IMG_1909">
+<img src="https://user-images.githubusercontent.com/72760747/101783714-7dae3e80-3af2-11eb-99c2-4978b0398639.PNG" alt="IMG_1910">
+<img src="https://user-images.githubusercontent.com/72760747/101783720-7f780200-3af2-11eb-8ea8-3b93eff591be.PNG" alt="IMG_1912"></p>
+<h3 id="standard-standardwifi">Standard (Standard_WiFi)</h3>
+<p>The standard method of using WiFi is very similar but requires a few more steps.
+When the ESP32 Connects to the network and server a message will be displayed in the serial monitor.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101788097-ab49b680-3af7-11eb-8f51-8b0bf3874c48.jpg" alt="IMG_1913">
+<img src="https://user-images.githubusercontent.com/72760747/101788409-f82d8d00-3af7-11eb-94ab-6365d715e3f8.png" alt="Untitled1"></p>
+<p>Using the WiFi serial app, input your IP address displayed in the serial monitor along with the port number which is set to 80.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101788099-abe24d00-3af7-11eb-8f63-c1130171121e.jpg" alt="IMG_1914"></p>
+<p>This will then connect you to the ESP32 network and allow you to control the buggy. The top window is when your input commands for the buggy and the bottom window is the feedback which is sent to you. Be warned this specific app has no auto scroll function, so as soon as the feedback window is full you need to clear it by pressing the bin at the bottom.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101788102-abe24d00-3af7-11eb-898e-7ba4500835d2.jpg" alt="IMG_1915">
+<img src="https://user-images.githubusercontent.com/72760747/101788104-ac7ae380-3af7-11eb-9076-5da1e6dde6b9.jpg" alt="IMG_1916">
+<img src="https://user-images.githubusercontent.com/72760747/101788105-ac7ae380-3af7-11eb-9a13-57c5e47213c5.jpg" alt="IMG_1917"></p>
+<h2 id="using-the-serial-monitor-to-control-the-buggy">Using the Serial monitor to control the buggy.</h2>
+<p>This method has limitations, for example the buggy must stay plugged into the laptop/PC so limites mobility. However an ESP32 device is not required so there are no connection issues. This method is very useful for running quick tests to see how the buggy operates without having to leave your chair, you can just prop the buggy up to remove contact between the wheels and the floor.
+This method is similar to the IR remote in a sense that the ESP32 is not needed so the RX and TX pins can be disconnected.
+Some functions are limited also, Roaming autonomously is not recomended as the board has to be manually reset with the reset button on the arduino board.</p>
+<p>You can see below when commands are sent through the command line in the serial monitor window you will still recieve the feedback from the buggy.</p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101795452-d46e4500-3aff-11eb-9f1e-d3437bd7e846.png" alt="BR"></p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101795458-d59f7200-3aff-11eb-94ec-f4dd3080c1fe.png" alt="brr"></p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101795456-d59f7200-3aff-11eb-9194-fae3a5a11d4d.png" alt="brrr"></p>
+<p><img src="https://user-images.githubusercontent.com/72760747/101796448-d71d6a00-3b00-11eb-8345-d3d821c7b2cb.png" alt="wt"></p>
+<h2 id="security-features">Security features</h2>
+<p>Some security features have been added:</p>
+<ul>
+<li>RFID - The buggy requires a correct RFID tag to be presented before anything initially takes place and is also required when any form of autonomous mode is exited, this makes sure the user has visual confirmation of the buggy's loaction.</li>
+<li>A tilt sensor- If the buggy tips over a tilt sensor will be activated. This will halt the buggy and sound a buzzer. This is activated when the buggy is in a remote or autonomous mode. A message will also be sent to the Bluetooth/WiFi terminal to notify the user.</li>
+<li>Red LED- if connection between Bluetooth/WiFi drops then the Red LED located on the front of the buggy will turn on, the buggy will stop and anything written on the LCD screen is cleared.</li>
+</ul>
+
+</body>
+</html>
