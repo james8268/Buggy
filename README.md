@@ -20,7 +20,7 @@ When using any method of control, when then buggy is powered up it will request 
 Once access is granted the user can then control the buggy by any of the control methods. 
 
 ## How to use the IR Remote. 
-The IR remote is the most simple way of interacting with the buggy. This method does not use the ESP32 so this can be disconnected via th RX and TX pins.
+The IR remote is the most simple way of interacting with the buggy. This method does not use the ESP32 so this can be disconnected via the RX and TX pins.
 
 ![IMG_1905](https://user-images.githubusercontent.com/72760747/101768046-0326f400-3add-11eb-893b-139e595ca14c.JPG)
 
