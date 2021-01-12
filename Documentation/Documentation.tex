@@ -25,7 +25,7 @@ The main outcome at the beginning of the project was to create a simple and easy
 	\item Autonomous - The buggy must have the ability to move in and out of an autonomous mode.  
 \end{itemize}
 
-In this document short snips of the main code will be used in explanations. The main raw code can be found in the submitted documents or on my $\href{https://github.com/james8268/Buggy}{Github}$ account. The demonstration video can be found on my Github also. 
+In this document short snips of the main code will be used in explanations. The main raw code can be found in the submitted documents or on my $\href{https://github.com/james8268/Buggy}{Github}$ account. The demonstration video can be found using this \href{https://web.microsoftstream.com/video/7f82516f-c8d7-4af7-9546-ee9eb85d3bd6}{stream} link or you can copy and paste this \verb|https://web.microsoftstream.com/video/7f82516f-c8d7-4af7-9546-ee9eb85d3bd6|.
  
 
 \section{Design}
@@ -44,10 +44,15 @@ Below are two images of the main schematic of the buggy and a general communicat
 
 
 \begin{figure}[H]
-\includegraphics[height=5cm, width=7.0cm]{schematic}
-\includegraphics[height=5cm, width=7.0cm]{Arch}
-\caption{Left: Schematic of Buggy.}
-\caption{Right: Communication diagram of the Buggy}
+	\centering
+\includegraphics[height=7cm, width=10.0cm]{schematic}
+\caption{Schematic of Buggy.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+\includegraphics[height=7cm, width=10.0cm]{Arch}
+\caption{Communication diagram of the Buggy}
 \end{figure}
 
 The software for the Arduino has been set up into header (.h) files and source code (.cpp) files where they are then called in the main code. There are many benefits to this such as the code is organised and tidy. This allows future and current developers to debug with ease and addition of any new code can be easily integrated into the system while the code can be easily maintained. 
@@ -262,7 +267,7 @@ As you can see below when a command is sent from the Bluetooth terminal any mess
 \section{Code remarks}
 
 The ReadMe file can be found in the \href{https://github.com/james8268/Buggy}{Github repository} or along with the submitted documents. 
-The demonstration video can also be found on my Github account. 
+ 
 
 
 \section{Conclusion}
